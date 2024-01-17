@@ -49,10 +49,6 @@ Route::get('/register-store', [RegisteredUserController::class, 'store'])->name(
 
 // end
 
-
-
-
-
 // ------------------------------------------------------------------------------------------------------------------------------
 
 
@@ -61,13 +57,6 @@ Route::group(['middleware' => ['admin_auth']], function () {
     Route::get('/admin/users', [UserController::class, 'index'])->name('users.index');
     Route::get('/admin/logout', [ProfileController::class, 'logout'])->name('logout');
 });
-
-
-
-
-
-
-
 
 
 
