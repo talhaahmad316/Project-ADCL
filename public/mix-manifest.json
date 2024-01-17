@@ -1,0 +1,8 @@
+{
+
+        "/js/app.js": "/js/app.js"
+
+
+}
+npm install --save-dev vite laravel-vite-plugin
+npm install --save-dev vite laravel-vite-plugin
