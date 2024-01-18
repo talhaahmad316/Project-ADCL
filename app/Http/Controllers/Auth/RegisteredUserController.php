@@ -40,7 +40,6 @@ class RegisteredUserController extends Controller
         $input['password'] = Hash::make($input['password']);
         // dd($input);
         $user = User::create($input);
-
-        return back()->with('success', 'User created successfully');
+        return redirect('admin/dashboard')->with('success', 'User created successfully');
     }
 }

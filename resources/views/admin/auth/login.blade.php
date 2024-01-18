@@ -78,20 +78,23 @@
                                 </label>
                             </div>
                         </div>
-                        <!-- /.col -->
-                        <div class="col-4">
+                    </div>
+                    <div class="row">
+                        <div class="col-6">
+                            <button class="btn btn-primary btn-block">
+                                <a href="{{ route('register-create') }}">Register</a>
+                            </button>
+                         </div>
+                        <div class="col-6">
                             <button type="submit" class="btn btn-primary btn-block">Sign In</button>
                         </div>
-                        <!-- /.col -->
                     </div>
-                </form>
-
             </div>
-            <!-- /.login-card-body -->
+            </form>
         </div>
+        <!-- /.login-card-body -->
+    </div>
     </div>
     <!-- /.login-box -->
-
 </body>
-
 </html>

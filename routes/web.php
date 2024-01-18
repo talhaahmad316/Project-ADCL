@@ -27,29 +27,20 @@ use App\Http\Controllers\Auth\RegisteredUserController;
 |
 */
 
-// Laravel Breeze
-
-Route::get('/dashboard', function () {
-    return view('dashboard');
-})->middleware(['auth', 'verified'])->name('dashboard');
-
-Route::middleware('auth')->group(function () {
-    Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
-    Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
-    Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
-});
-
-require __DIR__ . '/auth.php';
-
-// Laravel Breeze End
-
 // register
 Route::get('/register-user', [RegisteredUserController::class, 'create'])->name('register-create');
 Route::get('/register-store', [RegisteredUserController::class, 'store'])->name('register-store');
+// register end
 
-// end
+// login start
+Route::get('/admin/login', [AuthController::class, 'getLogin'])->name('getLogin');
+Route::post('/admin/login', [AuthController::class, 'postLogin'])->name('postLogin');
+// login end
 
-// ------------------------------------------------------------------------------------------------------------------------------
+// logout
+Route::get('/admin/logout', [ProfileController::class, 'logout'])->name('logout');
+// logout
+
 
 
 Route::group(['middleware' => ['admin_auth']], function () {
@@ -57,9 +48,6 @@ Route::group(['middleware' => ['admin_auth']], function () {
     Route::get('/admin/users', [UserController::class, 'index'])->name('users.index');
     Route::get('/admin/logout', [ProfileController::class, 'logout'])->name('logout');
 });
-
-
-
 
 Route::get('/', [AdclTeamsController::class, 'home'])->name('home');
 Route::get('rules-regulations', [AdclTeamsController::class, 'rulesRegulations'])->name('rulesRegulations');
@@ -77,8 +65,7 @@ Route::get('/adclBlacks', [TeamController::class, 'adclBlacksPlayers'])->name('a
 
 //all Player
 Route::get('/adclAll', [PlayerController::class, 'showAllPlayers'])->name('adclAll');
-Route::get('/admin/login', [AuthController::class, 'getLogin'])->name('getLogin');
-Route::post('/admin/login', [AuthController::class, 'postLogin'])->name('postLogin');
+
 
 // Route for adding a player
 Route::get('/admin/players/add', [PlayerController::class, 'create'])->name('players.create');

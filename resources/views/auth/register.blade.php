@@ -12,8 +12,8 @@
         <!-- Email Address -->
         <div class="mt-4">
             <x-input-label for="email" :value="__('Email')" />
-            <x-text-input id="email" class="block w-full mt-1" type="email" name="email" :value="old('email')"
-                required autocomplete="username" />
+            <x-text-input id="email" class="block w-full mt-1" type="email" name="email" :value="old('email')" required
+                autocomplete="username" />
             <x-input-error :messages="$errors->get('email')" class="mt-2" />
         </div>
 
@@ -33,17 +33,22 @@
         <div>
             <x-input-label for="role" :value="__('Role')" />
             <select id="role" name="role" class="block w-full mt-1" required autofocus>
-                <option value="1" @if (old('role') == 'super_admin') selected @endif>Super Admin</option>
-                <option value="2" @if (old('role') == 'admin') selected @endif>Admin</option>
-                <option value="3" @if (old('role') == 'user') selected @endif>User</option>
+                <option value="1" @if (old('role')=='super_admin' ) selected @endif>Super Admin</option>
+                <option value="2" @if (old('role')=='admin' ) selected @endif>Admin</option>
+                <option value="3" @if (old('role')=='user' ) selected @endif>User</option>
             </select>
             <x-input-error :messages="$errors->get('role')" class="mt-2" />
         </div>
 
-        <div class="flex items-center justify-end mt-4">
-
-            <button type="submit" class="btn btn-success"
-                >Register</button>
-        </div>
+        <div class="row">
+            <div class="col-6">
+                <button class="btn btn-primary btn-block" type="submit">Register</button>
+            </div>
+                <div class="col-6">
+                    <button class="btn btn-primary btn-block">
+                        <a href="{{ route('getLogin') }}">Back to login</a>
+                    </button>
+                </div>
+            </div>
     </form>
 </x-guest-layout>

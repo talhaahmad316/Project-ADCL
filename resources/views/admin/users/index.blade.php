@@ -24,7 +24,7 @@
     	<div class="container-fluid">
     		Users List
     	</div>
-    	
+
     </div>
     <!-- /.row (main row) -->
 @endsection
