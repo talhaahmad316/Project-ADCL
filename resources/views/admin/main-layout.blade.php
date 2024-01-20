@@ -4,7 +4,6 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Admin Panel  {{isset($title)?'| '.$title:''}}</title>
-
   <!-- Google Font: Source Sans Pro -->
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
   <!-- Font Awesome -->
@@ -27,6 +26,8 @@
   <link rel="stylesheet" href="{{asset('admin-assets/plugins/summernote/summernote-bs4.min.css')}}">
   <!--Favicon-->
   <link rel="icon" href="https://www.adcricketlads.com/wp-content/uploads/2021/09/transparent-ADCL-Logo.png" type="image/png">
+{{-- data-table --}}
+
 </head>
 <body class="hold-transition sidebar-mini layout-fixed" style="background-color: white;">
 <div class="wrapper">
@@ -149,5 +150,12 @@
 <script src="{{asset('admin-assets/dist/js/demo.js')}}"></script>
 <!-- AdminLTE dashboard demo (This is only for demo purposes) -->
 <script src="{{asset('admin-assets/dist/js/pages/dashboard.js')}}"></script>
+
+
+
+
+
+
+
 </body>
 </html>

@@ -1,9 +1,4 @@
-<!-- jQuery -->
-<script src="{{ asset('admin-assets/plugins/jquery/jquery.min.js') }}"></script>
-<!-- Bootstrap 4 -->
-<script src="{{ asset('admin-assets/plugins/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
-<!-- AdminLTE App -->
-<script src="{{ asset('admin-assets/dist/js/adminlte.min.js') }}"></script>
+
 
 <!DOCTYPE html>
 <html lang="en">
@@ -23,8 +18,15 @@
     <!-- Theme style -->
     <link rel="icon" href="https://www.adcricketlads.com/wp-content/uploads/2021/09/transparent-ADCL-Logo.png"
         type="image/png">
-
     <link rel="stylesheet" href="{{ asset('admin-assets/dist/css/adminlte.min.css') }}">
+
+    <!-- jQuery -->
+<script src="{{ asset('admin-assets/plugins/jquery/jquery.min.js') }}"></script>
+<!-- Bootstrap 4 -->
+<script src="{{ asset('admin-assets/plugins/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
+<!-- AdminLTE App -->
+<script src="{{ asset('admin-assets/dist/js/adminlte.min.js') }}"></script>
+
 </head>
 
 <body class="hold-transition login-page">
@@ -38,16 +40,16 @@
                 <img src="https://www.adcricketlads.com/wp-content/uploads/2021/09/transparent-ADCL-Logo.png"
                     style="height: 130px; margin-left:110px;" alt="" srcset="">
                 @if (session('error'))
-                    <div class="text-danger text-center">{{ session('error') }}</div>
+                    <div class="text-center text-danger">{{ session('error') }}</div>
                 @endif
                 @if (session('success'))
-                    <div class="text-success text-center">{{ session('success') }}</div>
+                    <div class="text-center text-success">{{ session('success') }}</div>
                 @endif
                 <p class="login-box-msg" style="font-size: 22px;">Login</p>
 
                 <form action="{{ route('postLogin') }}" method="post">
                     @csrf
-                    <div class="input-group mb-1">
+                    <div class="mb-1 input-group">
                         <input name="email" type="email" class="form-control" placeholder="Email">
                         <div class="input-group-append">
                             <div class="input-group-text">
@@ -58,7 +60,7 @@
                     @error('email')
                         <div class="text-danger">{{ $message }}</div>
                     @enderror
-                    <div class="input-group mb-1">
+                    <div class="mb-1 input-group">
                         <input name="password" type="password" class="form-control" placeholder="Password">
                         <div class="input-group-append">
                             <div class="input-group-text">
@@ -82,7 +84,7 @@
                     <div class="row">
                         <div class="col-6">
                             <button class="btn btn-primary btn-block">
-                                <a href="{{ route('register-create') }}">Register</a>
+                                <a href="{{ route('register-create') }}" style="color: white; text-decoration: none;">Register</a>
                             </button>
                          </div>
                         <div class="col-6">

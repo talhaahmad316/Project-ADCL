@@ -29,7 +29,7 @@ use App\Http\Controllers\Auth\RegisteredUserController;
 
 // register
 Route::get('/register-user', [RegisteredUserController::class, 'create'])->name('register-create');
-Route::get('/register-store', [RegisteredUserController::class, 'store'])->name('register-store');
+Route::post('/register-store', [RegisteredUserController::class, 'store'])->name('register-store');
 // register end
 
 // login start

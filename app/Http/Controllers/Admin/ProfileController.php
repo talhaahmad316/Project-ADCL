@@ -3,15 +3,18 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use Illuminate\Foundation\Auth\User;
 
 class ProfileController extends Controller
 {
     public function dashboard()
     {
-        $data = [
-            'title' => 'Dashboard'
-        ];
-        return view('admin.dashboard', $data);
+        // $data = [
+        //     'title' => 'Dashboard'
+        // ];
+
+        $users = User::all();
+        return view('admin.dashboard', get_defined_vars());
     }
 
     public function logout()
