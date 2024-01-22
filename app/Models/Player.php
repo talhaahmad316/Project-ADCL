@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class Player extends Model
 {
     protected $fillable = [
-        'name', 'nationality', 'picture', 'height', 'gender', 'playing_role', 'batting_style', 'bowling_style', 'status', 'description'
+        'name', 'nationality', 'email', 'picture', 'height', 'gender', 'playing_role', 'batting_style', 'bowling_style', 'status', 'description'
     ];
 
 
@@ -17,7 +17,4 @@ class Player extends Model
     {
         return $this->belongsToMany(Team::class, 'player_team', 'player_id', 'team_id');
     }
-    
-
-
 }

@@ -8,7 +8,7 @@
         <img src="https://www.adcricketlads.com/wp-content/uploads/2021/09/transparent-ADCL-Logo.png"
         style="height: 80px; "
         alt="" srcset="">
-      <span class="brand-text font-weight-light" style="font-family: oswald; font-size:20px;">Admin Panel ADCL</span>
+      <span class="brand-text font-weight-light" style="font-family: oswald; font-size:20px;">ADCL Admin</span>
     </a>
 
     <!-- Sidebar -->

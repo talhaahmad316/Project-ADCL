@@ -35,6 +35,7 @@
 </div>
 
 <table id="example" class="table table-striped" style="width:100%">
+    @if(auth()->check() && auth()->user()->role == 1)
     <thead>
         <tr>
             <th>Name</th>
@@ -55,5 +56,6 @@
             @endforeach
         @endif
     </tbody>
+    @endif
 </table>
 @endsection

@@ -48,6 +48,7 @@
     </ul>
 
     <!-- Right navbar links -->
+    @if(auth()->check() && auth()->user()->role == 1)
     <ul class="ml-auto navbar-nav">
         <!-- Messages Dropdown Menu -->
         <li class="nav-item dropdown">
@@ -55,25 +56,16 @@
             <i class="far fa-user"></i>
           </a>
           <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right">
-                <a href="{{ route('register-create') }}" class="dropdown-item">
-                    Register
-                </a>
+              <a href="{{ route('register-create') }}" class="dropdown-item">
+                  Register
+              </a>
           </div>
+      @endif
         </li>
 
 {{-- For logout --}}
 
-      <!-- Messages Dropdown Menu -->
-      <li class="nav-item dropdown">
-        <a class="nav-link" data-toggle="dropdown" href="#" title="Logout">
-          <i class="far fa-user"></i>
-        </a>
-        <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right">
-          <a href="{{route('logout')}}" class="dropdown-item">
-          	Logout
-          </a>
-        </div>
-      </li>
+
     </ul>
 
 {{-- For End logout --}}

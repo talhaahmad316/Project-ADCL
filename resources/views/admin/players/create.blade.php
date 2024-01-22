@@ -33,7 +33,17 @@
 
             <div class="col-md-4">
                 <div class="form-group">
+                    <label for="name">Email:</label>
+                    <input type="email" name="email" class="form-control" value="{{ old('email', '') }}" required>
+                </div>
+            </div>
+
+
+
+            <div class="col-md-4">
+
                     <label for="nationality">Nationality:</label>
+                    <div class="form-group">
                    <!-- Country names and Country Name -->
 <select class="form-select" id="nationality" name="nationality">
     <option value="">Select Country</option>

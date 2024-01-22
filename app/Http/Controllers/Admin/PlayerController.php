@@ -22,12 +22,15 @@ class PlayerController extends Controller
         // Validate the form data
         $request->validate([
             'name' => 'required|string',
+            'email' => 'required|email|unique:users,email',
             'Picture' => 'required|image|mimes:jpeg,png,jpg,gif,webp',
             'nationality' => 'required|string',
         ]);
 
         // Upload the player picture and store the data in the database
         $data = $request->all();
+        // dd($data); // Dump and die to inspect the data
+
         if ($request->hasFile('Picture')) {
             $imagePath = $request->file('Picture')->store('player_images', 'public');
             $data['picture'] = $imagePath;
@@ -40,20 +43,21 @@ class PlayerController extends Controller
         return redirect()->route('players.create')->with('success', 'Player added successfully!');
     }
 
+
     // Method to show the search page for players
 
-public function search(Request $request)
-{
-    $search = $request->input('search');
+    public function search(Request $request)
+    {
+        $search = $request->input('search');
 
 
-    // Query the players and paginate the results
-    $players = Player::where('name', 'LIKE', "%$search%")
-                      ->orWhere('nationality', 'LIKE', "%$search%")
-                      ->paginate(15); // You can adjust the number of items per page
+        // Query the players and paginate the results
+        $players = Player::where('name', 'LIKE', "%$search%")
+            ->orWhere('nationality', 'LIKE', "%$search%")
+            ->paginate(15); // You can adjust the number of items per page
 
-    return view('admin.players.search', compact('players'));
-}
+        return view('admin.players.search', compact('players'));
+    }
 
     // Method to show the view page for a player
     public function view(Player $player)
@@ -116,8 +120,4 @@ public function search(Request $request)
 
         return view('ADCL.adclAll', compact('players'));
     }
-
-
-
 }
-
