@@ -27,6 +27,11 @@ use App\Http\Controllers\Auth\RegisteredUserController;
 |
 */
 
+Route::get('/data-table', [ProfileController::class, 'datatable'])->name('data-table');
+
+
+
+
 // register
 Route::get('/register-user', [RegisteredUserController::class, 'create'])->name('register-create');
 Route::post('/register-store', [RegisteredUserController::class, 'store'])->name('register-store');
@@ -44,9 +49,9 @@ Route::get('/admin/logout', [ProfileController::class, 'logout'])->name('logout'
 
 
 Route::group(['middleware' => ['admin_auth']], function () {
-Route::get('/admin/dashboard', [ProfileController::class, 'dashboard'])->name('dashboard');
-Route::get('/admin/users', [UserController::class, 'index'])->name('users.index');
-Route::get('/admin/logout', [ProfileController::class, 'logout'])->name('logout');
+    Route::get('/admin/dashboard', [ProfileController::class, 'dashboard'])->name('dashboard');
+    Route::get('/admin/users', [UserController::class, 'index'])->name('users.index');
+    Route::get('/admin/logout', [ProfileController::class, 'logout'])->name('logout');
 });
 
 Route::get('/', [AdclTeamsController::class, 'home'])->name('home');

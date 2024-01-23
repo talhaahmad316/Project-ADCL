@@ -22,4 +22,10 @@ class ProfileController extends Controller
         auth()->logout();
         return redirect()->route('getLogin')->with('success', 'You have been successfully logged out');
     }
+
+
+    public function datatable()
+    {
+        return view('dashboard', get_defined_vars());
+    }
 }
