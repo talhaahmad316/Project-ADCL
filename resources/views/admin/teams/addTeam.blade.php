@@ -56,12 +56,14 @@
                         </div>
                     </div>
                 </div>
-
                         <div class="form-group">
                             <label for="description">Description:</label>
-                            <textarea name="description" class="form-control" rows="4"></textarea>
+                            <textarea name="description" class="form-control" style="width: 100%;" rows="5" id="textarea" autofocus required></textarea>
+                            <div id="count" style="margin-left: 95%; color: #2E9E42;">
+                                <span id="current_count">0</span>
+                                <span id="maximum_count">/ 1000</span>
+                            </div>
                         </div>
-
                         <div class="text-center">
                             <button type="submit" class="btn btn-primary">Add Team</button>
                         </div>
@@ -92,6 +94,14 @@
         }
     });
 </script>
-
+<script type="text/javascript">
+    $('#textarea').keyup(function() {
+        var characterCount = $(this).val().length,
+            current_count = $('#current_count'),
+            maximum_count = $('#maximum_count'),
+            count = $('#count');
+            current_count.text(characterCount);
+    });
+    </script>
 @endsection
 

@@ -40,7 +40,11 @@
 
             <div class="form-group">
                 <label for="description">Description:</label>
-                <textarea name="description" class="form-control" style="width: 50%;" rows="5">{{ $player->description }}</textarea>
+                <textarea name="description" class="form-control" id="textarea" style="width: 50%;" rows="5">{{ $player->description }}</textarea>
+                <div id="count" style="margin-left: 47%; color: #2E9E42;">
+                    <span id="current_count">0</span>
+                    <span id="maximum_count">/ 1000</span>
+                </div>
             </div>
 
             <div class="form-group">
@@ -50,7 +54,7 @@
                 @else
                     No Image
                 @endif
-                <input type="file" name="Picture" accept="image/*" class="form-control-file mt-2">
+                <input type="file" name="Picture" accept="image/*" class="mt-2 form-control-file">
             </div>
 
             <div style="display: flex;">
@@ -69,4 +73,13 @@
             <br><br>
         </div>
     </div>
+    <script type="text/javascript">
+        $('#textarea').keyup(function() {
+            var characterCount = $(this).val().length,
+                current_count = $('#current_count'),
+                maximum_count = $('#maximum_count'),
+                count = $('#count');
+                current_count.text(characterCount);
+        });
+        </script>
 @endsection

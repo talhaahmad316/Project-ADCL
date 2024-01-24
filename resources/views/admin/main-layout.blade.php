@@ -70,6 +70,7 @@
 <script src="{{asset('admin-assets/dist/js/demo.js')}}"></script>
 <!-- AdminLTE dashboard demo (This is only for demo purposes) -->
 <script src="{{asset('admin-assets/dist/js/pages/dashboard.js')}}"></script>
+
 </head>
 <body class="hold-transition sidebar-mini layout-fixed" style="background-color: white;">
 <div class="wrapper">

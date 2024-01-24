@@ -43,7 +43,7 @@
                             @else
                             No Logo
                             @endif
-                            <input type="file" name="logo" accept="image/*" class="form-control-file mt-2">
+                            <input type="file" name="logo" accept="image/*" class="mt-2 form-control-file">
                         </div>
 
                         <!-- Team Name and Club -->
@@ -73,8 +73,13 @@
                             </div>
                             <div class="col-md-6">
                                 <label for="description">Description:</label>
-                                <textarea name="description" class="form-control" rows="4">{{ $team->description }}</textarea>
+                                <textarea name="description" class="form-control" id="textarea" rows="4">{{ $team->description }}</textarea>
+                                <div id="count" style="margin-left: 90%; color: #2E9E42;">
+                                    <span id="current_count">0</span>
+                                    <span id="maximum_count">/ 1000</span>
+                                </div>
                             </div>
+
                         </div>
 
                         <div class="text-center">
@@ -86,4 +91,13 @@
         </div>
     </div>
 </div>
+<script type="text/javascript">
+    $('#textarea').keyup(function() {
+        var characterCount = $(this).val().length,
+            current_count = $('#current_count'),
+            maximum_count = $('#maximum_count'),
+            count = $('#count');
+            current_count.text(characterCount);
+    });
+    </script>
 @endsection
