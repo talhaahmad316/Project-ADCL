@@ -8,11 +8,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css">
   <link rel="stylesheet" href="https://cdn.datatables.net/1.13.7/css/dataTables.bootstrap4.min.css">
-  <script src="https://code.jquery.com/jquery-3.7.0.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"></script>
-  <script src="https://cdn.datatables.net/1.13.7/js/jquery.dataTables.min.js"></script>
-  <script src="https://cdn.datatables.net/1.13.7/js/dataTables.bootstrap4.min.js"></script>
+
   <!-- Google Font: Source Sans Pro -->
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
   <!-- Font Awesome -->
@@ -52,11 +48,13 @@
 <script src="{{asset('admin-assets/plugins/sparklines/sparkline.js')}}"></script>
 <!-- JQVMap -->
 <script src="{{asset('admin-assets/plugins/jqvmap/jquery.vmap.min.js')}}"></script>
+
 <script src="{{asset('admin-assets/plugins/jqvmap/maps/jquery.vmap.usa.js')}}"></script>
 <!-- jQuery Knob Chart -->
 <script src="{{asset('admin-assets/plugins/jquery-knob/jquery.knob.min.js')}}"></script>
 <!-- daterangepicker -->
 <script src="{{asset('admin-assets/plugins/moment/moment.min.js')}}"></script>
+
 <script src="{{asset('admin-assets/plugins/daterangepicker/daterangepicker.js')}}"></script>
 <!-- Tempusdominus Bootstrap 4 -->
 <script src="{{asset('admin-assets/plugins/tempusdominus-bootstrap-4/js/tempusdominus-bootstrap-4.min.js')}}"></script>
@@ -70,7 +68,17 @@
 <script src="{{asset('admin-assets/dist/js/demo.js')}}"></script>
 <!-- AdminLTE dashboard demo (This is only for demo purposes) -->
 <script src="{{asset('admin-assets/dist/js/pages/dashboard.js')}}"></script>
+<script src="https://cdn.datatables.net/1.13.8/js/jquery.dataTables.min.js"></script>
 
+<script src="https://cdn.datatables.net/1.13.7/js/dataTables.bootstrap4.min.js"></script>
+
+
+
+<script>
+    $(document).ready(function() {
+      $('#example').DataTable();
+    });
+  </script>
 </head>
 <body class="hold-transition sidebar-mini layout-fixed" style="background-color: white;">
 <div class="wrapper">
@@ -123,8 +131,6 @@
     <!-- Content Header (Page header) -->
 
     @yield('content-header')
-
-
     <!-- Main content -->
     <section class="content" >
       <div class="container-fluid">
@@ -136,7 +142,7 @@
   </div>
   <!-- /.content-wrapper -->
   <footer class="main-footer">
-    <strong>© Copyright 2023 ADCL, </strong> All Rights Reserved. Powered by <strong>TechWrath.</strong>
+    <strong>© Copyright 2024 ADCL, </strong> All Rights Reserved. Powered by <strong>TechWrath.</strong>
 
     <div class="float-right d-none d-sm-inline-block">
 

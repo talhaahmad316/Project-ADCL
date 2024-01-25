@@ -1,5 +1,6 @@
 @extends('admin.main-layout')
 @section('content-header')
+
 <style>
     .welcome {
         font-size: 24px;
@@ -58,5 +59,6 @@
     </tbody>
     @endif
 </table>
+
 @endsection
 
