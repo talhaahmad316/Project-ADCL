@@ -30,7 +30,9 @@
   <!-- summernote -->
   <link rel="stylesheet" href="{{asset('admin-assets/plugins/summernote/summernote-bs4.min.css')}}">
   <!--Favicon-->
-  <link rel="icon" href="https://www.adcricketlads.com/wp-content/uploads/2021/09/transparent-ADCL-Logo.png" type="image/png">
+ <!-- Favicon -->
+<link rel="icon" href="{{ asset('images/logo/logo.png') }}" type="image/png">
+
 {{-- data-table --}}
 <!-- jQuery -->
 <script src="{{asset('admin-assets/plugins/jquery/jquery.min.js')}}"></script>

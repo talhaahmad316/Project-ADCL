@@ -4,7 +4,7 @@
     <div class="container-fluid" style="font-family: oswald; font-size:18px; background-color:white; width:102%; margin-left:-10px; padding-left:22px;">
         <br>
 
-        <h2><b>Edit Player Details</b></h2>
+        <h2 style="margin-top: -1%;"><b>Edit Player Details  </b></h2>
 
         @if(session('success'))
             <div class="alert alert-success">
@@ -41,7 +41,7 @@
             <div class="form-group">
                 <label for="description">Description:</label>
                 <textarea name="description" class="form-control" id="textarea" style="width: 50%;" rows="5">{{ $player->description }}</textarea>
-                <div id="count" style="margin-left: 47%; color: #2E9E42;">
+                <div id="count" style=" color: #2E9E42;">
                     <span id="current_count">0</span>
                     <span id="maximum_count">/ 1000</span>
                 </div>

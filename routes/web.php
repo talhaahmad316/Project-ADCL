@@ -27,13 +27,11 @@ use App\Http\Controllers\Auth\RegisteredUserController;
 |
 */
 
-Route::get('/data-table', [ProfileController::class, 'datatable'])->name('data-table');
-
-
+Route::get('/users', [ProfileController::class, 'users'])->name('users');
 
 
 // register
-Route::get('/register-user', [RegisteredUserController::class, 'create'])->name('register-create');
+Route::get('/admin/register-user', [RegisteredUserController::class, 'create'])->name('register-create');
 Route::post('/register-store', [RegisteredUserController::class, 'store'])->name('register-store');
 // register end
 

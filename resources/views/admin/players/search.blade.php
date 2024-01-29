@@ -3,12 +3,10 @@
 
 <div class="container-fluid mt-12" style="background-color: white; width:102%; margin-left:-12px;" style="font-family: oswald; font-size:18px;"><br>
     <div style="font-family:'Times New Roman', Times, serif; font-size:18px;">
-        Lorem Ipsum is simply dummy text of the printing and typesetting industry.
-        Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, <br>when an unknown printer took a
-         galley of type and scrambled it to make a type specimen book.
+{{-- Here you can write your content --}}
     </div>
     <br>
-    <h2 style="font-family: oswald; font-size:28px; font-weight:bold;">Search Players</h2>
+    <h2 style="font-family: oswald; margin-top: -2%; font-size:28px; font-weight:bold;">Search Players</h2>
     <div class="row mb-4">
         <div class="col-md-6">
             <form action="{{ route('players.search') }}" method="GET">
@@ -20,7 +18,7 @@
                 </div>
             </form>
         </div>
-        <div class="col-md-6 text-right" style="font-family: oswald; font-size:18px;">
+        <div class="col-md-6 " style="font-family: oswald; margin-left: 93%; font-size:18px;">
             <a href="{{ route('players.create') }}" class="btn btn-success">Add Player</a>
         </div>
     </div>

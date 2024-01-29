@@ -34,5 +34,31 @@
     <p style="padding-left: 10px">ADCL is not just a cricket club; ADCL is a society, a band of cricket-loving
         brothers who are amateur cricketers & yet rubbing shoulders with the top sides around.</p>
 </div>
+
+<table id="example" class="table table-striped table-bordered" style="width:100%">
+    @if(auth()->check() && auth()->user()->role == 1)
+    <thead>
+        <tr>
+            <th>Name</th>
+            <th>Email</th>
+            <th>Role</th>
+            <th>Created_at</th>
+        </tr>
+    </thead>
+    <tbody>
+        @if ($users->isNotEmpty())
+            @foreach ($users as $user)
+                <tr>
+                    <td>{{ $user->name ?? '' }}</td>
+                    <td>{{ $user->email ?? '' }}</td>
+                    <td>{{ $user->role ?? '' }}</td>
+                    <td>{{ $user->created_at ?? '' }}</td>
+                </tr>
+            @endforeach
+        @endif
+    </tbody>
+    @endif
+</table>
+
 @endsection
 

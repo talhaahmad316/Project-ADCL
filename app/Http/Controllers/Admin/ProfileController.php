@@ -24,8 +24,9 @@ class ProfileController extends Controller
     }
 
 
-    public function datatable()
+    public function users()
     {
-        return view('dashboard', get_defined_vars());
+        $users = User::all();
+        return view('users', get_defined_vars());
     }
 }

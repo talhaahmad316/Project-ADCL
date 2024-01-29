@@ -34,8 +34,7 @@
         <!-- /.Register-logo -->
         <div class="card">
             <div class="card-body login-card-body">
-                <img src="https://www.adcricketlads.com/wp-content/uploads/2021/09/transparent-ADCL-Logo.png"
-                    style="height: 130px; margin-left:110px;" alt="" srcset="">
+                <img src="{{ asset('images/logo/logo.png') }}" style="height: 130px; margin-left: 110px;" alt="ADCL Logo">
                 @if (session('error'))
                     <div class="text-center text-danger">{{ session('error') }}</div>
                 @endif

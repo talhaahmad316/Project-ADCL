@@ -5,9 +5,7 @@
   <aside class="main-sidebar sidebar-dark-primary elevation-4">
     <!-- Brand Logo -->
     <a href="" class="brand-link">
-        <img src="https://www.adcricketlads.com/wp-content/uploads/2021/09/transparent-ADCL-Logo.png"
-        style="height: 80px; "
-        alt="" srcset="">
+        <img src="{{ asset('images/logo/logo.png') }}"style="height: 80px; " alt="ADCL Logo">
       <span class="brand-text font-weight-light" style="font-family: oswald; font-size:20px;">ADCL Admin</span>
     </a>
 
@@ -47,10 +45,22 @@
 
 
 <!-- Main Nav Item -->
+{{-- users --}}
+@if(auth()->check() && auth()->user()->role == 1)
+<li class="nav-item">
+    <a href="{{ route('users') }}" class="nav-link">
+        <i class="nav-icon fas fa-user"></i>
+        <p style="font-family: oswald; font-size:18px;">
+            Users
+        </p>
+    </a>
+</li>
+@endif
+
 <ul class="nav">
     <!--Player Info-->
     <li class="nav-item">
-        <a href="#" class="nav-link" id="playerInfoBtn">
+        <a href="{{ route('players.search') }}" class="nav-link" id="playerInfoBtn">
            &nbsp; <i class="nav-icon fas fa-user"></i>
             <p style="font-family: oswald; font-size:18px;">
                 &nbsp; ADCL Player Info
