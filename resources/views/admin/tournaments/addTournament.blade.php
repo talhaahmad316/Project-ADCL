@@ -77,7 +77,7 @@
                             </div>
                         </div><br><br><br><br><br><br>
 
-                        <div class="col-md-12 text-center">
+                        <div style="margin-left: 90%">
                             <button id="addTournamentButton" type="submit" class="btn btn-success">Add Tournament</button>
                         </div>
 

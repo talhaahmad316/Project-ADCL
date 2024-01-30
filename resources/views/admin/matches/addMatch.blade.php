@@ -92,8 +92,9 @@
                                 <img id="imagePreview" src="#" alt="Image Preview" style="max-width: 100%; max-height: 200px; margin-top: 10px; display: none;">
                             </div>
                         </div>
-                        <br><br><br><br><br>
-                        <button type="submit" class="btn btn-primary" style="margin-left: 90%;">Submit</button>
+                        <div style="margin-left: 90%;">
+                        <button type="submit" class="btn btn-success" >Submit</button>
+                        </div>
                     </form>
                 </div>
             </div><br><br><br>

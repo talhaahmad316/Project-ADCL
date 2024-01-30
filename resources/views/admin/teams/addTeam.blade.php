@@ -23,7 +23,7 @@
                                     <input type="text" name="name" class="form-control" required>
                                 </div>
                             </div>
-                            <div class="col-md-6">
+                            <div class="col-md-5">
                                 <div class="form-group" >
                                     <label for="logo">Team Logo:</label>
                                     <input type="file" name="logo" accept="image/*" class="form-control-file" required>
@@ -45,7 +45,7 @@
                             </select>
                         </div>
                     </div>
-                    <div class="col-md-6">
+                    <div class="col-md-5">
                         <div class="form-group">
                             <label for="status">Status:</label>
                             <select name="status" class="form-control" required>
@@ -56,17 +56,27 @@
                         </div>
                     </div>
                 </div>
+                <div class="col-md-8">
+
                         <div class="form-group">
                             <label for="description">Description:</label>
                             <textarea name="description" class="form-control" style="width: 100%;" rows="5" id="textarea" autofocus required></textarea>
-                            <div id="count" style="margin-left: 95%; color: #2E9E42;">
+                            <div id="count" style="color: #2E9E42;">
                                 <span id="current_count">0</span>
                                 <span id="maximum_count">/ 1000</span>
                             </div>
                         </div>
-                        <div class="text-center">
+                </div>
+                        <div style="margin-left: 90%">
                             <button type="submit" class="btn btn-primary">Add Team</button>
                         </div>
+
+
+
+
+
+
+
                     </form>
                     &nbsp;<br>&nbsp;<br>&nbsp;<br>&nbsp;<br>&nbsp;<br>&nbsp;<br>
                 </div>

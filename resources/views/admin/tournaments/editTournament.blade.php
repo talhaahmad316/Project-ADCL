@@ -9,7 +9,7 @@
         @method('PUT')
         <div class="row">
             <!-- Banner Image -->
-            <div class="col-md-12 text-center">
+            <div class="text-center col-md-12">
                 <label for="banner_image">Tournament Banner:</label><br>
                 @if($tournament->banner_image)
                 <img src="{{ asset('storage/' . $tournament->banner_image) }}" alt="Tournament Banner" style="max-height: 300px;">
@@ -71,13 +71,13 @@
        </select>
         </div>
         </div>
-        <h2><b>Edit Match</b></h2><br>
-        
+        <h2 ><b>Edit Match</b></h2><br>
+
 
         <br><br>
         <div class="row">
-            <div class="col-md-12 text-center">
-                <button type="submit" class="btn btn-primary">Update Tournament</button>
+            <div class="text-center col-md-12">
+                <button style="margin-left: 90%" type="submit" class="btn btn-primary">Update Tournament</button>
             </div>
         </div><br><br><br><br><br>
 

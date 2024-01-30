@@ -31,7 +31,7 @@
 @section('body')
 <div style="height: 100%; width:102%; background-color: white; margin-left:-13px; margin-top:-16px;">
     <div class="welcome">Welcome To ADCL Admin Dashboard</div>
-    <p style="padding-left: 10px">ADCL is not just a cricket club; ADCL is a society, a band of cricket-loving
+    <p style="padding-left: 10px">ADCL is not just a cricket club, ADCL is a society, a band of cricket-loving
         brothers who are amateur cricketers & yet rubbing shoulders with the top sides around.</p>
 </div>
 
