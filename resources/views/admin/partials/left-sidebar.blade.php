@@ -177,8 +177,8 @@
 </li>
 
 <li class="nav-item" id="addClubBtnContainer" style="display: none;">
-    <a href="#" class="nav-link">
-        <i class="nav-icon fas fa-plus"></i>
+    <a href="{{ route('club-create') }}" class="nav-link">
+    <i class="nav-icon fas fa-plus"></i>
         <p style="font-family: oswald; font-size:16px;">
             Add Club
         </p>
@@ -258,7 +258,6 @@
         }
     }
 </script>
-
   <style>
       /* Add styles for the active button (optional) */
       .nav-item.active .nav-link {

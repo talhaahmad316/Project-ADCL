@@ -2,10 +2,6 @@
 
 // use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
-
-
-
-
 use App\Http\Controllers\AdminTournamentController;
 use App\Http\Controllers\TournamentMatchController;
 use App\Http\Controllers\AdclTeamsController;
@@ -15,6 +11,7 @@ use App\Http\Controllers\Admin\TeamController;
 use App\Http\Controllers\Admin\AuthController;
 use App\Http\Controllers\Admin\ProfileController;
 use App\Http\Controllers\Auth\RegisteredUserController;
+use App\Http\Controllers\ClubController;
 
 /*
 |--------------------------------------------------------------------------
@@ -68,6 +65,23 @@ Route::get('/adclBlacks', [TeamController::class, 'adclBlacksPlayers'])->name('a
 
 //all Player
 Route::get('/adclAll', [PlayerController::class, 'showAllPlayers'])->name('adclAll');
+
+
+// club crud
+Route::get('/admin/club-create', [ClubController::class, 'create'])->name('club-create');
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 // Route for adding a player
