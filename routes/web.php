@@ -69,6 +69,8 @@ Route::get('/adclAll', [PlayerController::class, 'showAllPlayers'])->name('adclA
 
 // club crud
 Route::get('/admin/club-create', [ClubController::class, 'create'])->name('club-create');
+Route::post('/admin/club', [ClubController::class, 'store'])->name('club-store');
+Route::get('/admin/club-search', [ClubController::class, 'index'])->name('club-search');
 
 
 

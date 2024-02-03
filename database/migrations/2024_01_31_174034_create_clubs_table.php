@@ -13,6 +13,10 @@ return new class extends Migration
     {
         Schema::create('clubs', function (Blueprint $table) {
             $table->id();
+            $table->string('club_name');
+            $table->string('club_countary');
+            $table->string('personal_club');
+            $table->string('description');
             $table->timestamps();
         });
     }

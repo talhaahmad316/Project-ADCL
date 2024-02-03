@@ -12,7 +12,8 @@ class ClubController extends Controller
      */
     public function index()
     {
-        //
+        $clubs = Club::all();
+        return view('admin.club.search', get_defined_vars());
     }
 
     /**
@@ -28,8 +29,15 @@ class ClubController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $club = new Club;
+        $club->club_name = $request->club_name;
+        $club->club_countary = $request->club_countary;
+        $club->personal_club = $request->personal_club;
+        $club->description = $request->description;
+        $club->save();
+        return redirect()->route('club-create')->with('success', 'Club created successfully');
     }
+
 
     /**
      * Display the specified resource.

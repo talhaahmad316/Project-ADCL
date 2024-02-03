@@ -168,7 +168,7 @@
 
 <!-- Links to Search and Add Club Pages (Initially Hidden) -->
 <li class="nav-item" id="searchClubBtnContainer" style="display: none;">
-    <a href="#" class="nav-link">
+    <a href="{{ route('club-search') }}" class="nav-link">
         <i class="nav-icon fas fa-search"></i>
         <p style="font-family: oswald; font-size:16px;">
             Search Club
