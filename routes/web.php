@@ -71,16 +71,9 @@ Route::get('/adclAll', [PlayerController::class, 'showAllPlayers'])->name('adclA
 Route::get('/admin/club-create', [ClubController::class, 'create'])->name('club-create');
 Route::post('/admin/club', [ClubController::class, 'store'])->name('club-store');
 Route::get('/admin/club-search', [ClubController::class, 'index'])->name('club-search');
-
-
-
-
-
-
-
-
-
-
+Route::get('/admin/club-delete/{id}', [ClubController::class, 'destroy'])->name('club-destroy');
+Route::get('/admin/club-edit/{id}', [ClubController::class, 'edit'])->name('club-edit');
+Route::post('/admin/club-update/{id}', [ClubController::class, 'update'])->name('club-update');
 
 
 
