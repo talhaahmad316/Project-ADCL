@@ -75,7 +75,7 @@
                                 <label for="description">Description:</label>
                                 <textarea name="description" class="form-control" id="textarea" rows="4">{{ $team->description }}</textarea>
                                 <div id="count" style=" color: #2E9E42;">
-                                    <span id="current_count">0</span>
+                                    <span id="current_count">{{ mb_strlen($team->description ?? '') }}</span>
                                     <span id="maximum_count">/ 1000</span>
                                 </div>
                             </div>

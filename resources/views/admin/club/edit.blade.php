@@ -2,7 +2,7 @@
 @section('body')
     <div class="container-fluid"
         style="margin-left: -5px; width:102%; font-family: oswald; font-size:18px; background-color:white;">
-        <h2>Add Club</h2>
+        <h2>Edit Club</h2>
         @if (session('success'))
             <div class="alert alert-success">
                 {{ session('success') }}
@@ -41,10 +41,9 @@
             <div class="col-md-8">
                 <div class="form-group">
                     <label for="description">Description:</label>
-
                     <textarea name="description" class="form-control" style="width: 100%;" rows="5" id="textarea" >{{ $club->description ?? '' }}</textarea>
                     <div id="count" style="color: #2E9E42;">
-                        <span id="current_count">0</span>
+                        <span id="current_count">{{ mb_strlen($club->description ?? '') }}</span>
                         <span id="maximum_count">/ 1000</span>
                     </div>
                 </div>
