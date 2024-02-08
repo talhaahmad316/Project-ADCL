@@ -1,6 +1,5 @@
 <?php
 
-// use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AdminTournamentController;
 use App\Http\Controllers\TournamentMatchController;
@@ -25,6 +24,17 @@ use App\Http\Controllers\ClubController;
 */
 
 Route::get('/users', [ProfileController::class, 'users'])->name('users');
+
+Route::get('/users-edit/{id}', [ProfileController::class, 'edit'])->name('user-edit');
+Route::get('/users-delete/{id}', [ProfileController::class, 'destroy'])->name('user-destroy');
+
+Route::post('/users-update/{id}', [ProfileController::class, 'update'])->name('user-update');
+
+
+
+
+
+
 
 
 // register

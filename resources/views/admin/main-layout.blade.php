@@ -29,7 +29,6 @@
   <link rel="stylesheet" href="{{asset('admin-assets/plugins/daterangepicker/daterangepicker.css')}}">
   <!-- summernote -->
   <link rel="stylesheet" href="{{asset('admin-assets/plugins/summernote/summernote-bs4.min.css')}}">
-  <!--Favicon-->
  <!-- Favicon -->
 <link rel="icon" href="{{ asset('images/logo/logo.png') }}" type="image/png">
 
