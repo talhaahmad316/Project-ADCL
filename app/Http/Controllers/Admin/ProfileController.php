@@ -39,19 +39,6 @@ class ProfileController extends Controller
         return view('auth.register-edit', get_defined_vars());
     }
 
-
-
-    // public function update(Request $request, $id)
-    // {
-    //     $user = User::find($request->id);
-    //     $user->name = $request->name;
-    //     $user->email = $request->email;
-    //     $user->password = $request->password;
-    //     $user->role = $request->role;
-    //     $user->save();
-    //     return back()->with('success', 'User updated successfully');
-    // }
-
     public function update(Request $request, $id)
     {
         $user = User::findOrFail($id);
@@ -63,12 +50,9 @@ class ProfileController extends Controller
             'role' => 'required'
         ]);
 
-        // Update password if provided
         if ($request->filled('password')) {
             $user->password = Hash::make($request->input('password'));
         }
-
-        // Update other fields
         $user->name = $request->input('name');
         $user->email = $request->input('email');
         $user->role = $request->input('role');
@@ -77,9 +61,6 @@ class ProfileController extends Controller
 
         return back()->with('success', 'User updated successfully');
     }
-
-
-
 
     public function destroy($id)
     {

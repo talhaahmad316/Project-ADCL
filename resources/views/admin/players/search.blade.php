@@ -9,7 +9,7 @@
         <h2 style="font-family: oswald; margin-top: -2%; font-size:28px; font-weight:bold;">Search Players</h2>
         <p> Search players like never before, from iconic athletes to rising gaming stars.</p>
         <div class="mb-4 row">
-            <div class="col-md-6">
+            {{-- <div class="col-md-6">
                 <form action="{{ route('players.search') }}" method="GET">
                     <div class="input-group">
                         <input type="text" name="search" class="form-control"
@@ -17,8 +17,6 @@
                         <div class="input-group-append">
                             <button class="btn btn-primary" type="submit"
                                 style="font-family: oswald; font-size:18px;">Search</button>
-
-                            {{-- reset button  --}}
                             <button class="btn btn-primary" type="reset" style="font-family: oswald;  font-size:18px;">
                                 <a href="{{ route('players.search') }}" style="color: white;"> Reset
                                 </a>
@@ -26,27 +24,18 @@
                         </div>
                     </div>
                 </form>
-            </div>
+            </div> --}}
             <div class="col-md-6 " style="font-family: oswald; margin-left: 93%; font-size:18px;">
                 <a href="{{ route('players.create') }}" class="btn btn-success">Add Player</a>
             </div>
         </div>
-        <table class="table table-bordered" style="font-family: oswald; font-size:18px;">
+        <table id="playersTable" class="table table-bordered" style="font-family: oswald; font-size:18px;">
             <thead>
                 <tr>
                     <th>ID</th>
                     <th>Picture</th>
-                    <th>Full Name
-                        <a href="{{ route('players.search', ['sort' => 'name_asc']) }}"><i class="fas fa-arrow-up"></i></a>
-                        <a href="{{ route('players.search', ['sort' => 'name_desc']) }}"><i
-                                class="fas fa-arrow-down"></i></a>
-                    </th>
-                    <th>Nationality
-                        <a href="{{ route('players.search', ['sort' => 'nationality_asc']) }}"><i
-                                class="fas fa-arrow-up"></i></a>
-                        <a href="{{ route('players.search', ['sort' => 'nationality_desc']) }}"><i
-                                class="fas fa-arrow-down"></i></a>
-                    </th>
+                    <th>Full Name</th>
+                    <th>Nationality</th>
                     <th>Player Status</th>
                     <th>Action</th>
                 </tr>
@@ -59,10 +48,7 @@
                             @if ($player->picture)
                                 <img src="{{ asset('/storage/' . $player->picture) }}" alt="{{ $player->name }}"
                                     class="border rounded-circle border-light img-centered"
-                                    style="width: 100px; /* Set the desired width */
-                    height: 100px; /* Set the desired height */
-                    object-fit: cover;
-                    object-position: center;">
+                                    style="width: 100px; height: 100px; object-fit: cover; object-position: center;">
                             @else
                                 No Image
                             @endif
@@ -86,7 +72,7 @@
             </tbody>
         </table>
         <!-- Add pagination links below the table -->
-        <div class="mt-4 d-flex justify-content-center">
+        {{-- <div class="mt-4 d-flex justify-content-center">
             <ul class="pagination">
                 <li class="page-item{{ $players->currentPage() === 1 ? ' disabled' : '' }}">
                     <a class="page-link" href="{{ $players->previousPageUrl() }}" aria-label="Previous">
@@ -106,7 +92,11 @@
                     </a>
                 </li>
             </ul>
-        </div>
-        <br><br><br><br><br><br>
+        </div> --}}
     </div>
+    <script>
+        $(document).ready(function () {
+            $('#playersTable').DataTable();
+        });
+    </script>
 @endsection

@@ -9,15 +9,13 @@
         <h2 style="font-family: oswald; margin-top: -2%; font-size:28px; font-weight:bold;">Search Teams</h2>
         <p> Search players like never before, from iconic athletes to rising gaming stars.</p>
         <div class="mb-4 row">
-            <div class="col-md-6">
+            {{-- <div class="col-md-6">
                 <form action="{{ route('admin.teams.search') }}" method="GET">
                     <div class="input-group">
                         <input type="text" name="search" class="form-control" placeholder="Search by name or club">
                         <div class="input-group-append">
                             <button class="btn btn-primary" type="submit"
                                 style="font-family: oswald; font-size:18px;">Search</button>
-                               {{-- reset button  --}}
-
                             <button class="btn btn-primary" type="reset" style="font-family: oswald;  font-size:18px;">
                                 <a href="{{ route('admin.teams.search') }}" style="color: white;"> Reset
                                 </a>
@@ -27,14 +25,14 @@
 
                     </div>
                 </form>
-            </div>
+            </div> --}}
             <div class="col-md-6 " style="font-family: oswald; margin-left: 93%; font-size:18px;">
                 <a href="{{ route('admin.teams.create') }}" class="btn btn-success">Add Team</a>
             </div>
         </div>
         <div class="team-list">
             <div class="table-responsive">
-                <table class="table table-bordered">
+                <table id="teamsTable" class="table table-bordered">
                     <thead>
                         <tr>
                             <th>ID</th>
@@ -137,7 +135,7 @@
             </div>
         </div>
         <!-- Add pagination links below the table -->
-        <div class="mt-4 d-flex justify-content-center">
+        {{-- <div class="mt-4 d-flex justify-content-center">
             <ul class="pagination">
                 <li class="page-item{{ $teams->currentPage() === 1 ? ' disabled' : '' }}">
                     <a class="page-link" href="{{ $teams->previousPageUrl() }}" aria-label="Previous">
@@ -157,6 +155,11 @@
                     </a>
                 </li>
             </ul>
-        </div>
+        </div> --}}
     </div>
+    <script>
+        $(document).ready(function () {
+            $('#teamsTable').DataTable();
+        });
+    </script>
 @endsection
