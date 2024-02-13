@@ -1,13 +1,16 @@
 @extends('admin.main-layout')
 @section('body')
-    <div class="mt-12 container-fluid" style="background-color: white; width:102%; margin-left:-12px;"
-        style="font-family: oswald; font-size:18px;"><br>
-        <div style="font-family:'Times New Roman', Times, serif; font-size:18px;">
-            {{-- Here you can write your content --}}
+        <div class="content-header">
+            <div class="container-fluid">
+                <div class="mb-2 row" style="height: 45px; width: 102%; margin-left: -18px;">
+                    <div class="col-sm-12" style="background-color: white; padding: 6px;">
+                        <h1 class="m-0">Search Players</h1>
+                        <p>Search players like never before, from iconic athletes to rising gaming stars.</p>
+                    </div>
+                </div>
+            </div>
         </div>
-        <br>
-        <h2 style="font-family: oswald; margin-top: -2%; font-size:28px; font-weight:bold;">Search Players</h2>
-        <p> Search players like never before, from iconic athletes to rising gaming stars.</p>
+
         <div class="mb-4 row">
             {{-- <div class="col-md-6">
                 <form action="{{ route('players.search') }}" method="GET">
@@ -26,7 +29,7 @@
                 </form>
             </div> --}}
             <div class="col-md-6 " style="font-family: oswald; margin-left: 93%; font-size:18px;">
-                <a href="{{ route('players.create') }}" class="btn btn-success">Add Player</a>
+                <a href="{{ route('players.create') }}" style="margin-top: 3%;" class="btn btn-success">Add Player</a>
             </div>
         </div>
         <table id="playersTable" class="table table-bordered" style="font-family: oswald; font-size:18px;">

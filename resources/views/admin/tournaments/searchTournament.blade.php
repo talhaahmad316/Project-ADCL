@@ -1,12 +1,11 @@
 @extends('admin.main-layout')
-
 @section('body')
 <div class="content-header">
     <div class="container-fluid">
         <div class="mb-2 row" style="height: 45px; width: 102%; margin-left: -18px;">
             <div class="col-sm-12" style="background-color: white; padding: 6px;">
                 <h1 class="m-0">Search Tournament</h1>
-                <p>Search players like never before, from iconic athletes to rising gaming stars.</p>
+                <p>Search Tournament like never before, from iconic athletes to rising gaming stars.</p>
             </div>
         </div>
     </div>

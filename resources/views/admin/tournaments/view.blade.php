@@ -6,7 +6,7 @@
     <h2><b>Tournament Details</b></h2><br>
     <div class="row">
         <!-- Banner Image -->
-        <div class="col-md-12 text-center">
+        <div class="text-center col-md-12">
             @if($tournament->banner_image)
             <img src="{{ asset('storage/' . $tournament->banner_image) }}" alt="Tournament Banner" style="max-height: 300px;">
             @else
@@ -38,7 +38,7 @@
                 <input type="text" name="tournamentStatus" class="form-control" value="{{ ucfirst($tournament->tournamentStatus) }}" readonly>
             </div>
         </div>
-        <div class="col-md-4">
+        <div class="col-md-3">
             <!-- Column 3 -->
             <div class="form-group">
                 <label for="tournamentStartTime">Tournament Start Date:</label>

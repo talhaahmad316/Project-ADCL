@@ -41,7 +41,7 @@
                                         <input type="text" name="name" class="form-control" value="{{ $team->name }}" readonly>
                                     </div>
                                 </div>
-                                <div class="col-md-6">
+                                <div class="col-md-5">
                                     <div class="form-group">
                                         <label for="club"style="font-family: oswald; font-size:18px; font-weight:bold;">Team Club:</label>
                                         <input type="text" name="club" class="form-control" value="{{ $team->club }}" readonly>
@@ -55,10 +55,10 @@
                                         <input type="text" name="status" class="form-control" value="{{ $team->status }}" readonly>
                                     </div>
                                 </div>
-                                <div class="col-md-6">
+                                <div class="col-md-5">
                                     <div class="form-group">
                                         <label for="description"style="font-family: oswald; font-size:18px; font-weight:bold;">Team Description:</label>
-                                        <input type="text" name="description" class="form-control" value="{{ $team->description }}" readonly>
+                                        <input type="text" name="description" class="form-control" value="{{ implode(' ', array_slice(explode(' ', $team->description), 0, 14)) . '...' }}" readonly />
                                     </div>
                                 </div>
                             </div>

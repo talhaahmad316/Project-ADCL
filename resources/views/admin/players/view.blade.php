@@ -6,7 +6,7 @@
     <div class="row">
         <!-- Image Row -->
         <div class="col-md-2">
-            <div class="form-group text-center" style="display: flex;">
+            <div class="text-center form-group" style="display: flex;">
                 <label for="Picture">Picture:</label>
                 @if($player->picture)
                 <img src="{{ asset('storage/' . $player->picture) }}" alt="{{ $player->name }}"
@@ -49,7 +49,7 @@
                 <input type="text" name="height" class="form-control" value="{{ $player->height }}" readonly>
             </div>
         </div>
-        <div class="col-md-4">
+        <div class="col-md-3">
             <!-- Column 3 -->
             <div class="form-group">
                 <label for="playing_role">Player Role:</label>

@@ -57,7 +57,7 @@
     </div>
     </form>
     <br>
-    </div>+
+    </div>
     <script type="text/javascript">
         $('#textarea').keyup(function() {
             var characterCount = $(this).val().length,
