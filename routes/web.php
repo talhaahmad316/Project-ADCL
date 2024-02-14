@@ -23,11 +23,9 @@ use App\Http\Controllers\ClubController;
 |
 */
 
-Route::get('/users', [ProfileController::class, 'users'])->name('users');
 
 Route::get('/users-edit/{id}', [ProfileController::class, 'edit'])->name('user-edit');
 Route::get('/users-delete/{id}', [ProfileController::class, 'destroy'])->name('user-destroy');
-
 Route::post('/users-update/{id}', [ProfileController::class, 'update'])->name('user-update');
 
 
@@ -85,6 +83,8 @@ Route::get('/admin/club-delete/{id}', [ClubController::class, 'destroy'])->name(
 Route::get('/admin/club-edit/{id}', [ClubController::class, 'edit'])->name('club-edit');
 Route::post('/admin/club-update/{id}', [ClubController::class, 'update'])->name('club-update');
 
+// users
+Route::get('/admin/users', [ProfileController::class, 'users'])->name('admin.users');
 
 
 

@@ -7,6 +7,7 @@ use Illuminate\Foundation\Auth\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Validation\Rules;
+use Illuminate\Support\Facades\Redirect;
 
 class ProfileController extends Controller
 {
@@ -56,10 +57,8 @@ class ProfileController extends Controller
         $user->name = $request->input('name');
         $user->email = $request->input('email');
         $user->role = $request->input('role');
-
         $user->save();
-
-        return back()->with('success', 'User updated successfully');
+        return Redirect::route('admin.users')->with('success', 'User updated successfully.');
     }
 
     public function destroy($id)
@@ -73,10 +72,10 @@ class ProfileController extends Controller
             $user->delete();
 
             // Redirect back with success message
-            return redirect()->route('users')->with('success', 'User deleted successfully');
+            return redirect()->route('admin.users')->with('success', 'User deleted successfully');
         } else {
             // If the club doesn't exist, redirect back with an error message
-            return redirect()->route('users')->with('error', 'User not found');
+            return redirect()->route('admin.users')->with('error', 'User not found');
         }
     }
 }

@@ -31,7 +31,7 @@
         <div class="container-fluid">
             <div class="mb-2 row breadcrumb-row">
                 <div class="col-sm-3 ">
-                    <h1 style="    padding-left: 9px;" class="m-0">Dashboard</h1>
+                    <h1 style="padding-left: 9px;" class="m-0">Dashboard</h1>
                 </div><!-- /.col -->
 
                 <div class="col-sm-6">

@@ -35,7 +35,7 @@ class ClubController extends Controller
         $club->personal_club = $request->personal_club;
         $club->description = $request->description;
         $club->save();
-        return redirect()->route('club-create')->with('success', 'Club created successfully');
+        return redirect()->route('club-search')->with('success', 'Club created successfully');
     }
 
 

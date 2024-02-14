@@ -1,5 +1,3 @@
-
-
 <!DOCTYPE html>
 <html lang="en">
 
@@ -19,13 +17,17 @@
     <link rel="icon" href="https://www.adcricketlads.com/wp-content/uploads/2021/09/transparent-ADCL-Logo.png"
         type="image/png">
     <link rel="stylesheet" href="{{ asset('admin-assets/dist/css/adminlte.min.css') }}">
-
     <!-- jQuery -->
-<script src="{{ asset('admin-assets/plugins/jquery/jquery.min.js') }}"></script>
-<!-- Bootstrap 4 -->
-<script src="{{ asset('admin-assets/plugins/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
-<!-- AdminLTE App -->
-<script src="{{ asset('admin-assets/dist/js/adminlte.min.js') }}"></script>
+    <script src="{{ asset('admin-assets/plugins/jquery/jquery.min.js') }}"></script>
+    <!-- Bootstrap 4 -->
+    <script src="{{ asset('admin-assets/plugins/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
+    <!-- AdminLTE App -->
+    <script src="{{ asset('admin-assets/dist/js/adminlte.min.js') }}"></script>
+<!-- Toastr CSS -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/css/toastr.min.css">
+
+<!-- Toastr JS -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/js/toastr.min.js"></script>
 
 </head>
 
@@ -37,12 +39,19 @@
         <!-- /.login-logo -->
         <div class="card">
             <div class="card-body login-card-body">
-                <img src="{{ asset('images/logo/logo.png') }}" style="height: 130px; margin-left: 110px;" alt="ADCL Logo">
-                @if (session('error'))
-                    <div class="text-center text-danger">{{ session('error') }}</div>
-                @endif
-                @if (session('success'))
-                    <div class="text-center text-success">{{ session('success') }}</div>
+                <img src="{{ asset('images/logo/logo.png') }}" style="height: 130px; margin-left: 110px;"
+                    alt="ADCL Logo">
+                    @if (session('success'))
+                    <script>
+                        $(document).ready(function () {
+                            toastr.success('{{ session('success') }}', 'Success', {
+                                closeButton: true,
+                                progressBar: true,
+                                positionClass: 'toast-top-right',
+                                timeOut: 3000, // 3 seconds
+                            });
+                        });
+                    </script>
                 @endif
                 <p class="login-box-msg" style="font-size: 22px;">Login</p>
 
@@ -82,7 +91,7 @@
                     </div>
                     <div class="row">
                         <div class="col-6">
-                         </div>
+                        </div>
                         <div class="col-6">
                             <button type="submit" class="btn btn-primary btn-block">Sign In</button>
                         </div>
@@ -95,4 +104,5 @@
     </div>
     <!-- /.login-box -->
 </body>
+
 </html>

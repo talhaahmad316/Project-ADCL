@@ -51,7 +51,7 @@
                   {{-- users --}}
                   @if (auth()->check() && auth()->user()->role == 1)
                       <li class="nav-item">
-                          <a href="{{ route('users') }}" class="nav-link">
+                          <a href="{{ route('admin.users') }}" class="nav-link">
                               <i class="nav-icon fas fa-user"></i>
                               <p style="font-family: oswald; font-size:18px;">
                                   Users
@@ -149,8 +149,6 @@
                           </p>
                       </a>
                   </li>
-
-
               <!--Club Info-->
 
 <!--Club Info-->
@@ -161,7 +159,7 @@
             <p style="font-family: oswald; font-size:18px;">
                 &nbsp; ADCL Club Info
             </p>
-            &nbsp; <i class="fas fa-arrow-circle-down"></i>
+            &nbsp; <i class="fas fa-arrow-circle-down" style="margin-left: 10px"></i>
         </a>
     </li>
 </ul>

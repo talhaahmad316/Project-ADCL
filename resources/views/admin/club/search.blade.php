@@ -17,6 +17,19 @@
             <!-- You can add content here if needed -->
         </div>
     </div>
+
+    @if (session('success'))
+        <script>
+            $(document).ready(function () {
+                toastr.success('{{ session('success') }}', 'Success', {
+                    closeButton: true,
+                    progressBar: true,
+                    positionClass: 'toast-top-right',
+                    timeOut: 3000, // 3 seconds
+                });
+            });
+        </script>
+    @endif
 @endsection
 
 @section('body')

@@ -28,6 +28,7 @@ class RegisteredUserController extends Controller
 
     public function store(Request $request)
     {
+
         $this->validate($request, [
             'name' => 'required',
             'email' => 'required|email|unique:users,email',
@@ -40,6 +41,6 @@ class RegisteredUserController extends Controller
         $input['password'] = Hash::make($input['password']);
         // dd($input);
         $user = User::create($input);
-        return redirect('admin/dashboard')->with('success', 'User created successfully');
+        return redirect('/admin/login')->with('success', 'User created successfully');
     }
 }

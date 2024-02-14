@@ -26,6 +26,11 @@
     <script src="{{ asset('admin-assets/dist/js/adminlte.min.js') }}"></script>
     <!-- Favicon -->
 <link rel="icon" href="{{ asset('images/logo/logo.png') }}" type="image/png">
+<!-- Toastr CSS -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/css/toastr.min.css">
+
+<!-- Toastr JS -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/js/toastr.min.js"></script>
 
 </head>
 
@@ -38,12 +43,6 @@
         <div class="card">
             <div class="card-body login-card-body">
                 <img src="{{ asset('images/logo/logo.png') }}" style="height: 130px; margin-left: 110px;" alt="ADCL Logo">
-                @if (session('error'))
-                    <div class="text-center text-danger">{{ session('error') }}</div>
-                @endif
-                @if (session('success'))
-                    <div class="text-center text-success">{{ session('success') }}</div>
-                @endif
                 <p class="login-box-msg" style="font-size: 22px;">Register Form</p>
                 <form method="post" action="{{ route('register-store') }}">
                     @csrf
