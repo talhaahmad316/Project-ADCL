@@ -157,9 +157,9 @@
         <a href="#" class="nav-link" id="clubInfoBtn">
             &nbsp; <i class="nav-icon fas fa-user"></i>
             <p style="font-family: oswald; font-size:18px;">
-                &nbsp; ADCL Club Info
+                &nbsp;  Club Info
             </p>
-            &nbsp; <i class="fas fa-arrow-circle-down" style="margin-left: 10px"></i>
+            &nbsp; <i class="fas fa-arrow-circle-down" style="margin-left: 59px"></i>
         </a>
     </li>
 </ul>

@@ -4,10 +4,11 @@
         style="margin-left: -5px; width:102%; font-family: oswald; font-size:18px; background-color:white;">
         <h2>Add Club</h2>
         @if (session('success'))
-            <div class="alert alert-success">
-                {{ session('success') }}
-            </div>
-        @endif
+        <script>
+            // Display Toastr success message
+            toastr.success('{{ session('success') }}');
+        </script>
+    @endif
         <form action="{{ route('club-store') }}" method="POST" enctype="multipart/form-data">
             @csrf
             <div class="row">
@@ -19,22 +20,24 @@
                 </div>
                 <div class="col-md-4">
                     <div class="form-group">
-                        <label for="club_countary">Select Countary Club:</label>
+                        <label for="parent_club">Select Parent Club:</label>
                         <div class="form-group">
-                            <select class="form-control" name="club_countary">
-                                <option value="">Select Countary Club</option>
-                                <option value="United Club Limited">United Club Limited</option>
+                            <select class="form-control" name="parent_club">
+                                <option value="">Select Parent Club</option>
+                                @foreach($myclub as $myclubs)
+                                    <option value="{{ $myclubs->my_club }}">{{ $myclubs->my_club }}</option>
+                                    <option value="None">None</option>
+                                    @endforeach
                             </select>
                         </div>
                     </div>
                 </div>
-
                 <div class="col-md-3">
                     <div class="form-group">
-                        <label for="playing_role">Select Personal Club:</label>
-                        <select name="personal_club" class="form-control" required>
-                            <option value="">Select Countary Club</option>
-                            <option value="ADCL">ADCL</option>
+                        <label for="country">Select Country:</label>
+                        <select name="country" class="form-control" required>
+                            <option value="">Select Country</option>
+                            <option value="United Arab Emirates">United Arab Emirates</option>
                         </select>
                     </div>
                 </div>
@@ -49,6 +52,16 @@
                     </div>
                 </div>
             </div>
+            <div class="col-md-4">
+                <div class="form-group">
+                    <label for="club_logo">Select club Logo:</label>
+                    <input type="file" name="club_logo" accept="image/*" class="form-control-file" required
+                        onchange="previewImage(event)">
+                    <div class="form-group" id="imagePreviewContainer" style="display: none;">
+                        <img id="imagePreview" alt="Image Preview" class="rounded-circle" style="max-height: 100px; margin-top: 1%;">
+                    </div>
+                </div>
+            </div>
     </div>
     <!-- Submit Button -->
     <div class="row">
@@ -57,9 +70,44 @@
         </div><br>
     </div>
     </form>
-    <br>
-    </div>
+<div>
+{{-- Add myclub --}}
+    <form action="{{ route('my-club.store') }}" method="POST">
+        @csrf
+        <div class="row">
+            <div class="col-md-2">
+                <div class="form-group">
+                    <label for="my_club">Add Club:</label>
+                    <input type="text" name="my_club" class="form-control" required>
+                </div>
+            </div>
+        </div>
+
+        <div class="mt-3 row">
+            <div class="col-md-12">
+                <button type="submit" class="btn btn-primary">Add Club</button>
+            </div>
+        </div>
+    </form>
+</div>
     <script type="text/javascript">
+        function previewImage(event) {
+            var image = document.getElementById('imagePreview');
+            var imageContainer = document.getElementById('imagePreviewContainer');
+            var input = event.target;
+
+            if (input.files && input.files[0]) {
+                var reader = new FileReader();
+
+                reader.onload = function(e) {
+                    image.src = e.target.result;
+                    imageContainer.style.display = 'block';
+                }
+
+                reader.readAsDataURL(input.files[0]);
+            }
+        }
+
         $('#textarea').keyup(function() {
             var characterCount = $(this).val().length,
                 current_count = $('#current_count'),
@@ -68,4 +116,7 @@
             current_count.text(characterCount);
         });
     </script>
+
+
+<script
 @endsection

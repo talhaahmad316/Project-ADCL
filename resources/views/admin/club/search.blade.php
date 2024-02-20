@@ -42,9 +42,10 @@
                     <table id="example" class="table table-striped table-bordered" style="width:100%">
                         <thead>
                             <tr>
+                                <th>Logo</th>
                                 <th>Club Name</th>
-                                <th>Club Country</th>
-                                <th>Personal Club</th>
+                                <th>Parent Club</th>
+                                <th>Country</th>
                                 <th>Description</th>
                                 <th>Actions</th> <!-- New column for actions -->
                             </tr>
@@ -52,9 +53,22 @@
                         <tbody>
                             @forelse ($clubs as $club)
                                 <tr>
+                                    <td>
+                                        @if ($club->club_logo)
+                                           <img src="{{ asset($club->club_logo) }}" alt="Club Logo"
+                                                class="border rounded-circle border-light img-centered"
+                                                style="width: 100px; height: 100px; object-fit: cover; object-position: center;">
+                                        @else
+                                           No Image
+                                        @endif
+                                     </td>
+
+
+
+                                    </td>
                                     <td>{{ $club->club_name }}</td>
-                                    <td>{{ $club->club_countary }}</td>
-                                    <td>{{ $club->personal_club }}</td>
+                                    <td>{{ $club->parent_club }}</td>
+                                    <td>{{ $club->country }}</td>
                                     <td>{{ $club->description }}</td>
                                     <td>
                                         <!-- Edit Button -->

@@ -11,6 +11,8 @@ use App\Http\Controllers\Admin\AuthController;
 use App\Http\Controllers\Admin\ProfileController;
 use App\Http\Controllers\Auth\RegisteredUserController;
 use App\Http\Controllers\ClubController;
+use App\Http\Controllers\MyClubController;
+use App\Http\Controllers\MyclubsController;
 
 /*
 |--------------------------------------------------------------------------
@@ -82,6 +84,9 @@ Route::get('/admin/club-search', [ClubController::class, 'index'])->name('club-s
 Route::get('/admin/club-delete/{id}', [ClubController::class, 'destroy'])->name('club-destroy');
 Route::get('/admin/club-edit/{id}', [ClubController::class, 'edit'])->name('club-edit');
 Route::post('/admin/club-update/{id}', [ClubController::class, 'update'])->name('club-update');
+
+Route::post('/my-club/store', [MyClubController::class, 'store'])->name('my-club.store');
+
 
 // users
 Route::get('/admin/users', [ProfileController::class, 'users'])->name('admin.users');
