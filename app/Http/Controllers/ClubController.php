@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Club;
 use App\Models\MyClub;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\File;
 
 class ClubController extends Controller
 {
@@ -24,7 +25,6 @@ class ClubController extends Controller
     public function create()
     {
         $myclub = MyClub::all();
-
         return view('admin.club.create', get_defined_vars());
     }
 
@@ -39,10 +39,6 @@ class ClubController extends Controller
         $club->parent_club = $request->parent_club;
         $club->country = $request->country;
         $club->description = $request->description;
-        // if ($request->hasFile('club_logo')) {
-        //     $imagePath = $request->file('club_logo')->store('club_logos', 'public');
-        //     // Save the image path to the database
-        //     $club->club_logo = $imagePath;
         if ($request->hasFile('club_logo')) {
             $imageName = time() . '.' . $request->file('club_logo')->getClientOriginalExtension();
 
@@ -52,7 +48,6 @@ class ClubController extends Controller
             // Save the image path to the database
             $club->club_logo = $imageName;
         }
-
         $club->save();
         return redirect()->route('club-search')->with('success', 'Club created successfully');
     }
@@ -70,9 +65,9 @@ class ClubController extends Controller
      */
     public function edit($id)
     {
-
         $club = Club::all();
         $club = Club::find($id);
+        $myclubs = MyClub::all();
         return view('admin.club.edit', get_defined_vars());
     }
 
@@ -82,18 +77,36 @@ class ClubController extends Controller
     public function update(Request $request, Club $club)
     {
         $club = Club::find($request->id);
+
+        if ($request->hasFile('club_logo')) {
+            // Delete the existing image if it exists in the public directory
+            if ($club->club_logo) {
+                $existingImagePath = public_path($club->club_logo);
+                if (File::exists($existingImagePath)) {
+                    File::delete($existingImagePath);
+                }
+            }
+
+            // Generate a new filename for the uploaded image
+            $imageName = time() . '.' . $request->file('club_logo')->getClientOriginalExtension();
+
+            // Move the uploaded image to the main public directory
+            $request->file('club_logo')->move(public_path(), $imageName);
+
+            // Update the image path in the database to reflect the new file location
+            $club->club_logo = $imageName;
+        }
+
         $club->club_name = $request->club_name;
         $club->parent_club = $request->parent_club;
         $club->country = $request->country;
         $club->description = $request->description;
-        if ($request->hasFile('club_logo')) {
-            $imagePath = $request->file('club_logo')->store('club_logos', 'public');
-            // Save the new image path to the database
-            $club->club_logo = $imagePath;
-        }
+
         $club->save();
+
         return redirect()->route('club-search')->with('success', 'Club updated successfully');
     }
+
 
     /**
      * Remove the specified resource from storage.

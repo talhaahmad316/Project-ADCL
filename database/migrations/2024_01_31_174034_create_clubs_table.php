@@ -17,7 +17,7 @@ return new class extends Migration
             $table->string('parent_club');
             $table->string('country');
             $table->string('description');
-            $table->string('club_logo');
+            $table->string('club_logo')->nullable();
             $table->timestamps();
         });
     }
