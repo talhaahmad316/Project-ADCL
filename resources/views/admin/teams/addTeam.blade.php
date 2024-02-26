@@ -40,8 +40,9 @@
                             <label for="club">Team Club:</label>
                             <select name="club" class="form-control" required>
                                 <option value="">Select a Club</option>
-                                <option value="ADCL">ADCL </option>
-
+                                @foreach($myclub as $myclubs)
+                                <option value="{{ $myclubs->my_club }}">{{ $myclubs->my_club }}</option>
+                                @endforeach
                             </select>
                         </div>
                     </div>

@@ -1,5 +1,4 @@
 @extends('admin.main-layout')
-
 @section('content-header')
     <div class="content-header">
         <div class="container-fluid">
@@ -11,13 +10,11 @@
             </div>
         </div>
     </div>
-
     <div class="mb-4 row">
         <div class="col-md-6">
             <!-- You can add content here if needed -->
         </div>
     </div>
-
     @if (session('success'))
         <script>
             $(document).ready(function () {
@@ -31,15 +28,13 @@
         </script>
     @endif
 @endsection
-
 @section('body')
     <div class="container-fluid">
-
         @if(auth()->check() && auth()->user()->role == 1)
-
             <div class="row">
                 <div class="col-md-12">
-                    <table id="example" class="table table-striped table-bordered" style="width:100%">
+                    <div class="table-responsive">
+                    <table id="example" class="table table-striped table-bordered" style="width:100% ; ">
                         <thead>
                             <tr>
                                 <th>Logo</th>
@@ -47,7 +42,7 @@
                                 <th>Parent Club</th>
                                 <th>Country</th>
                                 <th>Description</th>
-                                <th>Actions</th> <!-- New column for actions -->
+                                <th>Actions</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -62,9 +57,6 @@
                                            No Image
                                         @endif
                                      </td>
-
-
-
                                     </td>
                                     <td>{{ $club->club_name }}</td>
                                     <td>{{ $club->parent_club }}</td>
@@ -110,11 +102,10 @@
                         </tbody>
                     </table>
                 </div>
+                </div>
             </div>
-
         @else
             <p>You don't have permission to view this page.</p>
         @endif
-
     </div>
 @endsection

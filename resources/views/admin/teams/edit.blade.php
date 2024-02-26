@@ -56,7 +56,15 @@
                                 <label for="club">Team Club:</label>
                                 <select name="club" class="form-control">
                                     <option value="">Select a Club</option>
-                                    <option value="adcl" {{ $team->club === 'adcl' ? 'selected' : '' }}>ADCL</option>
+                                    {{-- <option value="adcl" {{ $team->club === 'adcl' ? 'selected' : '' }}>ADCL</option> --}}
+                                    <option value="None" @if ($team->club == 'adcl') selected @endif>ADCL</option>
+
+
+                                    @foreach ($myclubs as $myclub)
+                                        <option value="{{ $myclub->club }}" {{ $team->club == $myclub->club ? 'selected' : '' }}>
+                                            {{ $myclub->club }}
+                                        </option>
+                                    @endforeach
 
                                 </select>
                             </div>

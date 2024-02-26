@@ -26,8 +26,8 @@
                                 <option value="">Select Parent Club</option>
                                 @foreach($myclub as $myclubs)
                                     <option value="{{ $myclubs->my_club }}">{{ $myclubs->my_club }}</option>
-                                    <option value="None">None</option>
                                     @endforeach
+                                    <option value="None">None</option>
                             </select>
                         </div>
                     </div>
@@ -72,6 +72,7 @@
     </form>
 <div>
 {{-- Add myclub --}}
+@if(auth()->check() && auth()->user()->role == 1)
     <form action="{{ route('my-club.store') }}" method="POST">
         @csrf
         <div class="row">
@@ -82,13 +83,13 @@
                 </div>
             </div>
         </div>
-
         <div class="mt-3 row">
             <div class="col-md-12">
                 <button type="submit" class="btn btn-primary">Add Club</button>
             </div>
         </div>
     </form>
+@endif
 </div>
     <script type="text/javascript">
         function previewImage(event) {
@@ -116,7 +117,5 @@
             current_count.text(characterCount);
         });
     </script>
-
-
 <script
 @endsection
