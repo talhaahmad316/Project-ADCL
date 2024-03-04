@@ -23,8 +23,10 @@
     <script src="{{ asset('admin-assets/plugins/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
     <!-- AdminLTE App -->
     <script src="{{ asset('admin-assets/dist/js/adminlte.min.js') }}"></script>
+    
 <!-- Toastr CSS -->
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/css/toastr.min.css">
+<link rel="icon" href="{{ asset('images/logo/logo.png') }}" type="image/png">
 
 <!-- Toastr JS -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/js/toastr.min.js"></script>
@@ -45,6 +47,19 @@
                     <script>
                         $(document).ready(function () {
                             toastr.success('{{ session('success') }}', 'Success', {
+                                closeButton: true,
+                                progressBar: true,
+                                positionClass: 'toast-top-right',
+                                timeOut: 3000, // 3 seconds
+                            });
+                        });
+                    </script>
+                @endif
+                
+                @if (session('error'))
+                    <script>
+                        $(document).ready(function () {
+                            toastr.error('{{ session('error') }}', 'Error', {
                                 closeButton: true,
                                 progressBar: true,
                                 positionClass: 'toast-top-right',

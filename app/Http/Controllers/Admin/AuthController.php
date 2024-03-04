@@ -14,7 +14,6 @@ class AuthController extends Controller
 
     public function postLogin(Request $request)
     {
-
         $request->validate([
             'email' => 'required|email',
             'password' => 'required'
@@ -28,7 +27,8 @@ class AuthController extends Controller
         if ($validated) {
             return redirect()->route('dashboard')->with('success', 'Login Successfull');
         } else {
-            return redirect()->back()->with('error', 'Invalid credentials');
+            return redirect()->route('getLogin')->with('error', 'Invalid credentials');
+
         }
     }
 }

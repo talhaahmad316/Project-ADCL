@@ -37,9 +37,7 @@ class RegisteredUserController extends Controller
         ]);
 
         $input = $request->all();
-        // dd($input);
         $input['password'] = Hash::make($input['password']);
-        // dd($input);
         $user = User::create($input);
         return redirect('/admin/login')->with('success', 'User created successfully');
     }

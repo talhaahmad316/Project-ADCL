@@ -30,13 +30,6 @@ Route::get('/users-edit/{id}', [ProfileController::class, 'edit'])->name('user-e
 Route::get('/users-delete/{id}', [ProfileController::class, 'destroy'])->name('user-destroy');
 Route::post('/users-update/{id}', [ProfileController::class, 'update'])->name('user-update');
 
-
-
-
-
-
-
-
 // register
 Route::get('/admin/register-user', [RegisteredUserController::class, 'create'])->name('register-create');
 Route::post('/register-store', [RegisteredUserController::class, 'store'])->name('register-store');
@@ -50,8 +43,6 @@ Route::post('/admin/login', [AuthController::class, 'postLogin'])->name('postLog
 // logout
 Route::get('/admin/logout', [ProfileController::class, 'logout'])->name('logout');
 // logout
-
-
 
 Route::group(['middleware' => ['admin_auth']], function () {
     Route::get('/admin/dashboard', [ProfileController::class, 'dashboard'])->name('dashboard');
