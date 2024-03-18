@@ -43,7 +43,7 @@
                                 </div>
                                 <div class="col-md-5">
                                     <div class="form-group">
-                                        <label for="club"style="font-family: oswald; font-size:18px; font-weight:bold;">Team Club:</label>
+                                        <label for="club"style="font-family: oswald; font-size:18px; font-weight:bold;">Select Club:</label>
                                         <input type="text" name="club" class="form-control" value="{{ $team->club }}" readonly>
                                     </div>
                                 </div>

@@ -36,15 +36,16 @@
 
                         <div class="row">
                             <div class="col-md-6">
-                        <div class="form-group">
-                            <label for="club">Team Club:</label>
-                            <select name="club" class="form-control" required>
-                                <option value="">Select a Club</option>
-                                @foreach($myclub as $myclubs)
-                                <option value="{{ $myclubs->my_club }}">{{ $myclubs->my_club }}</option>
-                                @endforeach
-                            </select>
-                        </div>
+                                <div class="form-group">
+                                    <label for="club">Select Club:</label>
+                                    <select name="club" class="form-control" required>
+                                        <option value="">Select a Club</option>
+                                        @foreach($clubs as $club)
+                                            <option value="{{ $club->club_name }}">{{ $club->club_name }}</option>
+                                        @endforeach
+                                    </select>
+                                </div>
+                                
                     </div>
                     <div class="col-md-5">
                         <div class="form-group">

@@ -1,5 +1,4 @@
-@extends('layouts.main')
-
+ @extends('layouts.main')
 @section('contents')
 <!DOCTYPE html>
 <html lang="en">
@@ -9,7 +8,9 @@
    <!-- Mobile Metas -->
    <meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
    <!-- Site Metas -->
-   @section('title', 'ADCL-ABU DHABI CRICKET LADS')
+   @section('title', 'UCL-UNITED CRICKET LADS')
+
+   {{-- @section('title', 'UCL-ABU DHABI CRICKET LADS') --}}
    <meta name="keywords" content="">
    <meta name="description" content="">
    <meta name="author" content="">
@@ -150,13 +151,14 @@
                         <div class="team-btw-match">
                            <ul>
                               <li>
-                                 <img src="images/greenlogo.png" alt="">
-                                 <span>ADCL Green</span>
+                                 {{-- <img src="images/greenlogo.png" alt=""> --}}
+                                 <img src="logo.png" style="width: 161px;">
+                                 <span>ABU DHABI CRICKET LADS</span>
                               </li>
                               <li class="vs"><span>vs</span></li>
                               <li>
-                                 <img src="images/yellowlogo.png" alt="">
-                                 <span>ADCL Yellows</span>
+                                 <img src="images/ACL.png" style="width: 144px;" alt="">
+                                 <span>AL AIN CRICKET LADS </span>
                               </li>
                            </ul>
                         </div>
@@ -189,9 +191,9 @@
               <div class="col-lg-8">
                 <div class="p-5 mt-4">
                     <h2 style="font-size:24px; font-family:oswald;">2014 Since</h2>
-                    <h1 class="display-4" style="font-weight: bold; text-align: left; font-family:oswald;">ABU DHABI CRICKET LADS</h1>
+                    <h1 class="display-4" style="font-weight: bold; text-align: left; font-family:oswald;">UNITED CRICKET LADS</h1>
                     <h1 class="display-4" style="text-align: left; font-family:oswald;">CRICKET CLUB</h1>
-                    <p class="lead" style="text-align: left; font-size:15px; font-family:roboto;" >ADCL was officially formed on May 17th, 2014. ADCL is not your usual club filled with professional cricketers,
+                    <p class="lead" style="text-align: left; font-size:15px; font-family:roboto;" >UCL was officially formed on May 17th, 2014. ADCL is not your usual club filled with professional cricketers,
                         however, it is a group of working Lads who are serious about cricket as their passion and hobby and are willing to put the
                         effort into this passio to achieve feats in line of professional cricket clubs and teams in different tournaments around UAE (Mainly Abu Dhabi/Al Ain/Dubai).
                     <br>Since conception, ADCL has evolved into 4 full-time teams based on 4 talent pools, namely, Reds, Greens, Yellows and Blues which gives a full chance to all the lads to expand their skill and experience and increased exposure to ADCL in different tournaments. As of now, the total

@@ -11,21 +11,6 @@
 
         <form action="{{ route('players.store') }}" method="POST" enctype="multipart/form-data">
             @csrf
-
-            <!-- Image and Image Preview Container -->
-            <div class="row">
-                <div class="col-md-4">
-                    <div class="form-group">
-                        <label for="Picture">Picture:</label>
-                        <input type="file" name="Picture" accept="image/*" class="form-control-file" required
-                            onchange="previewImage(event)">
-                        <div class="form-group" id="imagePreviewContainer" style="display: none;">
-                            <label>Image Preview:</label>
-                            <img id="imagePreview" alt="Image Preview" class="rounded-circle" style="max-height: 100px;">
-                        </div>
-                    </div>
-                </div>
-            </div>
             <!-- Player Information Columns -->
             <div class="row">
                 <div class="col-md-4">
@@ -400,8 +385,7 @@
                         </div>
                     </div>
                 </div>
-
-
+                <div class="row">
                 <div class="col-md-8">
                     <div class="form-group">
                         <label for="description">Description:</label>
@@ -414,13 +398,40 @@
                     </div>
 
                 </div>
+                    <div class="col-md-3">
+                        <div class="form-group">
+                            <label for="club">Select Club:</label>
+                            <select name="club_name" class="form-control" required>
+                                <option value="">Select a Club</option>
+                                @foreach($clubs as $club)
+                                    <option value="{{ $club->club_name }}">{{ $club->club_name }}</option>
+                                @endforeach
+                            </select>
+                        </div> 
+                </div>
             </div>
+        
+            <div class="row">
+                <div class="col-md-4">
+                    <div class="form-group">
+                        <label for="Picture">Picture:</label>
+                        <input type="file" name="Picture" accept="image/*" class="form-control-file" required
+                            onchange="previewImage(event)">
+                        <div class="form-group" id="imagePreviewContainer" style="display: none;">
+                            <label>Image Preview:</label>
+                            <img id="imagePreview" alt="Image Preview" class="rounded-circle" style="max-height: 100px;">
+                        </div>
+                    </div>
+                </div>
+            </div>
+
             <!-- Submit Button -->
             <div class="row">
                 <div class="col-md-12">
-                    <button type="submit" class="btn btn-primary" style="margin-left: 90%;">Add Player</button>
+                    <button type="submit" class="btn btn-primary">Add Player</button>
                 </div><br>
             </div>
+
         </form>
         <br>
     </div>

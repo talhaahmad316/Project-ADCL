@@ -30,7 +30,7 @@
   <!-- summernote -->
   <link rel="stylesheet" href="{{asset('admin-assets/plugins/summernote/summernote-bs4.min.css')}}">
  <!-- Favicon -->
-<link rel="icon" href="{{ asset('images/logo/logo.png') }}" type="image/png">
+<link rel="icon" href="{{ asset('images/logo/ucl_logo.png') }}" type="image/png">
 
 {{-- data-table --}}
 <!-- jQuery -->

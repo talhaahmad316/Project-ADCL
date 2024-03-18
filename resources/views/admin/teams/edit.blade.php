@@ -53,7 +53,7 @@
                                 <input type="text" name="name" class="form-control" value="{{ $team->name }}">
                             </div>
                             <div class="col-md-6">
-                                <label for="club">Team Club:</label>
+                                <label for="club">Select Club:</label>
                                 <select name="club" class="form-control">
                                     <option value="">Select a Club</option>
                                     {{-- <option value="adcl" {{ $team->club === 'adcl' ? 'selected' : '' }}>ADCL</option> --}}

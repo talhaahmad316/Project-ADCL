@@ -7,42 +7,77 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Player;
+use App\Models\Club;
 
 class PlayerController extends Controller
 {
     // Method to show the add player form
     public function create()
     {
-        return view('admin.players.create');
+        $clubs=Club::all();
+        return view('admin.players.create', get_defined_vars());
     }
 
     // Method to store the player data in the database
     public function store(Request $request)
     {
+
+
+
+
+       
+    
+            $player = new player;
+            $player->name = $request->name;
+            $player->email = $request->emal;
+            $player->nationality = $request->nationality;
+            $player->gender = $request->gender;
+            $player->height = $request->height;
+            $player->playing_role = $request->playing_role;
+            $player->batting_style = $request->batting_style;
+            $player->bowling_style = $request->bowling_style;
+            $player->status = $request->status;
+            $player->description = $request->description;
+            $player->club_name = $request->club_name;
+
+            if ($request->hasFile('picture')) {
+                $imageName = time() . '.' . $request->file('picture')->getClientOriginalExtension();
+    
+                // Move the uploaded image to the main public directory
+                $request->file('picture')->move(public_path(), $imageName);
+                // Save the image path to the database
+                $player->picture = $imageName;
+            }
+            $player->save();
+            return redirect()->route('players.create')->with('success', 'Player added successfully!');
+    
+
         // Validate the form data
-        $request->validate([
-            'name' => 'required|string',
-            'email' => 'required|email|unique:users,email',
-            'Picture' => 'required|image|mimes:jpeg,png,jpg,gif,webp',
-            'nationality' => 'required|string',
-        ]);
+        // $request->validate([
+        //     'name' => 'required|string',
+        //     'email' => 'required|email|unique:users,email',
+        //     'Picture' => 'required|image|mimes:jpeg,png,jpg,gif,webp',
+        //     'nationality' => 'required|string',
+        // ]);
 
-        // Upload the player picture and store the data in the database
-        $data = $request->all();
-        // dd($data); // Dump and die to inspect the data
+        // // Upload the player picture and store the data in the database
+        // $data = $request->all();
+        // // dd($data); // Dump and die to inspect the data
 
-        if ($request->hasFile('Picture')) {
-            $imagePath = $request->file('Picture')->store('player_images', 'public');
-            $data['picture'] = $imagePath;
-        }
+        // if ($request->hasFile('Picture')) {
+        //     $imagePath = $request->file('Picture')->store('player_images', 'public');
+        //     $data['picture'] = $imagePath;
+        // }
 
-        // Save the player data in the database
-        Player::create($data);
+        // // Save the player data in the database
+        // Player::create($data);
 
-        // Redirect back to the add player form with a success message
-        return redirect()->route('players.create')->with('success', 'Player added successfully!');
+        // // Redirect back to the add player form with a success message
+        // return redirect()->route('players.create')->with('success', 'Player added successfully!');
     }
 
+
+    
 
     // Method to show the search page for players
 

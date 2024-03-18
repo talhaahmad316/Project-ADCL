@@ -129,4 +129,9 @@
             <p>You don't have permission to view this page.</p>
         @endif
     </div>
+    <script>
+        $(document).ready(function () {
+            $('#clubTable').DataTable();
+        });
+    </script>
 @endsection

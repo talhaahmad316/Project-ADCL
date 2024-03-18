@@ -9,9 +9,9 @@
 
                 <div class="footer-widget">
                    <div class="footer-logo">
-                      <a href="{{ route('home')}}"><img src="logo.png" alt="#"  /></a>
+                      <a href="{{ route('home')}}"><img src="ucl.png" alt="#"  /></a>
                    </div>
-                   <p style="font-family:-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;">ADCL is a not just a cricket club, ADCL is a society, a band of cricket loving brothers
+                   <p style="font-family:-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;">UCL is a not just a cricket club, UCL is a society, a band of cricket loving brothers
                        who are Amateur cricketers & yet rubbing shoulders with the top sides around.</p>
 
 
@@ -39,23 +39,26 @@
                 <div class="footer-widget">
                    <h3 style="font-family:oswald;">Player Pool</h3>
                    <ul class="footer-menu">
-                    <li><a href="{{ route('adclReds.players') }}" style="font-family:Roboto;">ADCL Reds</a></li>
-                    <li><a href="{{ route('adclBlues.players') }}" style="font-family:Roboto;">ADCL Blues</a></li>
-                      <li><a href="{{ route('adclGreens.players') }}" style="font-family:Roboto;">ADCL Greens</a></li>
-                      <li><a href="{{ route('adclYellows.players') }}" style="font-family:Roboto;">ADCL Yellows</a></li>
+                     <li>
+                        <a href="{{ route('adclReds.players') }}" style="font-family: Roboto; white-space: nowrap; display: block;">
+                          ABU DHABI CRICKET LADS</a></li>
+                      <li><a href="{{ route('adclBlues.players') }}" style="font-family:Roboto;">AL AIN CRICKET LADS </a></li>
+                      <li><a href="{{ route('adclGreens.players') }}" style="font-family:Roboto;">DUBAI CRICKET LADS</a></li>
+                      {{-- <li><a href="{{ route('adclYellows.players') }}" style="font-family:Roboto;">ADCL Yellows</a></li>
                       <li><a href="{{ route('adclGreys.players') }}" style="font-family:Roboto;">ADCL Greys</a></li>
-                      <li><a href="{{ route('adclBlacks.players') }}" style="font-family:Roboto;">ADCL Blacks</a></li>
-                      <li><a href="//" style="font-family:Roboto;">ADCL Generals</a></li>
+                      <li><a href="{{ route('adclBlacks.players') }}" style="font-family:Roboto;">ADCL Blacks</a></li> --}}
+                      <li><a href="//" style="font-family:Roboto;">UCL Generals</a></li>
                    </ul>
                 </div>
              </div>
           </div>
+          
           <div class="col-md-4">
              <div class="full">
                 <div class="footer-widget"  style="margin-left: 20%; color:white;" >
                    <h3 style="margin-left: 20px; font-family:oswald;">&nbsp;&nbsp;&nbsp;Contact us</h3>
                    <ul class="address-list">
-                      <li><i class="fa fa-map-marker" style="font-family:Roboto;"></i> Abu Dhabi, United Arab Emirates</li>
+                      <li><i class="fa fa-map-marker" style="font-family:Roboto;"></i> United Cricket Club, United Arab Emirates</li>
                       <li><i class="fa fa-phone" style="font-family:Roboto;"></i> +971 50 396 4228</li>
                       <li><i style="font-size:20px;top:5px; font-family:Roboto;" class="fa fa-envelope"></i> info@adcricketlads.com</li>
                    </ul>

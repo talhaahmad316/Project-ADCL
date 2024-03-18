@@ -4,7 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 
 use App\Http\Controllers\Controller;
-use App\Models\MyClub;
+use App\Models\Club;
 use Illuminate\Http\Request;
 use App\Models\Team;
 use App\Models\Player;
@@ -14,7 +14,7 @@ class TeamController extends Controller
 
     public function create()
     {
-        $myclub = MyClub::all();
+        $clubs = Club::all();
         return view('admin.teams.addTeam', get_defined_vars());
     }
 

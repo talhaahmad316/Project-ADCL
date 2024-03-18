@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -23,9 +22,8 @@
     <script src="{{ asset('admin-assets/plugins/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
     <!-- AdminLTE App -->
     <script src="{{ asset('admin-assets/dist/js/adminlte.min.js') }}"></script>
-    
 <!-- Toastr CSS -->
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/css/toastr.min.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/css/toastr.miminn.css">
 <link rel="icon" href="{{ asset('images/logo/logo.png') }}" type="image/png">
 
 <!-- Toastr JS -->
@@ -36,12 +34,12 @@
 <body class="hold-transition login-page">
     <div class="login-box" style="margin-bottom: 10%;">
         <div class="login-logo">
-            <a href="#"><b>ADCL <br>STATISTICS SYSTEM</b></a>
+            <a href="#"><b>UCL <br>STATISTICS SYSTEM</b></a>
         </div>
         <!-- /.login-logo -->
         <div class="card">
             <div class="card-body login-card-body">
-                <img src="{{ asset('images/logo/logo.png') }}" style="height: 130px; margin-left: 110px;"
+                <img src="{{ asset('images/logo/ucl_logo.png') }}" style="height: 130px; margin-left: 110px;"
                     alt="ADCL Logo">
                     @if (session('success'))
                     <script>

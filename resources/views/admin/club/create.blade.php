@@ -72,7 +72,7 @@
     </form>
 <div>
 {{-- Add myclub --}}
-@if(auth()->check() && auth()->user()->role == 1)
+{{-- @if(auth()->check() && auth()->user()->role == 1)
     <form action="{{ route('my-club.store') }}" method="POST">
         @csrf
         <div class="row">
@@ -89,7 +89,11 @@
             </div>
         </div>
     </form>
-@endif
+@endif --}}
+
+
+
+
 </div>
     <script type="text/javascript">
         function previewImage(event) {

@@ -38,6 +38,7 @@
                     <th>ID</th>
                     <th>Picture</th>
                     <th>Full Name</th>
+                    <th>Club Name</th>
                     <th>Nationality</th>
                     <th>Player Status</th>
                     <th>Action</th>
@@ -57,6 +58,7 @@
                             @endif
                         </td>
                         <td>{{ $player->name }}</td>
+                        <td><p> club name </p></td>
                         <td>{{ $player->nationality }}</td>
                         <td><span class="badge {{ $player->status === 'active' ? 'badge-success' : 'badge-danger' }}">
                                 {{ $player->status === 'active' ? 'Active' : 'Inactive' }}

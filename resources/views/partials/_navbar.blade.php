@@ -12,7 +12,7 @@
   <header id="header" >
 
     <div style="display: flex; align-items: center; background-color: rgb(61, 61, 61); padding: 10px; ">
-        <div style="flex: 1; color:white; margin-left: 170px; font-size: 18px; ">ADCL Cricket Club</div>
+        <div style="flex: 1; color:white; margin-left: 170px; font-size: 18px; ">UCL Cricket Club</div>
         <div class="icon-container" style="font-size: 24px; margin-right: 98px;">
             <a href="https://www.facebook.com/groups/ADCricketLads/"  onMouseOver="this.style.color='#f04414'" onMouseOut="this.style.color='white'"
              class="social-link" style="text-decoration: none; color:white;" target="_blank">
@@ -30,7 +30,7 @@
     </div><br>
     <div class="container d-flex align-items-center justify-content-between">
 
-        <a href="{{ route('home') }}"><img src="logo.png" alt="" srcset="" height="150px;" width="150px;" style="margin-left:-40px;"></a>
+        <a href="{{ route('home') }}"><img src="ucl.png" alt="" srcset="" height="150px;" width="150px;" style="margin-left:-40px;"></a>
       <!-- Uncomment below if you prefer to use an image logo -->
       <!-- <a href="index.html" class="logo"><img src="assets/img/logo.png" alt=""></a>-->
 

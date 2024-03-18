@@ -7,8 +7,8 @@
   <aside class="main-sidebar sidebar-dark-primary elevation-4">
       <!-- Brand Logo -->
       <a href="" class="brand-link">
-          <img src="{{ asset('images/logo/logo.png') }}"style="height: 80px; " alt="ADCL Logo">
-          <span class="brand-text font-weight-light" style="font-family: oswald; font-size:20px;">ADCL Admin</span>
+          <img src="{{ asset('images/logo/ucl_logo.png') }}"style="height: 80px; " alt="UCL Logo">
+          <span class="brand-text font-weight-light" style="font-family: oswald; font-size:20px;">UCL Admin</span>
       </a>
 
       <!-- Sidebar -->
@@ -66,7 +66,7 @@
                           <a href="#" class="nav-link" id="playerInfoBtn">
                               &nbsp; <i class="nav-icon fas fa-user"></i>
                               <p style="font-family: oswald; font-size:18px;">
-                                  &nbsp; ADCL Player Info
+                                  &nbsp; UCL Player Info
                               </p>
                               &nbsp; <i class="fas fa-arrow-circle-down"></i>
                           </a>
@@ -97,7 +97,7 @@
                       <a href="#" class="nav-link" id="teamInfoBtn">
                           <i class="nav-icon fas fa-users"></i>
                           <p style="font-family: oswald; font-size:18px;">
-                              ADCL Team Info
+                              UCL Team Info
                           </p>
                           <i class="fas fa-arrow-circle-down" style="margin-left: 10px;"></i>
                       </a>

@@ -37,12 +37,12 @@
 <body class="hold-transition login-page">
     <div class="login-box" style="margin-bottom: 10%;">
         <div class="login-logo">
-            <a href="#"><b>ADCL <br>STATISTICS SYSTEM</b></a>
+            <a href="#"><b>UCL <br>STATISTICS SYSTEM</b></a>
         </div>
         <!-- /.Register-logo -->
         <div class="card">
             <div class="card-body login-card-body">
-                <img src="{{ asset('images/logo/logo.png') }}" style="height: 130px; margin-left: 110px;" alt="ADCL Logo">
+                <img src="{{ asset('images/logo/ucl_logo.png') }}" style="height: 130px; margin-left: 110px;" alt="ADCL Logo">
                 <p class="login-box-msg" style="font-size: 22px;">Register Form</p>
                 <form method="post" action="{{ route('register-store') }}">
                     @csrf
