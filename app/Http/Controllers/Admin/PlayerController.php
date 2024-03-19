@@ -21,76 +21,48 @@ class PlayerController extends Controller
     // Method to store the player data in the database
     public function store(Request $request)
     {
-
-
-
-
-       
+        $request->validate([
+            'name' => 'required|string',
+            'email' => 'required|email|unique:users,email',
+            'Picture' => 'required|image|mimes:jpeg,png,jpg,gif,webp',
+            'nationality' => 'required|string',
+            'club_name' => 'required|string',
+        ]);
     
-            $player = new player;
-            $player->name = $request->name;
-            $player->email = $request->emal;
-            $player->nationality = $request->nationality;
-            $player->gender = $request->gender;
-            $player->height = $request->height;
-            $player->playing_role = $request->playing_role;
-            $player->batting_style = $request->batting_style;
-            $player->bowling_style = $request->bowling_style;
-            $player->status = $request->status;
-            $player->description = $request->description;
-            $player->club_name = $request->club_name;
+        
+    $data = $request->except('_token', 'Picture');     
 
-            if ($request->hasFile('picture')) {
-                $imageName = time() . '.' . $request->file('picture')->getClientOriginalExtension();
+        if ($request->hasFile('Picture')) {
+            $imageName = time() . '.' . $request->file('Picture')->getClientOriginalExtension();
+        
+            // Move the uploaded image to the main public directory
+            $request->file('Picture')->move(public_path(), $imageName);
+        
+            // Save the image path to the database
+            $data['picture'] = $imageName;
+        }
+        
+
+        if ($request->has('club_name')) {
+            $clubName = $request->input('club_name');
+            $data['club_name'] = $clubName;
+        }
     
-                // Move the uploaded image to the main public directory
-                $request->file('picture')->move(public_path(), $imageName);
-                // Save the image path to the database
-                $player->picture = $imageName;
-            }
-            $player->save();
-            return redirect()->route('players.create')->with('success', 'Player added successfully!');
+        Player::create($data);
     
-
-        // Validate the form data
-        // $request->validate([
-        //     'name' => 'required|string',
-        //     'email' => 'required|email|unique:users,email',
-        //     'Picture' => 'required|image|mimes:jpeg,png,jpg,gif,webp',
-        //     'nationality' => 'required|string',
-        // ]);
-
-        // // Upload the player picture and store the data in the database
-        // $data = $request->all();
-        // // dd($data); // Dump and die to inspect the data
-
-        // if ($request->hasFile('Picture')) {
-        //     $imagePath = $request->file('Picture')->store('player_images', 'public');
-        //     $data['picture'] = $imagePath;
-        // }
-
-        // // Save the player data in the database
-        // Player::create($data);
-
-        // // Redirect back to the add player form with a success message
-        // return redirect()->route('players.create')->with('success', 'Player added successfully!');
+        // Redirect back to the add player form with a success message
+        return redirect()->route('players.search')->with('success', 'Player added successfully!');
     }
-
-
     
+    
+
+
 
     // Method to show the search page for players
 
     public function search(Request $request)
     {
-        $search = $request->input('search');
-
-
-        // Query the players and paginate the results
-        $players = Player::where('name', 'LIKE', "%$search%")
-            ->orWhere('nationality', 'LIKE', "%$search%")
-            ->paginate(15); // You can adjust the number of items per page
-
+        $players = Player::all();
         return view('admin.players.search', compact('players'));
     }
 
@@ -121,10 +93,11 @@ class PlayerController extends Controller
 
         // Update the player picture if a new image is provided
         if ($request->hasFile('Picture')) {
-            $imagePath = $request->file('Picture')->store('player_images', 'public');
-            $player->picture = $imagePath;
-        }
+                 $imagePath = $request->file('Picture')->store('player_images', 'public');
+                 $data['picture'] = $imagePath;
+             }
 
+             
         // Update other player data
         $player->name = $request->input('name');
         $player->nationality = $request->input('nationality');

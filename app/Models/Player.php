@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class Player extends Model
 {
     protected $fillable = [
-        'name', 'nationality', 'email', 'picture', 'height', 'gender', 'playing_role', 'batting_style', 'bowling_style', 'status', 'description'
+        'name', 'nationality', 'club_name', 'email', 'picture', 'height', 'gender', 'playing_role', 'batting_style', 'bowling_style', 'status', 'description'
     ];
 
 

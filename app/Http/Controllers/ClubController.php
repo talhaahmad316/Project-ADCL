@@ -33,7 +33,6 @@ class ClubController extends Controller
      */
     public function store(Request $request)
     {
-
         $club = new Club;
         $club->club_name = $request->club_name;
         $club->parent_club = $request->parent_club;

@@ -3,12 +3,13 @@
     <div class="container-fluid"
         style="margin-left: -5px; width:102%; font-family: oswald; font-size:18px; background-color:white;">
         <h2>Add Player</h2>
-        @if (session('success'))
-            <div class="alert alert-success">
-                {{ session('success') }}
-            </div>
-        @endif
 
+        @if (session('success'))
+        <script>
+            // Display Toastr success message
+            toastr.success('{{ session('success') }}');
+        </script>
+    @endif
         <form action="{{ route('players.store') }}" method="POST" enctype="multipart/form-data">
             @csrf
             <!-- Player Information Columns -->
@@ -396,7 +397,6 @@
                             <span id="maximum_count">/ 1000</span>
                         </div>
                     </div>
-
                 </div>
                     <div class="col-md-3">
                         <div class="form-group">

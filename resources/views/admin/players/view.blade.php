@@ -9,7 +9,7 @@
             <div class="text-center form-group" style="display: flex;">
                 <label for="Picture">Picture:</label>
                 @if($player->picture)
-                <img src="{{ asset('storage/' . $player->picture) }}" alt="{{ $player->name }}"
+                <img src="{{ asset($player->picture) }}" alt="{{ $player->name }}"
                 style="max-height: 100px; border-radius:50%; ">
                 @else
                 No Image
@@ -26,13 +26,16 @@
                 <input type="text" name="name" class="form-control" value="{{ $player->name }}" readonly>
             </div>
             <div class="form-group">
+                <label for="name">Email:</label>
+                <input type="text" name="name" class="form-control" value="{{ $player->name }}" readonly>
+            </div>
+
+            <div class="form-group">
                 <label for="nationality">Nationality:</label>
                 <input type="text" name="nationality" class="form-control" value="{{ $player->nationality }}" readonly>
             </div>
-            <div class="form-group">
-                <label for="description">Description:</label>
-                <input type="text" name="description" class="form-control" value="{{ $player->description }}" readonly>
-            </div>
+        
+            
         </div>
         <div class="col-md-4">
             <!-- Column 2 -->
@@ -63,9 +66,21 @@
                 <label for="bowling_style">Bowling Style:</label>
                 <input type="text" name="bowling_style" class="form-control" value="{{ $player->bowling_style }}" readonly>
             </div>
-<br>&nbsp;<br>&nbsp;<br>&nbsp;<br>&nbsp;<br>&nbsp;<br>
         </div>
-    </div>
+
+
+        <div class="col-md-8">
+            <div class="form-group">
+                <label for="description">Description:</label>
+                <textarea name="description" class="form-control" style="width: 100%;" rows="5" readonly id="textarea">{{ $player->description ?? '' }} </textarea>
+                <div id="count" style="color: #2E9E42;">
+                    <span id="current_count">{{ mb_strlen($player->description ?? '') }}</span>
+                    <span id="maximum_count">/ 1000</span>
+                </div>
+            </div>
+        </div>
+
+    
 </div>
 
 @endsection

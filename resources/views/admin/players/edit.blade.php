@@ -11,24 +11,24 @@
                 {{ session('success') }}
             </div>
         @endif
-
         <form action="{{ route('players.update', ['player' => $player->id]) }}" method="POST" enctype="multipart/form-data">
             @csrf
             @method('PUT')
-
-            <div class="form-group">
+            <div class="row">
+            <div class="col-md-4">
                 <label for="name">Full Name:</label>
-                <input type="text" name="name" class="form-control" value="{{ $player->name }}" required style="width: 50%;">
+                <input type="text" name="name" class="form-control" value="{{ $player->name }}" required >
             </div>
-            <div class="form-group">
+            <div class="col-md-4">
                 <label for="email">Email:</label>
-                <input type="email" name="email" class="form-control" value="{{ $player->email }}" required style="width: 50%;" disabled>
+                <input type="email" name="email" class="form-control" value="{{ $player->email }}" required  disabled>
             </div>
-
-            <div class="form-group">
+    
+            <div class="col-md-3">
                 <label for="nationality">Nationality:</label>
-                <input type="text" name="nationality" class="form-control" value="{{ $player->nationality }}" required style="width: 50%;">
+                <input type="text" name="nationality" class="form-control" value="{{ $player->nationality }}" required>
             </div>
+        </div>
 
             <div class="form-group">
                 <label for="status">Status:</label>
@@ -50,7 +50,7 @@
             <div class="form-group">
                 <label for="Picture">Picture:</label>
                 @if($player->picture)
-                    <img src="{{ asset('storage/' . $player->picture) }}" alt="{{ $player->name }}" style="max-height: 200px;">
+                    <img src="{{ asset($player->picture) }}" alt="{{ $player->name }}" style="max-height: 200px;">
                 @else
                     No Image
                 @endif
