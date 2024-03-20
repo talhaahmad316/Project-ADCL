@@ -97,7 +97,7 @@ Route::get('/admin/players/{player}', [PlayerController::class, 'view'])->name('
 
 // Route for editing a player
 Route::get('/admin/players/{player}/edit', [PlayerController::class, 'edit'])->name('players.edit');
-Route::put('/admin/players/{player}', [PlayerController::class, 'update'])->name('players.update');
+Route::put('/admin/players/{id}', [PlayerController::class, 'update'])->name('players.update');
 
 // Route for deleting a player
 Route::delete('/admin/players/{player}', [PlayerController::class, 'destroy'])->name('players.delete');

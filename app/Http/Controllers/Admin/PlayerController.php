@@ -3,7 +3,6 @@
 // app/Http/Controllers/Admin/PlayerController.php
 
 namespace App\Http\Controllers\Admin;
-
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Player;
@@ -74,52 +73,42 @@ class PlayerController extends Controller
     }
 
     // Method to show the edit page for a player
-    public function edit(Player $player)
+    public function edit($id)
     {
-        return view('admin.players.edit', compact('player'));
+        $clubs = Club::all();
+        $player = Player::find($id);
+        $countries = Player::distinct()->pluck('nationality')->toArray();
+        return view('admin.players.edit', compact('clubs', 'player', 'countries'));
     }
+    
 
     // Method to update the player data in the database
-    public function update(Request $request, Player $player)
+    public function update(Request $request, $id)
     {
-        // Validate the form data (you can customize the validation rules as per your requirements)
-        $request->validate([
-            'name' => 'required|string',
-            'Picture' => 'image|mimes:jpeg,png,jpg,gif,webp',
-            'nationality' => 'required|string',
-            'status' => 'required|in:active,inactive',
-            'description' => 'required|string',
-        ]);
+        
+    
+        // Retrieve the player record to update
 
-        // Update the player picture if a new image is provided
+        $player = Player::findOrFail($id);
+        // Extract the data from the request, excluding CSRF token and Picture
+        $data = $request->except('_token', '_method', 'Picture');
+    
+        // Check if a new Picture is uploaded
         if ($request->hasFile('Picture')) {
-                 $imagePath = $request->file('Picture')->store('player_images', 'public');
-                 $data['picture'] = $imagePath;
-             }
-
-             
-        // Update other player data
-        $player->name = $request->input('name');
-        $player->nationality = $request->input('nationality');
-        $player->status = $request->input('status');
-        $player->description = $request->input('description');
-
-        $player->save();
-
-        // Redirect back to the edit player page with a success message
-        return redirect()->route('players.edit', ['player' => $player->id])->with('success', 'Player updated successfully!');
+            $imageName = time() . '.' . $request->file('Picture')->getClientOriginalExtension();
+    
+            // Move the uploaded image to the main public directory
+            $request->file('Picture')->move(public_path(), $imageName);
+    
+            // Update the picture path in the data array
+            $data['picture'] = $imageName;
+        }
+        // Update the player record with the new data
+        $player->update($data);
+    
+        // Redirect back to the page with a success message
+        return redirect()->route('players.search', ['player' => $id])->with('success', 'Player details updated successfully!');
     }
-
-    // Method to delete a player
-    public function destroy(Player $player)
-    {
-        // Delete the player record
-        $player->delete();
-
-        // Redirect back to the search page with a success message
-        return redirect()->route('players.search')->with('success', 'Player deleted successfully!');
-    }
-
 
 
     public function showAllPlayers()

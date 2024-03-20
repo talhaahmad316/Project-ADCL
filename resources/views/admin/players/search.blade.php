@@ -18,7 +18,7 @@
     @endif
         <div class="mb-4 row">
             <div class="col-md-6 " style="font-family: oswald; margin-left: 93%; font-size:18px;">
-                <a href="{{ route('players.create') }}" style="margin-top: 3%;" class="btn btn-success">Add Player</a>
+                <a href="{{ route('players.create') }}" style="margin-top: 4%;margin-left: -189%" class="btn btn-success">Add Player</a>
             </div>
         </div>
         <table id="playersTable" class="table table-bordered" style="font-family: oswald; font-size:18px;">
@@ -63,6 +63,16 @@
 
                             <a href="{{ route('players.edit', ['player' => $player->id]) }}" class="btn btn-info">
                                 <i class="fas fa-edit"></i>
+                            </a>
+                           
+                            <a>
+                                <form action="{{ route('players.delete', ['player' => $player->id]) }}" method="POST" style="display: inline-block;">
+                                    @csrf
+                                    @method('DELETE')
+                                    <button type="submit" class="btn btn-danger" onclick="return confirm('Are you sure you want to delete this player?')">
+                                        <i class="fas fa-trash"></i> 
+                                    </button>
+                                </form>
                             </a>
                             
                         </td>

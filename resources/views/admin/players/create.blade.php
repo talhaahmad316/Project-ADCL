@@ -315,7 +315,7 @@
                 <!-- Additional Player Information Columns -->
                     <div class="col-md-3">
                         <div class="form-group">
-                            <label for="height">Height:</label>
+                            <label for="height">Height:(e.g. 5ft 8inches)</label>
                             <input type="number" name="height" class="form-control" required>
                         </div>
                     </div>
@@ -329,8 +329,8 @@
                                 <option>Select player role</option>
                                 <option value="batsman">Batsman</option>
                                 <option value="bowler">Bowler</option>
-                                <option value="all_rounder">All Rounder</option>
-                                <option value="wicketkeeper_batsman">Wicketkeeper Batsman</option>
+                                <option value="all rounder">All Rounder</option>
+                                <option value="wicketkeeper batsman">Wicketkeeper Batsman</option>
                                 <option value="coach">Coach</option>
                                 <option value="umpire">Umpire</option>
                                 <option value="manager">Manager</option>
@@ -342,12 +342,12 @@
                 <div class="row">
                     <div class="col-md-4">
                         <div class="form-group">
-                            <label for="batting_style">Batting Style:</label>
+                            <label for="batting style">Batting Style:</label>
                             <select name="batting_style" class="form-control" required>
                                 <!-- Options for batting style -->
                                 <option>Select batting style</option>
-                                <option value="right_hand">Right Hand Bat</option>
-                                <option value="left_hand">Left Hand Bat</option>
+                                <option value="right hand">Right Hand Bat</option>
+                                <option value="left hand">Left Hand Bat</option>
                             </select>
                         </div>
                     </div>
@@ -359,16 +359,16 @@
                             <select name="bowling_style" class="form-control" required>
                                 <!-- Options for bowling style -->
                                 <option>Select bowling style</option>
-                                <option value="right_arm_off_break">Right Arm Off Break</option>
-                                <option value="right_arm_leg_break">Right Arm Leg Break</option>
-                                <option value="left_arm_chinaman">Left Arm Chinaman</option>
-                                <option value="slow_right_arm_orthodox">Slow Right Arm Orthodox</option>
-                                <option value="slow_left_arm_orthodox">Slow Left Arm Orthodox</option>
-                                <option value="right_arm_medium_fast">Right Arm Medium Fast</option>
-                                <option value="right_arm_fast">Right Arm Fast</option>
-                                <option value="left_arm_medium_fast">Left Arm Medium Fast</option>
-                                <option value="left_arm_fast">Left Arm Fast</option>
-                                <option value="left_arm_wrist_spin">Left Arm Wrist Spin</option>
+                                <option value="right arm off break">Right Arm Off Break</option>
+                                <option value="right arm leg break">Right Arm Leg Break</option>
+                                <option value="left arm chinaman">Left Arm Chinaman</option>
+                                <option value="slow right arm orthodox">Slow Right Arm Orthodox</option>
+                                <option value="slow left arm orthodox">Slow Left Arm Orthodox</option>
+                                <option value="right arm medium fast">Right Arm Medium Fast</option>
+                                <option value="right arm fast">Right Arm Fast</option>
+                                <option value="left arm medium fast">Left Arm Medium Fast</option>
+                                <option value="left arm fast">Left Arm Fast</option>
+                                <option value="left arm wrist spin">Left Arm Wrist Spin</option>
                             </select>
                         </div>
                     </div>
@@ -427,7 +427,7 @@
 
             <!-- Submit Button -->
             <div class="row">
-                <div class="col-md-12">
+                <div style="margin-top: 1%">
                     <button type="submit" class="btn btn-primary">Add Player</button>
                 </div><br>
             </div>
