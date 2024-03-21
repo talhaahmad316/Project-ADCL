@@ -28,7 +28,8 @@
                     </div>
                 </form>
             </div> --}}
-        <div class="col-md-6 " style="font-family: oswald; margin-left: 93%; font-size:18px;">
+        <div class="col-md-6 " style="font-family: oswald;
+         font-size:18px;">
             <a href="{{ route('admin.teams.create') }}" style="margin-top: 3%;" class="btn btn-success">Add Team</a>
         </div>
     </div>

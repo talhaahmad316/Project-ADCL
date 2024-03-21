@@ -69,16 +69,9 @@
                             </div>
                         </div>
                 </div>
-                        <div style="margin-left: 90%">
+                        <div style="margin-top: 1%">
                             <button type="submit" class="btn btn-primary">Add Team</button>
                         </div>
-
-
-
-
-
-
-
                     </form>
                     &nbsp;<br>&nbsp;<br>&nbsp;<br>&nbsp;<br>&nbsp;<br>&nbsp;<br>
                 </div>

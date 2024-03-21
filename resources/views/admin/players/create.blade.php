@@ -418,11 +418,12 @@
                         <input type="file" name="Picture" accept="image/*" class="form-control-file" required
                             onchange="previewImage(event)">
                         <div class="form-group" id="imagePreviewContainer" style="display: none;">
-                            <label>Image Preview:</label>
-                            <img id="imagePreview" alt="Image Preview" class="rounded-circle" style="max-height: 100px;">
+                            {{-- <label>Image Preview:</label> --}}
+                            <img id="imagePreview" alt="Image Preview" class="rounded-circle" style="max-height: 100px; margin-top: 1%;">
                         </div>
                     </div>
                 </div>
+
             </div>
 
             <!-- Submit Button -->

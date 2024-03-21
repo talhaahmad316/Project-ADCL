@@ -11,10 +11,11 @@
         </div>
     </div>
     <div class="mb-4 row">
-        <div class="col-md-6">
-            <!-- You can add content here if needed -->
+        <div class="col-md-6 " style="font-family: oswald; margin-left: 93%; font-size:18px;">
+            <a href="{{ route('club-create') }}" style="margin-top: -1%;margin-left: -187%" class="btn btn-success">Add Club</a>
         </div>
     </div>
+
     @if (session('success'))
         <script>
             $(document).ready(function () {

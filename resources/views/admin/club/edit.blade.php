@@ -71,7 +71,7 @@
             <!-- Submit Button -->
             <div class="row">
                 <div class="col-md-12">
-                    <button type="submit" class="btn btn-primary" style="margin-left: 90%;">Update Club</button>
+                    <button type="submit" class="btn btn-primary" style="margin-top: 1%;">Update Club</button>
                 </div><br>
             </div>
         </form>

@@ -400,7 +400,7 @@
                     <label for="Picture">Picture:</label>
                     @if($player->picture)
                     
-                    <img src="{{ asset($player->picture) }}" alt="{{ $player->name }}" style="max-height: 200px;">
+                    <img src="{{ asset($player->picture) }}" alt="{{ $player->name }}" style="max-height: 100px; margin-top: 1%;">
                 @else
                     No Image
                 @endif
