@@ -27,43 +27,54 @@
                         <!-- Team Logo -->
                         <div class="col-md-3 team-logo">
                             @if($team->logo) <span style="font-family: oswald; font-size:18px; font-weight:bold;">Team Logo</span>&nbsp;
-                            <img src="{{ asset('storage/' . $team->logo) }}" alt="{{ $team->name }}">
+                            <img src="{{ asset($team->logo) }}" alt="{{ $team->name }}">
                             @else
                             No Logo
                             @endif
                         </div>
+                    </div>
                         <!-- Team Details -->
-                        <div class="col-md-9">
-                            <div class="row">
-                                <div class="col-md-6">
+                        <div class="row">
+                                <div class="col-md-3">
                                     <div class="form-group">
                                         <label for="name"style="font-family: oswald; font-size:18px; font-weight:bold;">Team Name:</label>
                                         <input type="text" name="name" class="form-control" value="{{ $team->name }}" readonly>
                                     </div>
                                 </div>
-                                <div class="col-md-5">
+                                <div class="col-md-3">
                                     <div class="form-group">
                                         <label for="club"style="font-family: oswald; font-size:18px; font-weight:bold;">Select Club:</label>
                                         <input type="text" name="club" class="form-control" value="{{ $team->club }}" readonly>
                                     </div>
                                 </div>
-                            </div>
-                            <div class="row">
-                                <div class="col-md-6">
+                           
+                                <div class="col-md-3">
                                     <div class="form-group">
                                         <label for="status"style="font-family: oswald; font-size:18px; font-weight:bold;">Team Status:</label>
                                         <input type="text" name="status" class="form-control" value="{{ $team->status }}" readonly>
                                     </div>
                                 </div>
-                                <div class="col-md-5">
-                                    <div class="form-group">
-                                        <label for="description"style="font-family: oswald; font-size:18px; font-weight:bold;">Team Description:</label>
-                                        <input type="text" name="description" class="form-control" value="{{ implode(' ', array_slice(explode(' ', $team->description), 0, 14)) . '...' }}" readonly />
-                                    </div>
-                                </div>
-                            </div>
                         </div>
-                    </div>
+
+
+                        <div class="row">
+                            <div class="col-md-3">
+                                <label for="name">Club Name:</label>
+                                <input type="text" name="name" class="form-control" value="{{ $team->club ?? '' }}" readonly>
+                            </div>
+
+                           </div>
+
+
+
+                        <div class="row">
+                                 <div class="col-md-6">
+                                        <label for="description"style="font-family: oswald; font-size:18px; font-weight:bold;">Team Description:</label>
+                                        <textarea name="description" class="form-control" readonly>{{ implode(' ', array_slice(explode(' ', $team->description), 0, 14)) . '...' }}</textarea>
+                                    </div>
+
+                                </div>
+                           
             </div>
         </div>
         </div>

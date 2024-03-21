@@ -109,7 +109,7 @@ Route::post('/admin/teams', [TeamController::class, 'store'])->name('admin.teams
 Route::get('admin/teams/search', [TeamController::class, 'search'])->name('admin.teams.search');
 Route::get('admin/teams/{team}/view', [TeamController::class, 'view'])->name('admin.teams.view');
 Route::get('admin/teams/{team}/edit', [TeamController::class, 'edit'])->name('admin.teams.edit');
-Route::put('admin/teams/{team}', [TeamController::class, 'update'])->name('admin.teams.update');
+Route::put('admin/teams/{id}', [TeamController::class, 'update'])->name('admin.teams.update');
 Route::delete('/admin/teams/{team}', 'TeamController@destroy')->name('admin.teams.destroy');
 
 

@@ -31,7 +31,12 @@
                 </div>
 
                 <div class="card-body">
-                    <form action="{{ route('admin.teams.update', ['team' => $team->id]) }}" method="POST" enctype="multipart/form-data">
+
+                    @foreach ($teams as $team)
+
+                    <form action="{{ route('admin.teams.update', ['id' => $team->id]) }}" method="POST" enctype="multipart/form-data">
+
+
                         @csrf
                         @method('PUT')
 
@@ -39,7 +44,7 @@
                         <div class="form-group">
                             <label for="logo">Team Logo:</label>
                             @if($team->logo)
-                            <img src="{{ asset('storage/' . $team->logo) }}" alt="{{ $team->name }}" style="max-height: 100px; border-radius: 50%;">
+                            <img src="{{asset("$team->logo") }}" alt="{{ $team->name }}" style="max-height: 100px; border-radius: 50%;">
                             @else
                             No Logo
                             @endif
@@ -52,22 +57,7 @@
                                 <label for="name">Team Name:</label>
                                 <input type="text" name="name" class="form-control" value="{{ $team->name }}">
                             </div>
-                            <div class="col-md-6">
-                                <label for="club">Select Club:</label>
-                                <select name="club" class="form-control">
-                                    <option value="">Select a Club</option>
-                                    {{-- <option value="adcl" {{ $team->club === 'adcl' ? 'selected' : '' }}>ADCL</option> --}}
-                                    <option value="None" @if ($team->club == 'adcl') selected @endif>ADCL</option>
-
-
-                                    @foreach ($myclubs as $myclub)
-                                        <option value="{{ $myclub->club }}" {{ $team->club == $myclub->club ? 'selected' : '' }}>
-                                            {{ $myclub->club }}
-                                        </option>
-                                    @endforeach
-
-                                </select>
-                            </div>
+                            
                         </div>
 
                         <!-- Team Status and Description -->
@@ -94,6 +84,7 @@
                             <button type="submit" class="btn btn-primary">Update Team</button>
                         </div>
                     </form>
+                    @endforeach
                 </div>
             </div>
         </div>

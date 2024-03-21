@@ -2,8 +2,7 @@
 @section('body')
     <div class="container-fluid"
         style="margin-left: -5px; width:102%; font-family: oswald; font-size:18px; background-color:white;">
-        <h2>Add Player</h2>
-
+        <h2 class="py-2">Add Player</h2>
         @if (session('success'))
         <script>
             // Display Toastr success message
@@ -14,13 +13,13 @@
             @csrf
             <!-- Player Information Columns -->
             <div class="row">
-                <div class="col-md-4">
+                <div class="col-md-3">
                     <div class="form-group">
                         <label for="name">Full Name:</label>
                         <input type="text" name="name" class="form-control" required>
                     </div>
                 </div>
-                <div class="col-md-4">
+                <div class="col-md-3">
                     <div class="form-group">
                         <label for="name">Email:</label>
                         <input type="email" name="email" class="form-control" value="{{ old('email', '') }}" required>
@@ -299,7 +298,7 @@
                 </div>
             </div>
             <div class="row">
-                <div class="col-md-4">
+                <div class="col-md-3">
                     <div class="form-group">
                         <label for="gender">Gender:</label>
                         <select name="gender" class="form-control" required>
@@ -321,7 +320,7 @@
                     </div>
 
 
-                    <div class="col-md-4">
+                    <div class="col-md-3">
                         <div class="form-group">
                             <label for="playing_role">Playing Role:</label>
                             <select name="playing_role" class="form-control" required>
@@ -340,7 +339,7 @@
                     </div>
             </div>
                 <div class="row">
-                    <div class="col-md-4">
+                    <div class="col-md-3">
                         <div class="form-group">
                             <label for="batting style">Batting Style:</label>
                             <select name="batting_style" class="form-control" required>
@@ -373,7 +372,7 @@
                         </div>
                     </div>
 
-                    <div class="col-md-4">
+                    <div class="col-md-3">
                         <div class="form-group">
                             <label for="status">Player Status:</label>
                             <select name="status" class="form-control" required>
@@ -387,17 +386,6 @@
                     </div>
                 </div>
                 <div class="row">
-                <div class="col-md-8">
-                    <div class="form-group">
-                        <label for="description">Description:</label>
-                        <textarea name="description" class="form-control" style="width: 100%;" rows="5" id="textarea" autofocus
-                            required></textarea>
-                        <div id="count" style="color: #2E9E42;">
-                            <span id="current_count">0</span>
-                            <span id="maximum_count">/ 1000</span>
-                        </div>
-                    </div>
-                </div>
                     <div class="col-md-3">
                         <div class="form-group">
                             <label for="club">Select Club:</label>
@@ -409,7 +397,21 @@
                             </select>
                         </div> 
                 </div>
-            </div>
+                </div>
+                <div class="row">
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label for="description">Description:</label>
+                        <textarea name="description" class="form-control" style="width: 100%;" rows="5" id="textarea" autofocus
+                            required></textarea>
+                        <div id="count" style="color: #2E9E42;">
+                            <span id="current_count">0</span>
+                            <span id="maximum_count">/ 1000</span>
+                        </div>
+                    </div>
+                </div>
+            </div> 
+            
         
             <div class="row">
                 <div class="col-md-4">
@@ -428,7 +430,7 @@
 
             <!-- Submit Button -->
             <div class="row">
-                <div style="margin-top: 1%">
+                <div > 
                     <button type="submit" class="btn btn-primary">Add Player</button>
                 </div><br>
             </div>

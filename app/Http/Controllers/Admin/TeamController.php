@@ -31,14 +31,22 @@ class TeamController extends Controller
 
         // Upload the logo and store team data
         $data = $request->except('_token');
-        if ($request->hasFile('logo')) {
-            $imagePath = $request->file('logo')->store('team_logos', 'public');
-            $data['logo'] = $imagePath;
-        }
+        // if ($request->hasFile('logo')) {
+        //     $imagePath = $request->file('logo')->store('team_logos', 'public');
+        //     $data['logo'] = $imagePath;
+        // }
 
+        if ($request->hasFile('logo')) {
+            $imageName = time() . '.' . $request->file('logo')->getClientOriginalExtension();
+        
+            $request->file('logo')->move(public_path(), $imageName);
+        
+            $data['logo'] = $imageName;
+        }
+        
         Team::create($data);
 
-        return redirect()->route('admin.teams.create')->with('success', 'Team added successfully!');
+        return redirect()->route('admin.teams.search')->with('success', 'Team added successfully!');
     }
 
     public function search(Request $request)
@@ -59,8 +67,7 @@ class TeamController extends Controller
 
     public function edit(Team $team)
     {
-        $myclubs = MyClub::all();
-
+        $teams=Team::all();
         return view('admin.teams.edit', get_defined_vars());
     }
     public function update(Request $request, Team $team)
