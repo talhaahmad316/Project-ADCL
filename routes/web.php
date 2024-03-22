@@ -110,7 +110,11 @@ Route::get('admin/teams/search', [TeamController::class, 'search'])->name('admin
 Route::get('admin/teams/{team}/view', [TeamController::class, 'view'])->name('admin.teams.view');
 Route::get('admin/teams/{team}/edit', [TeamController::class, 'edit'])->name('admin.teams.edit');
 Route::put('admin/teams/{id}', [TeamController::class, 'update'])->name('admin.teams.update');
-Route::delete('/admin/teams/{team}', 'TeamController@destroy')->name('admin.teams.destroy');
+
+
+Route::get('/admin/teams/{id}', [ClubController::class, 'teamDestroy'])->name('team-delete');
+
+
 
 
 // Route to handle the form submission

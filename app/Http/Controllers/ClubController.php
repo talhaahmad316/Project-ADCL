@@ -1,8 +1,10 @@
 <?php
 
 namespace App\Http\Controllers;
+use Illuminate\Database\QueryException;
 
 use App\Models\Club;
+use App\Models\Team;
 use App\Models\MyClub;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\File;
@@ -17,6 +19,17 @@ class ClubController extends Controller
         $clubs = Club::all();
         $myclub = MyClub::all();
         return view('admin.club.search', get_defined_vars());
+    }
+
+    public function teamDestroy($id)
+    {
+        try {
+            $team = Team::findOrFail($id);
+            $team->delete();
+            return redirect()->route('admin.teams.search')->with('success', 'Team deleted successfully.');
+        } catch (QueryException $e) {
+            return redirect()->back()->with('error', 'Cannot delete team. It is referenced in other records.');
+        }
     }
 
     /**

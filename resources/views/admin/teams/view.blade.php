@@ -69,7 +69,7 @@
 
                         <div class="row">
                                  <div class="col-md-6">
-                                        <label for="description"style="font-family: oswald; font-size:18px; font-weight:bold;">Team Description:</label>
+                                        <label for="description"style="font-family: oswald; width: 100%; font-size:18px; font-weight:bold;">Team Description:</label>
                                         <textarea name="description" class="form-control" readonly>{{ implode(' ', array_slice(explode(' ', $team->description), 0, 14)) . '...' }}</textarea>
                                     </div>
 

@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Http\Controllers\Admin;
+use Illuminate\Database\QueryException;
 
 
 use App\Http\Controllers\Controller;
@@ -68,37 +69,53 @@ class TeamController extends Controller
     public function edit(Team $team)
     {
         $teams=Team::all();
+        $clubs=Club::all();
         return view('admin.teams.edit', get_defined_vars());
     }
-    public function update(Request $request, Team $team)
+    public function update(Request $request, $id)
     {
         // Validate the form data
         $request->validate([
             'name' => 'required|string',
-            'logo' => 'nullable|image|mimes:jpeg,png,jpg,gif',
+            'logo' => 'image|mimes:jpeg,png,jpg,gif',
             'club' => 'required|string',
             'status' => 'required|in:active,inactive',
             'description' => 'required|string',
         ]);
-
+    
+        // Find the team by ID
+        $team = Team::findOrFail($id);
+    
         // Update the team data
-        $data = $request->except('_token', '_method');
+        $team->name = $request->input('name');
+        $team->club = $request->input('club');
+        $team->status = $request->input('status');
+        $team->description = $request->input('description');
+    
+        // Handle logo update if provided
         if ($request->hasFile('logo')) {
-            $imagePath = $request->file('logo')->store('team_logos', 'public');
-            $data['logo'] = $imagePath;
+            $imageName = time() . '.' . $request->file('logo')->getClientOriginalExtension();
+            $request->file('logo')->move(public_path(), $imageName);
+            $team->logo = $imageName;
         }
-
-        $team->update($data);
-
+    
+        // Save the updated team data
+        $team->save();
+    
         return redirect()->route('admin.teams.search')->with('success', 'Team updated successfully!');
     }
-
-    public function destroy(Team $team)
+    
+    public function destroy($id)
     {
-        $team->delete();
-
-        return redirect()->route('admin.teams.search')->with('success', 'Team deleted successfully.');
+        try {
+            $team = Team::findOrFail($id);
+            $team->delete();
+            return redirect()->route('admin.teams.search')->with('success', 'Team deleted successfully.');
+        } catch (QueryException $e) {
+            return redirect()->back()->with('error', 'Cannot delete team. It is referenced in other records.');
+        }
     }
+
     public function addPlayers(Request $request, Team $team)
     {
         // Validate the request data
