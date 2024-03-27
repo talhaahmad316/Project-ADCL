@@ -17,8 +17,6 @@ class CreateTeamTournamentTable extends Migration
             $table->timestamps();
 
             // Define foreign keys
-            $table->foreign('team_id')->references('id')->on('teams')->onDelete('cascade');
-            $table->foreign('tournament_id')->references('id')->on('tournaments')->onDelete('cascade');
         });
     }
 

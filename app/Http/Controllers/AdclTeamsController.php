@@ -29,7 +29,4 @@ class AdclTeamsController extends Controller
     {
         return view('ADCL/ranking');
     }
-
-
-
 }

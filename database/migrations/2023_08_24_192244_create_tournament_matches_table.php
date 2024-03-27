@@ -11,7 +11,7 @@ class CreateTournamentMatchesTable extends Migration
         Schema::create('tournament_matches', function (Blueprint $table) {
             $table->id();
             $table->string('matchName');
-            $table->foreignId('team_id')->constrained('teams'); // Assuming your teams table is named 'teams'
+            $table->integer('team_id'); // Assuming your teams table is named 'teams'
             $table->integer('matchNo');
             $table->date('matchDate');
             $table->string('format');

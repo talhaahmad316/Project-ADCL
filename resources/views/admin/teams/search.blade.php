@@ -22,9 +22,6 @@
     </script>
 @endif
 
-
-
-
     <div class="mb-4 row">
         {{-- <div class="col-md-6">
                 <form action="{{ route('admin.teams.search') }}" method="GET">

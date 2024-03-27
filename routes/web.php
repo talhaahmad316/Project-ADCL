@@ -64,8 +64,7 @@ Route::get('/adclBlues', [TeamController::class, 'adclBluesPlayers'])->name('adc
 Route::get('/adclGreys', [TeamController::class, 'adclGreysPlayers'])->name('adclGreys.players');
 Route::get('/adclBlacks', [TeamController::class, 'adclBlacksPlayers'])->name('adclBlacks.players');
 
-//all Player
-Route::get('/adclAll', [PlayerController::class, 'showAllPlayers'])->name('adclAll');
+
 
 
 // club crud
@@ -83,7 +82,8 @@ Route::post('/my-club/store', [MyClubController::class, 'store'])->name('my-club
 Route::get('/admin/users', [ProfileController::class, 'users'])->name('admin.users');
 
 
-
+//all Player
+Route::get('/adclAll', [PlayerController::class, 'showAllPlayers'])->name('adclAll');
 
 // Route for adding a player
 Route::get('/admin/players/add', [PlayerController::class, 'create'])->name('players.create');
