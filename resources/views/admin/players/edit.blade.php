@@ -1,6 +1,7 @@
 @extends('admin.main-layout')
 @section('body')
-    <div class="container-fluid" style="font-family: oswald; font-size:18px; background-color:white; width:102%; margin-left:-10px; padding-left:22px;">
+    <div class="container-fluid"
+        style="font-family: oswald; font-size:18px; background-color:white; width:102%; margin-left:-10px; padding-left:22px;">
         <br>
         <h2 style="margin-top: -1%;"><b>Edit Player Details</b></h2>
 
@@ -12,7 +13,7 @@
         @endif
         <form action="{{ route('players.update', ['id' => $player->id]) }}" method="POST" enctype="multipart/form-data">
             @csrf
-           
+
             @method('PUT')
             <div class="row">
                 <div class="col-md-4">
@@ -21,16 +22,18 @@
                 </div>
                 <div class="col-md-4">
                     <label for="email">Email:</label>
-                    <input type="email" name="email" class="form-control" value="{{ $player->email ?? '' }}" required disabled>
+                    <input type="email" name="email" class="form-control" value="{{ $player->email ?? '' }}" required
+                        disabled>
                 </div>
 
                 <div class="col-md-3">
                     <div class="form-group">
                         <label for="nationality">Nationality:</label>
                         <select class="form-control" id="nationality" name="nationality">
-                            <option value="">Select Country</option>
-                            @foreach($countries as $country)
-                                <option value="{{ $country }}" {{ $player->nationality == $country ? 'selected' : '' }}>{{ $country }}</option>
+                            <option value="" selected disabled>Select Country</option>
+                            @foreach ($countries as $country)
+                                <option value="{{ $country }}"
+                                    {{ $player->nationality == $country ? 'selected' : '' }}>{{ $country }}</option>
                                 <option value="">Select Country</option>
                                 <option value="Afghanistan">Afghanistan</option>
                                 <option value="Aland Islands">Aland Islands</option>
@@ -303,7 +306,7 @@
                     <div class="form-group">
                         <label for="gender">Gender:</label>
                         <select name="gender" class="form-control" required>
-                            <option>Select gender</option>
+                            <option selected disabled>Select gender</option>
                             <option value="male" {{ $player->gender == 'male' ? 'selected' : '' }}>Male</option>
                             <option value="female" {{ $player->gender == 'female' ? 'selected' : '' }}>Female</option>
                             <option value="others" {{ $player->gender == 'others' ? 'selected' : '' }}>Others</option>
@@ -314,7 +317,8 @@
                 <div class="col-md-4">
                     <div class="form-group">
                         <label for="height">Height:(e.g. 5ft 8inches)</label>
-                        <input type="number" name="height" value="{{ $player->height ?? '' }}" class="form-control" required>
+                        <input type="number" name="height" value="{{ $player->height ?? '' }}" class="form-control"
+                            required>
                     </div>
                 </div>
 
@@ -322,9 +326,11 @@
                     <div class="form-group">
                         <label for="batting_style">Batting Style:</label>
                         <select name="batting_style" class="form-control" required>
-                            <option>Select batting style</option>
-                            <option value="right hand" {{ $player->batting_style == 'right hand' ? 'selected' : '' }}>Right Hand Bat</option>
-                            <option value="left hand" {{ $player->batting_style == 'left hand' ? 'selected' : '' }}>Left Hand Bat</option>
+                            <option selected disabled>Select batting style</option>
+                            <option value="right_hand" {{ $player->batting_style == 'right hand' ? 'selected' : '' }}>
+                                Right Hand Bat</option>
+                            <option value="left_hand" {{ $player->batting_style == 'left hand' ? 'selected' : '' }}>Left
+                                Hand Bat</option>
                         </select>
                     </div>
                 </div>
@@ -333,46 +339,72 @@
                 <div class="col-md-4">
                     <label for="club">Select Club:</label>
                     <select name="club_name" class="form-control" required>
-                        <option value="">Select a Club</option>
-                        @foreach($clubs->unique('club_name') as $club) {{-- Remove duplicate club names --}}
-                            <option value="{{ $club->club_name }}" {{ $player->club_name == $club->club_name ? 'selected' : '' }}>
+                        <option value="" selected disabled>Select a Club</option>
+                        @foreach ($clubs->unique('club_name') as $club)
+                            {{-- Remove duplicate club names --}}
+                            <option value="{{ $club->club_name }}"
+                                {{ $player->club_name == $club->club_name ? 'selected' : '' }}>
                                 {{ $club->club_name }}
                             </option>
                         @endforeach
                     </select>
                 </div>
-                
+
                 <div class="col-md-4">
                     <label for="playing_role">Playing Role:</label>
                     <select name="playing_role" class="form-control" required>
-                        <option>Select player role</option>
-                        <option value="batsman" {{ $player->playing_role == 'batsman' ? 'selected' : '' }}>Batsman</option>
+                        <option selected disabled>Select player role</option>
+                        <option value="batsman" {{ $player->playing_role == 'batsman' ? 'selected' : '' }}>Batsman
+                        </option>
                         <option value="bowler" {{ $player->playing_role == 'bowler' ? 'selected' : '' }}>Bowler</option>
-                        <option value="all rounder" {{ $player->playing_role == 'all rounder' ? 'selected' : '' }}>All Rounder</option>
-                        <option value="wicketkeeper batsman" {{ $player->playing_role == 'wicketkeeper batsman' ? 'selected' : '' }}>Wicketkeeper Batsman</option>
+                        <option value="all_rounder" {{ $player->playing_role == 'all_rounder' ? 'selected' : '' }}>All
+                            Rounder</option>
+                        <option value="wicketkeeper_batsman"
+                            {{ $player->playing_role == 'wicketkeeper_batsman' ? 'selected' : '' }}>Wicketkeeper Batsman
+                        </option>
                         <option value="coach" {{ $player->playing_role == 'coach' ? 'selected' : '' }}>Coach</option>
                         <option value="umpire" {{ $player->playing_role == 'umpire' ? 'selected' : '' }}>Umpire</option>
-                        <option value="manager" {{ $player->playing_role == 'manager' ? 'selected' : '' }}>Manager</option>
-                        <option value="administrator" {{ $player->playing_role == 'administrator' ? 'selected' : '' }}>Administrator</option>
+                        <option value="manager" {{ $player->playing_role == 'manager' ? 'selected' : '' }}>Manager
+                        </option>
+                        <option value="administrator" {{ $player->playing_role == 'administrator' ? 'selected' : '' }}>
+                            Administrator</option>
                     </select>
                 </div>
                 <div class="col-md-3">
                     <label for="bowling_style">Bowling Style:</label>
                     <select name="bowling_style" class="form-control" required>
-                        <option>Select bowling style</option>
-                        <option value="right arm off break" {{ $player->bowling_style == 'right arm off break' ? 'selected' : '' }}>Right Arm Off Break</option>
-                        <option value="right arm leg break" {{ $player->bowling_style == 'right arm leg break' ? 'selected' : '' }}>Right Arm Leg Break</option>
-                        <option value="left arm chinaman" {{ $player->bowling_style == 'left arm chinaman' ? 'selected' : '' }}>Left Arm Chinaman</option>
-                        <option value="slow right arm orthodox" {{ $player->bowling_style == 'slow right arm orthodox' ? 'selected' : '' }}>Slow Right Arm Orthodox</option>
-                        <option value="slow left arm orthodox" {{ $player->bowling_style == 'slow left arm orthodox' ? 'selected' : '' }}>Slow Left Arm Orthodox</option>
-                        <option value="right arm medium fast" {{ $player->bowling_style == 'right arm medium fast' ? 'selected' : '' }}>Right Arm Medium Fast</option>
-                        <option value="right arm fast" {{ $player->bowling_style == 'right arm fast' ? 'selected' : '' }}>Right Arm Fast</option>
-                        <option value="left arm medium fast" {{ $player->bowling_style == 'left arm medium fast' ? 'selected' : '' }}>Left Arm Medium Fast</option>
-                        <option value="left arm fast" {{ $player->bowling_style == 'left arm fast' ? 'selected' : '' }}>Left Arm Fast</option>
-                        <option value="left arm wrist spin" {{ $player->bowling_style == 'left arm wrist spin' ? 'selected' : '' }}>Left Arm Wrist Spin</option>
+                        <option selected disabled>Select bowling style</option>
+                        <option value="right_arm_off_break"
+                            {{ $player->bowling_style == 'right_arm_off_break' ? 'selected' : '' }}>Right Arm Off Break
+                        </option>
+                        <option value="right_arm_leg_break"
+                            {{ $player->bowling_style == 'right_arm_leg_break' ? 'selected' : '' }}>Right Arm Leg Break
+                        </option>
+                        <option value="left_arm_chinaman"
+                            {{ $player->bowling_style == 'left_arm_chinaman' ? 'selected' : '' }}>Left Arm Chinaman
+                        </option>
+                        <option value="slow_right_arm_orthodox"
+                            {{ $player->bowling_style == 'slow_right_arm_orthodox' ? 'selected' : '' }}>Slow Right Arm
+                            Orthodox</option>
+                        <option value="slow_left_arm_orthodox"
+                            {{ $player->bowling_style == 'slow_left_arm_orthodox' ? 'selected' : '' }}>Slow Left Arm
+                            Orthodox</option>
+                        <option value="right_arm_medium_fast"
+                            {{ $player->bowling_style == 'right_arm_medium_fast' ? 'selected' : '' }}>Right Arm Medium Fast
+                        </option>
+                        <option value="right_arm_fast" {{ $player->bowling_style == 'right_arm_fast' ? 'selected' : '' }}>
+                            Right Arm Fast</option>
+                        <option value="left_arm_medium_fast"
+                            {{ $player->bowling_style == 'left_arm_medium_fast' ? 'selected' : '' }}>Left Arm Medium Fast
+                        </option>
+                        <option value="left_arm_fast" {{ $player->bowling_style == 'left_arm_fast' ? 'selected' : '' }}>
+                            Left Arm Fast</option>
+                        <option value="left_arm_wrist_spin"
+                            {{ $player->bowling_style == 'left_arm_wrist_spin' ? 'selected' : '' }}>Left Arm Wrist Spin
+                        </option>
                     </select>
                 </div>
-                
+
             </div>
 
             <div class="row">
@@ -388,7 +420,7 @@
                 <div class="col-md-3">
                     <label for="status">Player Status:</label>
                     <select name="status" class="form-control" required>
-                        <option>Select status</option>
+                        <option selected disabled>Select status</option>
                         <option value="active" {{ $player->status === 'active' ? 'selected' : '' }}>Active</option>
                         <option value="inactive" {{ $player->status === 'inactive' ? 'selected' : '' }}>Inactive</option>
                     </select>
@@ -398,21 +430,21 @@
             <div class="row">
                 <div class="col-md-3">
                     <label for="Picture">Picture:</label>
-                    @if($player->picture)
-                    
-                    <img src="{{ asset($player->picture) }}" alt="{{ $player->name }}" style="max-height: 100px; margin-top: 1%;">
-                @else
-                    No Image
-                @endif
-                <input type="file" name="Picture" accept="image/*" class="mt-2 form-control-file">
-            </div>
+                    @if ($player->picture)
+                        <img src="{{ asset($player->picture) }}" alt="{{ $player->name }}"
+                            style="max-height: 100px; margin-top: 1%;">
+                    @else
+                        No Image
+                    @endif
+                    <input type="file" name="Picture" accept="image/*" class="mt-2 form-control-file">
+                </div>
             </div>
             <div style="margin-top: 1%;">
                 <button type="submit" class="btn btn-primary">Update Player</button>
             </div>
         </form>
 
-       
+
     </div>
     <script type="text/javascript">
         $('#textarea').keyup(function() {
@@ -420,7 +452,7 @@
                 current_count = $('#current_count'),
                 maximum_count = $('#maximum_count'),
                 count = $('#count');
-                current_count.text(characterCount);
+            current_count.text(characterCount);
         });
-        </script>
+    </script>
 @endsection

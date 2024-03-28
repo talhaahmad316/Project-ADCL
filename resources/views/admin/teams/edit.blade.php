@@ -14,20 +14,17 @@
             box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
         }
     </style>
-
     <div class="container-fluid"
         style="margin-left: -20px; width:103%; height:109%; font-family: oswald; font-size:18px; background-color:white;">
         <div class="row justify-content-center">
             <div class="col-md-12">
                 <div class="card team-details">
-                    
                     <div class="card-body">
                         <form action="{{ route('admin.teams.update', ['id' => $team->id]) }}" method="POST"
                             enctype="multipart/form-data">
                             @csrf
                             @method('PUT')
                             <!-- Team Name and Club -->
-
                             <div class="row">
                                 <div class="col-md-3">
                                     <label for="name">Team Name:</label>
@@ -37,7 +34,7 @@
                                 <div class="col-md-4">
                                     <label for="club">Select Club:</label>
                                     <select name="club" class="form-control" required>
-                                        <option value="">Select a Club</option>
+                                        <option value="" selected disabled>Select a Club</option>
                                         @foreach ($clubs->unique('club_name') as $club)
                                             {{-- Remove duplicate club names --}}
                                             <option value="{{ $club->club_name }}"
@@ -51,6 +48,7 @@
                                 <div class="col-md-3">
                                     <label for="status">Team Status:</label>
                                     <select name="status" class="form-control">
+                                        <option value="" selected disabled>Select a Status</option>
                                         <option value="active" {{ $team->status === 'active' ? 'selected' : '' }}>Active
                                         </option>
                                         <option value="inactive" {{ $team->status === 'inactive' ? 'selected' : '' }}>

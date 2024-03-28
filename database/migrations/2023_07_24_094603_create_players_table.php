@@ -18,6 +18,7 @@ class CreatePlayersTable extends Migration
             $table->string('picture'); // Store the image filename
             $table->string('name');
             $table->string('email');
+            $table->string('club_name');
             $table->string('nationality');
             $table->enum('gender', ['male', 'female', 'others']);
             $table->integer('height');

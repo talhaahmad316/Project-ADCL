@@ -15,7 +15,6 @@ class AdminTournamentController extends Controller
     {
         return view('admin.tournaments.addTournament');
     }
-
     public function store(Request $request)
     {
         // Validate form data
@@ -28,18 +27,31 @@ class AdminTournamentController extends Controller
             'tournamentStatus' => 'required',
             'banner_image' => 'required|image|mimes:jpeg,png,jpg,gif|max:2048',
         ]);
-
-        // Handle image upload and store
-        if ($request->hasFile('banner_image')) {
-            $imagePath = $request->file('banner_image')->store('tournament_images', 'public');
-            $validatedData['banner_image'] = $imagePath;
+        if($request->hasFile('banner_image')){
+            $imageName=time().'.'.$request->banner_image->extension();
+            $request->banner_image->move(public_path('storage\tournament_images'),$imageName);
         }
-
-        // Create a new tournament record
-        Tournament::create($validatedData);
-
-        return redirect()->route('admin.tournaments.create')
+        $tournament=new Tournament();
+        $tournament->tournamentname =$request->tournamentname;
+        $tournament->tournamentLocation=$request->tournamentLocation;
+        $tournament->tournamentCountry=$request->tournamentCountry;
+        $tournament->tournamentStartTime=$request->tournamentStartTime;
+        $tournament->tournamentEndTime=$request->tournamentEndTime;
+        $tournament->tournamentStatus=$request->tournamentStatus;
+        $tournament->banner_image=$imageName;
+        $tournament->save();
+        return redirect()->route('admin.tournaments.search')
             ->with('success', 'Tournament added successfully.');
+        // // Handle image upload and store
+        // if ($request->hasFile('banner_image')) {
+        //     $imagePath = $request->file('banner_image')->store('tournament_images', 'public');
+        //     $validatedData['banner_image'] = $imagePath;
+        //     // $validatedData['banner_image'] = $imagePath;
+        // }
+        // // Create a new tournament record
+        // Tournament::create($validatedData);
+        // return redirect()->route('admin.tournaments.search')
+        //     ->with('success', 'Tournament added successfully.');
     }
 
     public function view(Tournament $tournament)
@@ -74,7 +86,6 @@ class AdminTournamentController extends Controller
             $imagePath = $request->file('banner_image')->store('tournament_images', 'public');
             $validatedData['banner_image'] = $imagePath;
         }
-
         // Update the tournament record
         $tournament->update($validatedData);
 
@@ -107,7 +118,8 @@ class AdminTournamentController extends Controller
 
         return view('admin.tournaments.search', [
             'searchResults' => $searchResults,
-            'allTeams' => $allTeams, // Fetch your team data here
+            // Errror
+            // 'allTeams' => $allTeams, // Fetch your team data here
         ]);
     }
 

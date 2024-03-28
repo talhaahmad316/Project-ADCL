@@ -4,11 +4,11 @@
         style="margin-left: -5px; width:102%; font-family: oswald; font-size:18px; background-color:white;">
         <h2 class="py-2">Add Player</h2>
         @if (session('success'))
-        <script>
-            // Display Toastr success message
-            toastr.success('{{ session('success') }}');
-        </script>
-    @endif
+            <script>
+                // Display Toastr success message
+                toastr.success('{{ session('success') }}');
+            </script>
+        @endif
         <form action="{{ route('players.store') }}" method="POST" enctype="multipart/form-data">
             @csrf
             <!-- Player Information Columns -->
@@ -31,7 +31,7 @@
                         <div class="form-group">
                             <!-- Country names and Country Name -->
                             <select class="form-control" id="nationality" name="nationality">
-                                <option value="">Select Country</option>
+                                <option value="" selected disabled>Select Country</option>
                                 <option value="Afghanistan">Afghanistan</option>
                                 <option value="Aland Islands">Aland Islands</option>
                                 <option value="Albania">Albania</option>
@@ -302,103 +302,96 @@
                     <div class="form-group">
                         <label for="gender">Gender:</label>
                         <select name="gender" class="form-control" required>
-                            <option>Select gender</option>
+                            <option selected disabled>Select gender</option>
                             <option value="male">Male</option>
                             <option value="female">Female</option>
                             <option value="others">Others</option>
                         </select>
                     </div>
                 </div>
-
-
                 <!-- Additional Player Information Columns -->
-                    <div class="col-md-3">
-                        <div class="form-group">
-                            <label for="height">Height:(e.g. 5ft 8inches)</label>
-                            <input type="number" name="height" class="form-control" required>
-                        </div>
+                <div class="col-md-3">
+                    <div class="form-group">
+                        <label for="height">Height:(e.g. 5ft 8inches)</label>
+                        <input type="number" name="height" class="form-control" required>
                     </div>
-
-
-                    <div class="col-md-3">
-                        <div class="form-group">
-                            <label for="playing_role">Playing Role:</label>
-                            <select name="playing_role" class="form-control" required>
-                                <!-- Options for playing role -->
-                                <option>Select player role</option>
-                                <option value="batsman">Batsman</option>
-                                <option value="bowler">Bowler</option>
-                                <option value="all rounder">All Rounder</option>
-                                <option value="wicketkeeper batsman">Wicketkeeper Batsman</option>
-                                <option value="coach">Coach</option>
-                                <option value="umpire">Umpire</option>
-                                <option value="manager">Manager</option>
-                                <option value="administrator">Administrator</option>
-                            </select>
-                        </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="form-group">
+                        <label for="playing_role">Playing Role:</label>
+                        <select name="playing_role" class="form-control" required>
+                            <!-- Options for playing role -->
+                            <option selected disabled>Select player role</option>
+                            <option value="batsman">Batsman</option>
+                            <option value="bowler">Bowler</option>
+                            <option value="all rounder">All Rounder</option>
+                            <option value="wicketkeeper batsman">Wicketkeeper Batsman</option>
+                            <option value="coach">Coach</option>
+                            <option value="umpire">Umpire</option>
+                            <option value="manager">Manager</option>
+                            <option value="administrator">Administrator</option>
+                        </select>
                     </div>
+                </div>
             </div>
-                <div class="row">
-                    <div class="col-md-3">
-                        <div class="form-group">
-                            <label for="batting style">Batting Style:</label>
-                            <select name="batting_style" class="form-control" required>
-                                <!-- Options for batting style -->
-                                <option>Select batting style</option>
-                                <option value="right hand">Right Hand Bat</option>
-                                <option value="left hand">Left Hand Bat</option>
-                            </select>
-                        </div>
-                    </div>
-
-                 <!-- Bowling Style and Description -->
-                    <div class="col-md-3">
-                        <div class="form-group">
-                            <label for="bowling_style">Bowling Style:</label>
-                            <select name="bowling_style" class="form-control" required>
-                                <!-- Options for bowling style -->
-                                <option>Select bowling style</option>
-                                <option value="right arm off break">Right Arm Off Break</option>
-                                <option value="right arm leg break">Right Arm Leg Break</option>
-                                <option value="left arm chinaman">Left Arm Chinaman</option>
-                                <option value="slow right arm orthodox">Slow Right Arm Orthodox</option>
-                                <option value="slow left arm orthodox">Slow Left Arm Orthodox</option>
-                                <option value="right arm medium fast">Right Arm Medium Fast</option>
-                                <option value="right arm fast">Right Arm Fast</option>
-                                <option value="left arm medium fast">Left Arm Medium Fast</option>
-                                <option value="left arm fast">Left Arm Fast</option>
-                                <option value="left arm wrist spin">Left Arm Wrist Spin</option>
-                            </select>
-                        </div>
-                    </div>
-
-                    <div class="col-md-3">
-                        <div class="form-group">
-                            <label for="status">Player Status:</label>
-                            <select name="status" class="form-control" required>
-                                <!-- Options for bowling style -->
-                                <option>Select status</option>
-                                <option value="active">Active</option>
-                                <option value="inactive">Inactive</option>
-
-                            </select>
-                        </div>
+            <div class="row">
+                <div class="col-md-3">
+                    <div class="form-group">
+                        <label for="batting style">Batting Style:</label>
+                        <select name="batting_style" class="form-control" required>
+                            <!-- Options for batting style -->
+                            <option selected disabled>Select batting style</option>
+                            <option value="right_hand">Right Hand Bat</option>
+                            <option value="left_hand">Left Hand Bat</option>
+                        </select>
                     </div>
                 </div>
-                <div class="row">
-                    <div class="col-md-3">
-                        <div class="form-group">
-                            <label for="club">Select Club:</label>
-                            <select name="club_name" class="form-control" required>
-                                <option value="">Select a Club</option>
-                                @foreach($clubs as $club)
-                                    <option value="{{ $club->club_name }}">{{ $club->club_name }}</option>
-                                @endforeach
-                            </select>
-                        </div> 
+                <!-- Bowling Style and Description -->
+                <div class="col-md-3">
+                    <div class="form-group">
+                        <label for="bowling_style">Bowling Style:</label>
+                        <select name="bowling_style" class="form-control" required>
+                            <!-- Options for bowling style -->
+                            <option selected disabled>Select bowling style</option>
+                            <option value="right_arm_off_break">Right Arm Off Break</option>
+                            <option value="right_arm_leg_break">Right Arm Leg Break</option>
+                            <option value="left_arm_chinaman">Left Arm Chinaman</option>
+                            <option value="slow_right_arm_orthodox">Slow Right Arm Orthodox</option>
+                            <option value="slow_left_arm_orthodox">Slow Left Arm Orthodox</option>
+                            <option value="right_arm_medium_fast">Right Arm Medium Fast</option>
+                            <option value="right_arm_fast">Right Arm Fast</option>
+                            <option value="left_arm_medium_fast">Left Arm Medium Fast</option>
+                            <option value="left_arm_fast">Left Arm Fast</option>
+                            <option value="left_arm_wrist_spin">Left Arm Wrist Spin</option>
+                        </select>
+                    </div>
                 </div>
+                <div class="col-md-3">
+                    <div class="form-group">
+                        <label for="status">Player Status:</label>
+                        <select name="status" class="form-control" required>
+                            <!-- Options for bowling style -->
+                            <option selected disabled>Select status</option>
+                            <option value="active">Active</option>
+                            <option value="inactive">Inactive</option>
+                        </select>
+                    </div>
                 </div>
-                <div class="row">
+            </div>
+            <div class="row">
+                <div class="col-md-3">
+                    <div class="form-group">
+                        <label for="club">Select Club:</label>
+                        <select name="club_name" class="form-control" required>
+                            <option value="" selected disabled>Select a Club</option>
+                            @foreach ($clubs as $club)
+                                <option value="{{ $club->club_name }}">{{ $club->club_name }}</option>
+                            @endforeach
+                        </select>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
                 <div class="col-md-6">
                     <div class="form-group">
                         <label for="description">Description:</label>
@@ -410,9 +403,7 @@
                         </div>
                     </div>
                 </div>
-            </div> 
-            
-        
+            </div>
             <div class="row">
                 <div class="col-md-4">
                     <div class="form-group">
@@ -421,20 +412,18 @@
                             onchange="previewImage(event)">
                         <div class="form-group" id="imagePreviewContainer" style="display: none;">
                             {{-- <label>Image Preview:</label> --}}
-                            <img id="imagePreview" alt="Image Preview" class="rounded-circle" style="max-height: 100px; margin-top: 1%;">
+                            <img id="imagePreview" alt="Image Preview" class="rounded-circle"
+                                style="max-height: 100px; margin-top: 1%;">
                         </div>
                     </div>
                 </div>
-
             </div>
-
             <!-- Submit Button -->
             <div class="row">
-                <div > 
+                <div>
                     <button type="submit" class="btn btn-primary">Add Player</button>
                 </div><br>
             </div>
-
         </form>
         <br>
     </div>
