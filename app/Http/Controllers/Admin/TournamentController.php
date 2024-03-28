@@ -40,7 +40,7 @@ class TournamentController extends Controller
             'tournamentStatus' => $validatedData['tournamentStatus'],
             'banner_image' => $imagePath,
         ]);
-        return redirect()->route('admin.tournaments.create')->with('success', 'Tournament added successfully.');
+        return redirect()->route('admin.tournaments.search')->with('success', 'Tournament added successfully.');
     }
     
 }
