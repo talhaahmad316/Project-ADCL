@@ -5,19 +5,15 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>ADCL | Register</title>
-
     <!-- Google Font: Source Sans Pro -->
-    <link rel="stylesheet"
-        href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
     <!-- Font Awesome -->
     <link rel="stylesheet" href="{{ asset('admin-assets/plugins/fontawesome-free/css/all.min.css') }}">
     <!-- icheck bootstrap -->
     <link rel="stylesheet" href="{{ asset('admin-assets/plugins/icheck-bootstrap/icheck-bootstrap.min.css') }}">
     <!-- Theme style -->
-    <link rel="icon" href="https://www.adcricketlads.com/wp-content/uploads/2021/09/transparent-ADCL-Logo.png"
-        type="image/png">
+    <link rel="icon" href="https://www.adcricketlads.com/wp-content/uploads/2021/09/transparent-ADCL-Logo.png" type="image/png">
     <link rel="stylesheet" href="{{ asset('admin-assets/dist/css/adminlte.min.css') }}">
-
     <!-- jQuery -->
     <script src="{{ asset('admin-assets/plugins/jquery/jquery.min.js') }}"></script>
     <!-- Bootstrap 4 -->
@@ -46,7 +42,6 @@
                     <div class="text-center text-success">{{ session('success') }}</div>
                 @endif
                 <p class="login-box-msg" style="font-size: 22px;">Edit Form</p>
-
 
                 <form action="{{ route('user-update', $users->id) }}" method="POST" enctype="multipart/form-data">
                     @csrf
@@ -86,7 +81,6 @@
                     @error('password')
                         <div class="text-danger">{{ $message }}</div>
                     @enderror
-
 
                     <div class="mb-1 input-group">
                         <label for="role" class="form-label">Role</label>

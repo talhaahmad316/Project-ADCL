@@ -60,7 +60,13 @@
                                             @endif
                                         </td>
                                         <td>{{ $club->club_name }}</td>
-                                        <td>{{ $club->parent_club }}</td>
+                                        <td>
+                                            @if ($club->parentClub)
+                                                {{ $club->parentClub->club_name }}
+                                            @else
+                                                No Parent Club
+                                            @endif
+                                        </td>
                                         <td>{{ $club->country }}</td>
                                         <td>{{ $club->description }}</td>
                                         <td>

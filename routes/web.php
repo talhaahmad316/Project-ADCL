@@ -64,9 +64,6 @@ Route::get('/adclBlues', [TeamController::class, 'adclBluesPlayers'])->name('adc
 Route::get('/adclGreys', [TeamController::class, 'adclGreysPlayers'])->name('adclGreys.players');
 Route::get('/adclBlacks', [TeamController::class, 'adclBlacksPlayers'])->name('adclBlacks.players');
 
-
-
-
 // club crud
 Route::get('/admin/club-create', [ClubController::class, 'create'])->name('club-create');
 Route::post('/admin/club', [ClubController::class, 'store'])->name('club-store');
@@ -77,10 +74,8 @@ Route::post('/admin/club-update/{id}', [ClubController::class, 'update'])->name(
 
 Route::post('/my-club/store', [MyClubController::class, 'store'])->name('my-club.store');
 
-
 // users
 Route::get('/admin/users', [ProfileController::class, 'users'])->name('admin.users');
-
 
 //all Player
 Route::get('/adclAll', [PlayerController::class, 'showAllPlayers'])->name('adclAll');
@@ -111,17 +106,13 @@ Route::get('admin/teams/{team}/view', [TeamController::class, 'view'])->name('ad
 Route::get('admin/teams/{team}/edit', [TeamController::class, 'edit'])->name('admin.teams.edit');
 Route::put('admin/teams/{id}', [TeamController::class, 'update'])->name('admin.teams.update');
 
-
 Route::get('/admin/teams/{id}', [ClubController::class, 'teamDestroy'])->name('team-delete');
-
-
-
 
 // Route to handle the form submission
 Route::post('/teams/add-players/{team}', [TeamController::class, 'addPlayers'])->name('teams.addPlayers');
+Route::delete('/team/{team}/player', [TeamController::class, 'playerDestroy'])->name('team.player.destroy');
 
 //Route for Tournaments
-
 Route::prefix('admin')->name('admin.')->group(function () {
     Route::get('/tournaments/create', [AdminTournamentController::class, 'create'])->name('tournaments.create');
     Route::post('/tournaments/store', [AdminTournamentController::class, 'store'])->name('tournaments.store');
@@ -131,6 +122,9 @@ Route::prefix('admin')->name('admin.')->group(function () {
 Route::get('/admin/tournaments/{tournament}', [AdminTournamentController::class, 'view'])->name('admin.tournaments.view');
 Route::get('/admin/tournaments/{tournament}/edit', [AdminTournamentController::class, 'edit'])->name('admin.tournaments.edit');
 Route::put('admin/tournaments/{tournament}', [AdminTournamentController::class, 'update'])->name('admin.tournaments.update');
+Route::delete('admin/tournaments/{tournament}', [AdminTournamentController::class, 'destroy'])->name('admin.tournaments.destroy');
+
+Route::delete('/tournament/{tournament}/player', [AdminTournamentController::class, 'teamDestroy'])->name('tournament.team.destroy');
 
 //add team in tournament
 

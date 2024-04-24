@@ -13,8 +13,6 @@
                    </div>
                    <p style="font-family:-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;">UCL is a not just a cricket club, UCL is a society, a band of cricket loving brothers
                        who are Amateur cricketers & yet rubbing shoulders with the top sides around.</p>
-
-
                 </div>
              </div>
           </div>
@@ -70,7 +68,7 @@
     </div>
     <div class="footer-bottom">
        <div style="background-color: #f04414; display:flex;">
-          <p style="text-align: left; margin-left:180px; font-family:Roboto;" >© Copyright 2023 ADCL, All Rights Reserved. Powered by <b>TechWrath</b></p>
+          <p style="text-align: left; margin-left:180px; font-family:Roboto;" >© Copyright 2024 ADCL, All Rights Reserved. Powered by <b>TechWrath</b></p>
           <ul class="social-icons style-4 pull-left"  style="margin-left:40%; margin-top:1%;">
             <i class="fab fa-facebook" onMouseOver="this.style.color='black'" onMouseOut="this.style.color='white'" style="color: white; height: 30px; width:40px;"></i>
             <i class="fab fa-youtube" onMouseOver="this.style.color='black'" onMouseOut="this.style.color='white'" style="color: white;height: 30px; width:40px;"></i>

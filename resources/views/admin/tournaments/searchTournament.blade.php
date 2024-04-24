@@ -49,8 +49,7 @@
                     <tr>
                         <td>{{ $tournament->id }}</td>
                         <td>
-                            <img src="{{ asset('storage/' . $tournament->banner_image) }}"
-                                alt="{{ $tournament->tournamentname }}"
+                            <img src="{{ asset('storage/' . $tournament->banner_image) }}" alt="{{ $tournament->tournamentname }}"
                                 class="border rounded-circle border-light team-logo-image" height="70px" width="70px"
                                 id="banner_image_{{ $tournament->id }}">
                         </td>
@@ -58,12 +57,20 @@
                         <td>{{ $tournament->tournamentStartTime }}</td>
                         <td>{{ $tournament->tournamentEndTime }}</td>
                         <td>
-                            <span
-                                class="badge {{ $tournament->tournamentStatus === 'active' ? 'badge-success' : 'badge-danger' }}">
+                            <span class="badge {{ $tournament->tournamentStatus === 'active' ? 'badge-success' : 'badge-danger' }}">
                                 {{ $tournament->tournamentStatus === 'active' ? 'Active' : 'Inactive' }}
                             </span>
                         </td>
                         <td>
+                            <a>
+                                <form action="{{ route('admin.tournaments.destroy',  $tournament->id) }}" method="POST" style="display: inline-block;">
+                                    @csrf
+                                    @method('DELETE')
+                                    <button type="submit" class="btn btn-danger" onclick="return confirm('Are you sure you want to delete this player?')">
+                                        <i class="fas fa-trash"></i> 
+                                    </button>
+                                </form>
+                            </a>
                             <a href="{{ route('admin.tournaments.view', ['tournament' => $tournament->id]) }}"
                                 class="btn btn-primary">
                                 <i class="fas fa-eye"></i>

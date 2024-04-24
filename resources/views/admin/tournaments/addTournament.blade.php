@@ -7,7 +7,6 @@
                 <div class="col-md-12">
                     <div class="card">
                         <div class="card-header" style="font-size: 28px; font-weight:bold">Add Tournament</div>
-
                         <div class="card-body">
                             @if (session('success'))
                                 <div class="alert alert-success">
@@ -23,19 +22,18 @@
                                             <label for="tournamentname">Tournament Name:</label>
                                             <input type="text" name="tournamentname" class="form-control">
                                             @if ($errors->has('tournamentname'))
-                                                <strong class="text-danger">{{ $errors->first('tournamentname') }}</strong>
+                                                <p class="text-danger">{{ $errors->first('tournamentname') }}</p>
                                             @endif
                                         </div>
                                     </div>
-                                    
+
                                     <div class="col-md-4">
                                         <div class="form-group">
                                             <label for="tournamentLocation">Tournament Location (Google Map):</label>
                                             <input type="text" class="form-control" id="tournamentLocation"
                                                 name="tournamentLocation">
                                             @if ($errors->has('tournamentLocation'))
-                                                <strong
-                                                    class="text-danger">{{ $errors->first('tournamentLocation') }}</strong>
+                                                <p class="text-danger">{{ $errors->first('tournamentLocation') }}</p>
                                             @endif
                                         </div>
                                     </div>
@@ -44,12 +42,11 @@
                                         <div class="form-group">
                                             <label for="tournamentCountry">Tournament Country:</label>
                                             <select class="form-control" id="tournamentCountry" name="tournamentCountry">
-                                                <option value="">Select Country</option>
+                                                <option value="" selected disabled>Select Country</option>
                                                 <option value="United Arab Emirates">United Arab Emirates</option>
                                             </select>
                                             @if ($errors->has('tournamentCountry'))
-                                                <strong
-                                                    class="text-danger">{{ $errors->first('tournamentCountry') }}</strong>
+                                                <p class="text-danger">{{ $errors->first('tournamentCountry') }}</p>
                                             @endif
                                         </div>
                                     </div>
@@ -59,11 +56,9 @@
                                     <div class="col-md-4">
                                         <div class="form-group">
                                             <label for="tournamentStartTime">Tournament Start Date:</label>
-                                            <input type="date" class="form-control" id="tournamentStartTime"
-                                                name="tournamentStartTime">
+                                            <input type="date" class="form-control" id="tournamentStartTime" name="tournamentStartTime">
                                             @if ($errors->has('tournamentStartTime'))
-                                                <strong
-                                                    class="text-danger">{{ $errors->first('tournamentStartTime') }}</strong>
+                                                <p class="text-danger">{{ $errors->first('tournamentStartTime') }}</p>
                                             @endif
                                         </div>
                                     </div>
@@ -71,11 +66,9 @@
                                     <div class="col-md-4">
                                         <div class="form-group">
                                             <label for="tournamentEndTime">Tournament End Date:</label>
-                                            <input type="date" class="form-control" id="tournamentEndTime"
-                                                name="tournamentEndTime">
+                                            <input type="date" class="form-control" id="tournamentEndTime" name="tournamentEndTime">
                                             @if ($errors->has('tournamentEndTime'))
-                                                <strong
-                                                    class="text-danger">{{ $errors->first('tournamentEndTime') }}</strong>
+                                                <p class="text-danger">{{ $errors->first('tournamentEndTime') }}</p>
                                             @endif
                                         </div>
                                     </div>
@@ -84,13 +77,12 @@
                                         <div class="form-group">
                                             <label for="tournamentStatus">Tournament Status:</label>
                                             <select class="form-control" id="tournamentStatus" name="tournamentStatus">
-                                                <option value="">Select Status</option>
+                                                <option value="" selected disabled>Select Status</option>
                                                 <option value="active">Active</option>
                                                 <option value="inactive">Inactive</option>
                                             </select>
                                             @if ($errors->has('tournamentStatus'))
-                                                <strong
-                                                    class="text-danger">{{ $errors->first('tournamentStatus') }}</strong>
+                                                <p class="text-danger">{{ $errors->first('tournamentStatus') }}</p>
                                             @endif
                                         </div>
                                     </div>
@@ -103,25 +95,19 @@
                                             class="form-control-file">
                                         <div class="banner_image-preview"
                                             style="display: flex; align-items: center; margin-left: 350px; margin-top:-45px;">
-                                            <img id="banner_imagePreview" src="#" alt="Logo Preview"
-                                                style="max-height: 300px; display: none;">
+                                            <img id="banner_imagePreview" src="#" alt="Logo Preview" style="max-height: 300px; display: none;">
                                         </div>
                                     </div>
                                 </div><br>
                                 @if ($errors->has('banner_image'))
-                                    <strong class="text-danger">{{ $errors->first('banner_image') }}</strong>
+                                    <p class="text-danger">{{ $errors->first('banner_image') }}</p>
                                 @endif
                                 <br><br><br><br><br>
 
                                 <div style="margin-left: 90%">
-                                    <button id="addTournamentButton" type="submit" class="btn btn-success">Add
-                                        Tournament</button>
+                                    <button id="addTournamentButton" type="submit" class="btn btn-success">Add Tournament</button>
                                 </div>
-
-
                         </div>
-
-
                         </form>
                         &nbsp;<br><br>
                     </div>
@@ -129,8 +115,6 @@
             </div>
         </div>
         </div>
-
-
 
         <script>
             // JavaScript to preview the selected logo image

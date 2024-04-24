@@ -2,7 +2,7 @@
 
 namespace App\Models;
 use App\Models\Team;
-use App\Models\TournamentMatch;
+// use App\Models\TournamentMatch;
 use App\Models\AdminTournament;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;

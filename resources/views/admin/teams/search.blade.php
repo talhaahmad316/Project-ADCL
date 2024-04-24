@@ -11,16 +11,16 @@
         </div>
     </div>
     @if (session('success'))
-    <script>
-        toastr.success('{{ session('success') }}');
-    </script>
-@endif
+        <script>
+            toastr.success('{{ session('success') }}');
+        </script>
+    @endif
 
-@if (session('error'))
-    <script>
-        toastr.error('{{ session('error') }}');
-    </script>
-@endif
+    @if (session('error'))
+        <script>
+            toastr.error('{{ session('error') }}');
+        </script>
+    @endif
 
     <div class="mb-4 row">
         {{-- <div class="col-md-6">
@@ -64,9 +64,9 @@
                             <td>{{ $team->id }}</td>
                             <td>
                                 @if ($team->logo)
-                                <img src="{{asset($team->logo)}}" alt="{{ $team->name }}"
-                                    class="border rounded-circle border-light img-centered"
-                                    style="width: 100px; height: 100px; object-fit: cover; object-position: center;">
+                                    <img src="{{ asset($team->logo) }}" alt="{{ $team->name }}"
+                                        class="border rounded-circle border-light img-centered"
+                                        style="width: 100px; height: 100px; object-fit: cover; object-position: center;">
                                 @else
                                     <div class="no-logo">No Logo</div>
                                 @endif
@@ -78,7 +78,6 @@
                                     class="badge {{ $team->status === 'active' ? 'badge-success' : 'badge-danger' }}">{{ $team->status === 'active' ? 'Active' : 'Inactive' }}</span>
                             </td>
 
-
                             <td>
                                 <a href="{{ route('admin.teams.view', ['team' => $team->id]) }}" class="btn btn-primary">
                                     <i class="fas fa-eye"></i>
@@ -86,7 +85,6 @@
                                 <a href="{{ route('admin.teams.edit', ['team' => $team->id]) }}" class="btn btn-info">
                                     <i class="fas fa-edit"></i>
                                 </a>
-
                                 <a href="{{ route('team-delete', ['id' => $team->id]) }}" class="btn btn-danger">
                                     <i class="fas fa-trash"></i>
                                 </a>
@@ -95,8 +93,6 @@
                                     data-target="#addPlayerModal{{ $team->id }}">
                                     Add Player
                                 </button>
-
-
 
                                 @foreach ($teams as $team)
                                     <!-- Add Player Modal -->
@@ -133,7 +129,7 @@
                                                                     name="selected_players[]" value="{{ $player->id }}">
                                                                 <label class="form-check-label"
                                                                     for="selected_players{{ $player->id }}">
-                                                                    {{ $player->name }}
+                                                                    {{ $player->name }} ( {{ $player->club_name }} )
                                                                 </label>
                                                             </div>
                                                             <hr>

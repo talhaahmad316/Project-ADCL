@@ -16,13 +16,19 @@
                 <div class="col-md-3">
                     <div class="form-group">
                         <label for="name">Full Name:</label>
-                        <input type="text" name="name" class="form-control" required>
+                        <input type="text" name="name" class="form-control">
+                        @if ($errors->has('name'))
+                            <p class="text-danger">{{ $errors->first('name') }}</p>
+                        @endif
                     </div>
                 </div>
                 <div class="col-md-3">
                     <div class="form-group">
                         <label for="name">Email:</label>
-                        <input type="email" name="email" class="form-control" value="{{ old('email', '') }}" required>
+                        <input type="email" name="email" class="form-control" value="{{ old('email', '') }}">
+                        @if ($errors->has('email'))
+                            <p class="text-danger">{{ $errors->first('email') }}</p>
+                        @endif
                     </div>
                 </div>
                 <div class="col-md-3">
@@ -293,6 +299,9 @@
                                 <option value="Zambia">Zambia</option>
                                 <option value="Zimbabwe">Zimbabwe</option>
                             </select>
+                            @if ($errors->has('nationality'))
+                                <p class="text-danger">{{ $errors->first('nationality') }}</p>
+                            @endif
                         </div>
                     </div>
                 </div>
@@ -301,25 +310,31 @@
                 <div class="col-md-3">
                     <div class="form-group">
                         <label for="gender">Gender:</label>
-                        <select name="gender" class="form-control" required>
+                        <select name="gender" class="form-control">
                             <option selected disabled>Select gender</option>
                             <option value="male">Male</option>
                             <option value="female">Female</option>
                             <option value="others">Others</option>
                         </select>
+                        @if ($errors->has('gender'))
+                            <p class="text-danger">{{ $errors->first('gender') }}</p>
+                        @endif
                     </div>
                 </div>
                 <!-- Additional Player Information Columns -->
                 <div class="col-md-3">
                     <div class="form-group">
                         <label for="height">Height:(e.g. 5ft 8inches)</label>
-                        <input type="number" name="height" class="form-control" required>
+                        <input type="text" name="height" class="form-control">
+                        @if ($errors->has('height'))
+                            <p class="text-danger">{{ $errors->first('height') }}</p>
+                        @endif
                     </div>
                 </div>
                 <div class="col-md-3">
                     <div class="form-group">
                         <label for="playing_role">Playing Role:</label>
-                        <select name="playing_role" class="form-control" required>
+                        <select name="playing_role" class="form-control">
                             <!-- Options for playing role -->
                             <option selected disabled>Select player role</option>
                             <option value="batsman">Batsman</option>
@@ -331,6 +346,9 @@
                             <option value="manager">Manager</option>
                             <option value="administrator">Administrator</option>
                         </select>
+                        @if ($errors->has('playing_role'))
+                            <p class="text-danger">{{ $errors->first('playing_role') }}</p>
+                        @endif
                     </div>
                 </div>
             </div>
@@ -338,19 +356,22 @@
                 <div class="col-md-3">
                     <div class="form-group">
                         <label for="batting style">Batting Style:</label>
-                        <select name="batting_style" class="form-control" required>
+                        <select name="batting_style" class="form-control">
                             <!-- Options for batting style -->
                             <option selected disabled>Select batting style</option>
                             <option value="right_hand">Right Hand Bat</option>
                             <option value="left_hand">Left Hand Bat</option>
                         </select>
+                        @if ($errors->has('batting_style'))
+                            <p class="text-danger">{{ $errors->first('batting_style') }}</p>
+                        @endif
                     </div>
                 </div>
                 <!-- Bowling Style and Description -->
                 <div class="col-md-3">
                     <div class="form-group">
                         <label for="bowling_style">Bowling Style:</label>
-                        <select name="bowling_style" class="form-control" required>
+                        <select name="bowling_style" class="form-control">
                             <!-- Options for bowling style -->
                             <option selected disabled>Select bowling style</option>
                             <option value="right_arm_off_break">Right Arm Off Break</option>
@@ -364,17 +385,23 @@
                             <option value="left_arm_fast">Left Arm Fast</option>
                             <option value="left_arm_wrist_spin">Left Arm Wrist Spin</option>
                         </select>
+                        @if ($errors->has('bowling_style'))
+                            <p class="text-danger">{{ $errors->first('bowling_style') }}</p>
+                        @endif
                     </div>
                 </div>
                 <div class="col-md-3">
                     <div class="form-group">
                         <label for="status">Player Status:</label>
-                        <select name="status" class="form-control" required>
+                        <select name="status" class="form-control">
                             <!-- Options for bowling style -->
                             <option selected disabled>Select status</option>
                             <option value="active">Active</option>
                             <option value="inactive">Inactive</option>
                         </select>
+                        @if ($errors->has('status'))
+                            <p class="text-danger">{{ $errors->first('status') }}</p>
+                        @endif
                     </div>
                 </div>
             </div>
@@ -382,12 +409,15 @@
                 <div class="col-md-3">
                     <div class="form-group">
                         <label for="club">Select Club:</label>
-                        <select name="club_name" class="form-control" required>
+                        <select name="club_name" class="form-control">
                             <option value="" selected disabled>Select a Club</option>
                             @foreach ($clubs as $club)
                                 <option value="{{ $club->club_name }}">{{ $club->club_name }}</option>
                             @endforeach
                         </select>
+                        @if ($errors->has('club_name'))
+                            <p class="text-danger">{{ $errors->first('club_name') }}</p>
+                        @endif
                     </div>
                 </div>
             </div>
@@ -395,12 +425,14 @@
                 <div class="col-md-6">
                     <div class="form-group">
                         <label for="description">Description:</label>
-                        <textarea name="description" class="form-control" style="width: 100%;" rows="5" id="textarea" autofocus
-                            required></textarea>
+                        <textarea name="description" class="form-control" style="width: 100%;" rows="5" id="textarea" autofocus></textarea>
                         <div id="count" style="color: #2E9E42;">
                             <span id="current_count">0</span>
                             <span id="maximum_count">/ 1000</span>
                         </div>
+                        @if ($errors->has('description'))
+                            <p class="text-danger">{{ $errors->first('description') }}</p>
+                        @endif
                     </div>
                 </div>
             </div>
@@ -408,13 +440,16 @@
                 <div class="col-md-4">
                     <div class="form-group">
                         <label for="Picture">Picture:</label>
-                        <input type="file" name="Picture" accept="image/*" class="form-control-file" required
+                        <input type="file" name="Picture" accept="image/*" class="form-control-file"
                             onchange="previewImage(event)">
                         <div class="form-group" id="imagePreviewContainer" style="display: none;">
                             {{-- <label>Image Preview:</label> --}}
                             <img id="imagePreview" alt="Image Preview" class="rounded-circle"
                                 style="max-height: 100px; margin-top: 1%;">
                         </div>
+                        @if ($errors->has('Picture'))
+                            <p class="text-danger">{{ $errors->first('Picture') }}</p>
+                        @endif
                     </div>
                 </div>
             </div>

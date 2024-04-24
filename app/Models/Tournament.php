@@ -19,9 +19,13 @@ class Tournament extends Model
         'tournamentStatus',
         'banner_image',
     ];
+    // public function teams()
+    // {
+    //     return $this->belongsToMany(Team::class);
+    // }
     public function teams()
     {
-        return $this->belongsToMany(Team::class);
+        return $this->belongsToMany(Team::class, 'team_tournament', 'tournament_id', 'team_id');
     }
 
 

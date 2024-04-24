@@ -29,11 +29,14 @@
                                 <div class="col-md-3">
                                     <label for="name">Team Name:</label>
                                     <input type="text" name="name" class="form-control" value="{{ $team->name }}">
+                                    @if ($errors->has('name'))
+                                        <p class="text-danger">{{ $errors->first('name') }}</p>
+                                    @endif
                                 </div>
 
                                 <div class="col-md-4">
                                     <label for="club">Select Club:</label>
-                                    <select name="club" class="form-control" required>
+                                    <select name="club" class="form-control">
                                         <option value="" selected disabled>Select a Club</option>
                                         @foreach ($clubs->unique('club_name') as $club)
                                             {{-- Remove duplicate club names --}}
@@ -43,6 +46,9 @@
                                             </option>
                                         @endforeach
                                     </select>
+                                    @if ($errors->has('club_name'))
+                                        <p class="text-danger">{{ $errors->first('club_name') }}</p>
+                                    @endif
                                 </div>
 
                                 <div class="col-md-3">
@@ -54,6 +60,9 @@
                                         <option value="inactive" {{ $team->status === 'inactive' ? 'selected' : '' }}>
                                             Inactive</option>
                                     </select>
+                                    @if ($errors->has('status'))
+                                        <p class="text-danger">{{ $errors->first('status') }}</p>
+                                    @endif
                                 </div>
                             </div>
 
@@ -65,6 +74,9 @@
                                         <span id="current_count">{{ mb_strlen($team->description ?? '') }}</span>
                                         <span id="maximum_count">/ 1000</span>
                                     </div>
+                                    @if ($errors->has('description'))
+                                        <p class="text-danger">{{ $errors->first('description') }}</p>
+                                    @endif
                                 </div>
                             </div>
                             <div class="row">
@@ -78,6 +90,9 @@
                                     @endif
                                     <input type="file" name="logo" accept="image/*" class="mt-2 form-control-file">
                                 </div>
+                                @if ($errors->has('logo'))
+                                    <p class="text-danger">{{ $errors->first('logo') }}</p>
+                                @endif
                             </div>
                             <div>
                                 <button type="submit" class="btn btn-primary" style="margin-top: 1%">Update Team</button>

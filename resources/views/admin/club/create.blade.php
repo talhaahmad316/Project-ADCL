@@ -4,18 +4,21 @@
         style="margin-left: -5px; width:102%; font-family: oswald; font-size:18px; background-color:white;">
         <h2>Add Club</h2>
         @if (session('success'))
-        <script>
-            // Display Toastr success message
-            toastr.success('{{ session('success') }}');
-        </script>
-    @endif
+            <script>
+                // Display Toastr success message
+                toastr.success('{{ session('success') }}');
+            </script>
+        @endif
         <form action="{{ route('club-store') }}" method="POST" enctype="multipart/form-data">
             @csrf
             <div class="row">
                 <div class="col-md-4">
                     <div class="form-group">
                         <label for="name">Club Name:</label>
-                        <input type="text" name="club_name" class="form-control" required>
+                        <input type="text" name="club_name" class="form-control">
+                        @if ($errors->has('club_name'))
+                            <p class="text-danger">{{ $errors->first('club_name') }}</p>
+                        @endif
                     </div>
                 </div>
                 <div class="col-md-4">
@@ -23,43 +26,55 @@
                         <label for="parent_club">Select Parent Club:</label>
                         <div class="form-group">
                             <select class="form-control" name="parent_club">
-                                <option value="">Select Parent Club</option>
-                                @foreach($myclub as $myclubs)
-                                    <option value="{{ $myclubs->my_club }}">{{ $myclubs->my_club }}</option>
-                                    @endforeach
-                                    <option value="None">None</option>
+                                <option value="" selected disabled>Select Parent Club</option>
+                                @foreach ($clubs as $id => $clubName)
+                                    <option value="{{ $id }}">{{ $clubName }}</option>
+                                @endforeach
+                                <option value="None">None</option>
                             </select>
+                            @if ($errors->has('club_name'))
+                                <p class="text-danger">{{ $errors->first('club_name') }}</p>
+                            @endif
                         </div>
                     </div>
                 </div>
                 <div class="col-md-3">
                     <div class="form-group">
                         <label for="country">Select Country:</label>
-                        <select name="country" class="form-control" required>
-                            <option value="">Select Country</option>
+                        <select name="country" class="form-control">
+                            <option value="" selected disabled>Select Country</option>
                             <option value="United Arab Emirates">United Arab Emirates</option>
                         </select>
+                        @if ($errors->has('country'))
+                            <p class="text-danger">{{ $errors->first('country') }}</p>
+                        @endif
                     </div>
                 </div>
             </div>
             <div class="col-md-8">
                 <div class="form-group">
                     <label for="description">Description:</label>
-                    <textarea name="description" class="form-control" style="width: 100%;" rows="5" id="textarea" autofocus required></textarea>
+                    <textarea name="description" class="form-control" style="width: 100%;" rows="5" id="textarea" autofocus></textarea>
                     <div id="count" style="color: #2E9E42;">
                         <span id="current_count">0</span>
                         <span id="maximum_count">/ 1000</span>
                     </div>
+                    @if ($errors->has('description'))
+                        <p class="text-danger">{{ $errors->first('description') }}</p>
+                    @endif
                 </div>
             </div>
             <div class="col-md-4">
                 <div class="form-group">
                     <label for="club_logo">Select club Logo:</label>
-                    <input type="file" name="club_logo" accept="image/*" class="form-control-file" required
-                        onchange="previewImage(event)">
+                    <input type="file" name="club_logo" accept="image/*" class="form-control-file"  onchange="previewImage(event)">
                     <div class="form-group" id="imagePreviewContainer" style="display: none;">
-                        <img id="imagePreview" alt="Image Preview" class="rounded-circle" style="max-height: 100px; margin-top: 1%;">
+                        <img id="imagePreview" alt="Image Preview" class="rounded-circle"
+                            style="max-height: 100px; margin-top: 1%;">
                     </div>
+                    @if ($errors->has('club_logo'))
+                        <p class="text-danger">{{ $errors->first('club_logo') }}</p>
+                    @endif
                 </div>
             </div>
     </div>
@@ -70,9 +85,9 @@
         </div><br>
     </div>
     </form>
-<div>
-{{-- Add myclub --}}
-{{-- @if(auth()->check() && auth()->user()->role == 1)
+    <div>
+        {{-- Add myclub --}}
+        {{-- @if (auth()->check() && auth()->user()->role == 1)
     <form action="{{ route('my-club.store') }}" method="POST">
         @csrf
         <div class="row">
@@ -91,7 +106,7 @@
     </form>
 @endif --}}
 
-</div>
+    </div>
     <script type="text/javascript">
         function previewImage(event) {
             var image = document.getElementById('imagePreview');
@@ -118,5 +133,4 @@
             current_count.text(characterCount);
         });
     </script>
-<script
-@endsection
+<script @endsection

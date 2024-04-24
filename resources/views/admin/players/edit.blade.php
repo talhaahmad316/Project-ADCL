@@ -18,12 +18,17 @@
             <div class="row">
                 <div class="col-md-4">
                     <label for="name">Full Name:</label>
-                    <input type="text" name="name" class="form-control" value="{{ $player->name ?? '' }}" required>
+                    <input type="text" name="name" class="form-control" value="{{ $player->name ?? '' }}">
+                    @if ($errors->has('name'))
+                        <p class="text-danger">{{ $errors->first('name') }}</p>
+                    @endif
                 </div>
                 <div class="col-md-4">
                     <label for="email">Email:</label>
-                    <input type="email" name="email" class="form-control" value="{{ $player->email ?? '' }}" required
-                        disabled>
+                    <input type="email" name="email" class="form-control" value="{{ $player->email ?? '' }}" disabled>
+                    @if ($errors->has('email'))
+                        <p class="text-danger">{{ $errors->first('email') }}</p>
+                    @endif
                 </div>
 
                 <div class="col-md-3">
@@ -297,6 +302,9 @@
                                 <option value="Zimbabwe">Zimbabwe</option>
                             @endforeach
                         </select>
+                        @if ($errors->has('nationality'))
+                            <p class="text-danger">{{ $errors->first('nationality') }}</p>
+                        @endif
                     </div>
                 </div>
             </div>
@@ -305,40 +313,48 @@
                 <div class="col-md-4">
                     <div class="form-group">
                         <label for="gender">Gender:</label>
-                        <select name="gender" class="form-control" required>
+                        <select name="gender" class="form-control">
                             <option selected disabled>Select gender</option>
                             <option value="male" {{ $player->gender == 'male' ? 'selected' : '' }}>Male</option>
                             <option value="female" {{ $player->gender == 'female' ? 'selected' : '' }}>Female</option>
                             <option value="others" {{ $player->gender == 'others' ? 'selected' : '' }}>Others</option>
                         </select>
+                        @if ($errors->has('gender'))
+                            <p class="text-danger">{{ $errors->first('gender') }}</p>
+                        @endif
                     </div>
                 </div>
 
                 <div class="col-md-4">
                     <div class="form-group">
                         <label for="height">Height:(e.g. 5ft 8inches)</label>
-                        <input type="number" name="height" value="{{ $player->height ?? '' }}" class="form-control"
-                            required>
+                        <input type="text" name="height" value="{{ $player->height ?? '' }}" class="form-control">
+                        @if ($errors->has('height'))
+                            <p class="text-danger">{{ $errors->first('height') }}</p>
+                        @endif
                     </div>
                 </div>
 
                 <div class="col-md-3">
                     <div class="form-group">
                         <label for="batting_style">Batting Style:</label>
-                        <select name="batting_style" class="form-control" required>
+                        <select name="batting_style" class="form-control">
                             <option selected disabled>Select batting style</option>
                             <option value="right_hand" {{ $player->batting_style == 'right hand' ? 'selected' : '' }}>
                                 Right Hand Bat</option>
                             <option value="left_hand" {{ $player->batting_style == 'left hand' ? 'selected' : '' }}>Left
                                 Hand Bat</option>
                         </select>
+                        @if ($errors->has('batting_style'))
+                            <p class="text-danger">{{ $errors->first('batting_style') }}</p>
+                        @endif
                     </div>
                 </div>
             </div>
             <div class="row">
                 <div class="col-md-4">
                     <label for="club">Select Club:</label>
-                    <select name="club_name" class="form-control" required>
+                    <select name="club_name" class="form-control">
                         <option value="" selected disabled>Select a Club</option>
                         @foreach ($clubs->unique('club_name') as $club)
                             {{-- Remove duplicate club names --}}
@@ -348,11 +364,14 @@
                             </option>
                         @endforeach
                     </select>
+                    @if ($errors->has('club_name'))
+                        <p class="text-danger">{{ $errors->first('club_name') }}</p>
+                    @endif
                 </div>
 
                 <div class="col-md-4">
                     <label for="playing_role">Playing Role:</label>
-                    <select name="playing_role" class="form-control" required>
+                    <select name="playing_role" class="form-control">
                         <option selected disabled>Select player role</option>
                         <option value="batsman" {{ $player->playing_role == 'batsman' ? 'selected' : '' }}>Batsman
                         </option>
@@ -369,10 +388,13 @@
                         <option value="administrator" {{ $player->playing_role == 'administrator' ? 'selected' : '' }}>
                             Administrator</option>
                     </select>
+                    @if ($errors->has('playing_role'))
+                        <p class="text-danger">{{ $errors->first('playing_role') }}</p>
+                    @endif
                 </div>
                 <div class="col-md-3">
                     <label for="bowling_style">Bowling Style:</label>
-                    <select name="bowling_style" class="form-control" required>
+                    <select name="bowling_style" class="form-control">
                         <option selected disabled>Select bowling style</option>
                         <option value="right_arm_off_break"
                             {{ $player->bowling_style == 'right_arm_off_break' ? 'selected' : '' }}>Right Arm Off Break
@@ -403,6 +425,9 @@
                             {{ $player->bowling_style == 'left_arm_wrist_spin' ? 'selected' : '' }}>Left Arm Wrist Spin
                         </option>
                     </select>
+                    @if ($errors->has('bowling_style'))
+                        <p class="text-danger">{{ $errors->first('bowling_style') }}</p>
+                    @endif
                 </div>
 
             </div>
@@ -415,15 +440,21 @@
                         <span id="current_count">{{ mb_strlen($player->description ?? '') }}</span>
                         <span id="maximum_count">/ 1000</span>
                     </div>
+                    @if ($errors->has('description'))
+                        <p class="text-danger">{{ $errors->first('description') }}</p>
+                    @endif
                 </div>
 
                 <div class="col-md-3">
                     <label for="status">Player Status:</label>
-                    <select name="status" class="form-control" required>
+                    <select name="status" class="form-control">
                         <option selected disabled>Select status</option>
                         <option value="active" {{ $player->status === 'active' ? 'selected' : '' }}>Active</option>
                         <option value="inactive" {{ $player->status === 'inactive' ? 'selected' : '' }}>Inactive</option>
                     </select>
+                    @if ($errors->has('status'))
+                        <p class="text-danger">{{ $errors->first('status') }}</p>
+                    @endif
                 </div>
             </div>
 
@@ -437,6 +468,9 @@
                         No Image
                     @endif
                     <input type="file" name="Picture" accept="image/*" class="mt-2 form-control-file">
+                    @if ($errors->has('Picture'))
+                        <p class="text-danger">{{ $errors->first('Picture') }}</p>
+                    @endif
                 </div>
             </div>
             <div style="margin-top: 1%;">

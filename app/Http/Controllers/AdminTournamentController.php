@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
+
 use App\Models\Team;
 use Illuminate\Http\Request;
 use App\Models\Tournament;
@@ -38,13 +39,14 @@ class AdminTournamentController extends Controller
     }
     public function view(Tournament $tournament)
     {
-        return view('admin.tournaments.view', compact('tournament'));
+        $tournamentWithTeams = Tournament::with('teams')->find($tournament->id);
+        return view('admin.tournaments.view', compact('tournament', 'tournamentWithTeams'));
     }
     public function edit(Tournament $tournament, TournamentMatch $match)
     {
         $allTeams = Team::all();
         $selectedTeamIds = $tournament->teams->pluck('id')->toArray();
-        return view('admin.tournaments.editTournament', compact('tournament', 'allTeams', 'match','selectedTeamIds'));
+        return view('admin.tournaments.editTournament', compact('tournament', 'allTeams', 'match', 'selectedTeamIds'));
     }
     public function update(Request $request, Tournament $tournament)
     {
@@ -74,6 +76,25 @@ class AdminTournamentController extends Controller
         $tournament->update($validatedData);
         return redirect()->route('admin.tournaments.search', ['tournament' => $tournament])
             ->with('success', 'Tournament updated successfully.');
+    }
+    public function destroy($id)
+    {
+        // Find the Players by ID
+        $tournament = Tournament::find($id);
+        // Check if the tournament exists
+        if ($tournament) {
+            if ($tournament->banner_image) {
+                // image will also delete from the public file
+                $imagePath = public_path('storage/' . $tournament->banner_image);
+                if (file_exists($imagePath)) {
+                    unlink($imagePath);
+                }
+            }
+            // Delete the tournament
+            $tournament->delete();
+            // Redirect back with success message
+            return redirect()->route('admin.tournaments.search')->with('success', 'tournament deleted successfully');
+        }
     }
     public function search(Request $request)
     {
@@ -108,5 +129,11 @@ class AdminTournamentController extends Controller
         $tournament->teams()->attach($selectedTeamIds);
         return redirect()->route('admin.tournaments.search')
             ->with('success', 'Teams added to the tournament successfully.');
+    }
+    public function teamDestroy(Request $request, Tournament $tournament)
+    {
+        $teamId = $request->input('team_id');
+        $tournament->teams()->detach($teamId);
+        return redirect()->back();
     }
 }

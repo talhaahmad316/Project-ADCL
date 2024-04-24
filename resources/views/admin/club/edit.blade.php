@@ -15,8 +15,10 @@
                 <div class="col-md-4">
                     <div class="form-group">
                         <label for="name">Club Name:</label>
-                        <input type="text" name="club_name" value="{{ $club->club_name ?? '' }}" class="form-control"
-                            required>
+                        <input type="text" name="club_name" value="{{ $club->club_name ?? '' }}" class="form-control">
+                        @if ($errors->has('club_name'))
+                            <p class="text-danger">{{ $errors->first('club_name') }}</p>
+                        @endif
                     </div>
                 </div>
                 <div class="col-md-4">
@@ -24,13 +26,17 @@
                         <label for="parent_club">Select Parent Club:</label>
                         <div class="form-group">
                             <select class="form-control" name="parent_club">
-                                <option value="">Select Parent Club</option>
-                                @foreach ($myclubs as $myclub)
-                                    <option value="{{ $myclub->my_club }}"
-                                        @if ($club->parent_club == $myclub->my_club) selected @endif>{{ $myclub->my_club }}</option>
+                                <option value="" selected disabled>Select Parent Club</option>
+                                @foreach ($clubs as $clubId => $clubName)
+                                    <option value="{{ $clubId }}" @if (old('parent_club', $club->parent_club) == $clubId) selected @endif>
+                                        {{ $clubName }}
+                                    </option>
                                 @endforeach
-                                <option value="None" @if ($club->parent_club == 'None') selected @endif>None</option>
+                                <option value="None" @if (old('parent_club') == 'None') selected @endif>None</option>
                             </select>
+                            @if ($errors->has('parent_club'))
+                                <p class="text-danger">{{ $errors->first('parent_club') }}</p>
+                            @endif
                         </div>
                     </div>
                 </div>
@@ -38,11 +44,14 @@
                     <div class="form-group">
                         <label for="country">Select Country:</label>
                         <select name="country" class="form-control" required>
-                            <option value="">Select Country</option>
+                            <option value="" selected disabled>Select Country</option>
                             <option value="United Arab Emirates" @if ($club->country == 'United Arab Emirates') selected @endif>United
                                 Arab Emirates</option>
                             <!-- Add other country options as needed -->
                         </select>
+                        @if ($errors->has('country'))
+                            <p class="text-danger">{{ $errors->first('country') }}</p>
+                        @endif
                     </div>
                 </div>
                 <div class="col-md-8">
@@ -53,6 +62,9 @@
                             <span id="current_count">{{ mb_strlen($club->description ?? '') }}</span>
                             <span id="maximum_count">/ 1000</span>
                         </div>
+                        @if ($errors->has('description'))
+                            <p class="text-danger">{{ $errors->first('description') }}</p>
+                        @endif
                     </div>
                 </div>
             </div>
@@ -67,7 +79,11 @@
                     No Image
                 @endif
                 <input type="file" name="club_logo" accept="image/*" class="mt-2 form-control-file">
+                @if ($errors->has('club_logo'))
+                    <p class="text-danger">{{ $errors->first('club_logo') }}</p>
+                @endif
             </div>
+
             <!-- Submit Button -->
             <div class="row">
                 <div class="col-md-12">

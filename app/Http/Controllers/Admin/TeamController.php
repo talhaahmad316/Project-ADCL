@@ -51,7 +51,8 @@ class TeamController extends Controller
     }
     public function view(Team $team)
     {
-        return view('admin.teams.view', compact('team'));
+        $teamWithPlayers = Team::with('players')->find($team->id);
+        return view('admin.teams.view', compact('team', 'teamWithPlayers'));
     }
     public function edit(Team $team)
     {
@@ -117,9 +118,15 @@ class TeamController extends Controller
             'selected_players.*' => 'exists:players,id', // Make sure the selected players exist in the 'players' table
         ]);
         // Attach selected players to the team
-        $team->players()->sync($request->input('selected_players'));
+        $team->players()->attach($request->input('selected_players'));
 
         return redirect()->back()->with('success', 'Players added to the team successfully');
+    }
+    public function playerDestroy(Request $request, Team $team)
+    {
+        $playerId = $request->input('player_id');
+        $team->players()->detach($playerId);
+        return redirect()->back()->with('success', 'Player removed from the team successfully.');
     }
     public function adclRedsPlayers()
     {
