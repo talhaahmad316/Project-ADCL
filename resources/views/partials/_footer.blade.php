@@ -2,14 +2,14 @@
     <div class="container">
        <div class="row">
 
-            <img src="images/footer logo.png" alt="" srcset="">
+            <img src="{{asset ('images/footer logo.png') }}" alt="" srcset="">
 
           <div class="col-md-4">
              <div class="full">
 
                 <div class="footer-widget">
                    <div class="footer-logo">
-                      <a href="{{ route('home')}}"><img src="ucl.png" alt="#"  /></a>
+                      <a href="{{ route('home')}}"><img src="{{asset ('ucl.png') }}" alt="#"  /></a>
                    </div>
                    <p style="font-family:-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;">UCL is a not just a cricket club, UCL is a society, a band of cricket loving brothers
                        who are Amateur cricketers & yet rubbing shoulders with the top sides around.</p>

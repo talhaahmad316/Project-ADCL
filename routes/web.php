@@ -64,6 +64,7 @@ Route::get('/adclBlues', [TeamController::class, 'adclBluesPlayers'])->name('adc
 Route::get('/adclGreys', [TeamController::class, 'adclGreysPlayers'])->name('adclGreys.players');
 Route::get('/adclBlacks', [TeamController::class, 'adclBlacksPlayers'])->name('adclBlacks.players');
 
+
 // club crud
 Route::get('/admin/club-create', [ClubController::class, 'create'])->name('club-create');
 Route::post('/admin/club', [ClubController::class, 'store'])->name('club-store');
@@ -111,6 +112,7 @@ Route::get('/admin/teams/{id}', [ClubController::class, 'teamDestroy'])->name('t
 // Route to handle the form submission
 Route::post('/teams/add-players/{team}', [TeamController::class, 'addPlayers'])->name('teams.addPlayers');
 Route::delete('/team/{team}/player', [TeamController::class, 'playerDestroy'])->name('team.player.destroy');
+Route::get('/player-detail/{id}', [TeamController::class, 'playerdetail'])->name('playerdetail');
 
 //Route for Tournaments
 Route::prefix('admin')->name('admin.')->group(function () {

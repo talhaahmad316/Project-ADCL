@@ -128,66 +128,10 @@ class TeamController extends Controller
         $team->players()->detach($playerId);
         return redirect()->back()->with('success', 'Player removed from the team successfully.');
     }
-    public function adclRedsPlayers()
+
+    public function playerdetail($id)
     {
-        // Assuming you have a pivot table named 'player_team' with 'team_id' and 'player_id' columns
-        $teamId = 1; // Replace '1' with the actual ID of the "ADCL REDS" team
-        // Retrieve players associated with the team and paginate the results
-        $players = Player::whereHas('teams', function ($query) use ($teamId) {
-            $query->where('team_id', $teamId);
-        })->orderBy('name')->paginate(16); // Adjust the number as needed
-        return view('adclTeams.adclReds', compact('players', 'teamId'));
-    }
-    public function adclGreensPlayers()
-    {
-        // Assuming you have a pivot table named 'player_team' with 'team_id' and 'player_id' columns
-        $teamId = 3; // Replace '3' with the actual ID of the "ADCL Greens" team
-        // Retrieve players associated with the team
-        $players = Player::whereHas('teams', function ($query) use ($teamId) {
-            $query->where('team_id', $teamId);
-        })->orderBy('name')->paginate(16);
-        ;
-        return view('adclTeams.adclGreens', compact('players', 'teamId'));
-    }
-    public function adclYellowsPlayers()
-    {
-        // Assuming you have a pivot table named 'player_team' with 'team_id' and 'player_id' columns
-        $teamId = 4; // Replace '3' with the actual ID of the "ADCL Greens" team
-        // Retrieve players associated with the team
-        $players = Player::whereHas('teams', function ($query) use ($teamId) {
-            $query->where('team_id', $teamId);
-        })->orderBy('name')->paginate(16);
-        ;
-        return view('adclTeams.adclYellows', compact('players', 'teamId'));
-    }
-    public function adclBluesPlayers()
-    {
-        // Assuming you have a pivot table named 'player_team' with 'team_id' and 'player_id' columns
-        $teamId = 2; // Replace '3' with the actual ID of the "ADCL Greens" team
-        // Retrieve players associated with the team
-        $players = Player::whereHas('teams', function ($query) use ($teamId) {
-            $query->where('team_id', $teamId);
-        })->orderBy('name')->paginate(16);
-        return view('adclTeams.adclBlues', compact('players', 'teamId'));
-    }
-    public function adclGreysPlayers()
-    {
-        // Assuming you have a pivot table named 'player_team' with 'team_id' and 'player_id' columns
-        $teamId = 5; // Replace '3' with the actual ID of the "ADCL Greens" team
-        // Retrieve players associated with the team
-        $players = Player::whereHas('teams', function ($query) use ($teamId) {
-            $query->where('team_id', $teamId);
-        })->orderBy('name')->paginate(16);
-        return view('adclTeams.adclGreys', compact('players', 'teamId'));
-    }
-    public function adclBlacksPlayers()
-    {
-        // Assuming you have a pivot table named 'player_team' with 'team_id' and 'player_id' columns
-        $teamId = 6; // Replace '6' with the actual ID of the "ADCL Blacks" team
-        // Retrieve players associated with the team and order them by their first name
-        $players = Player::whereHas('teams', function ($query) use ($teamId) {
-            $query->where('team_id', $teamId);
-        })->orderBy('name')->paginate(16);
-        return view('adclTeams.adclBlacks', compact('players', 'teamId'));
+        $team = Team::with('players')->findOrFail($id);
+        return view('ADCL.adcl2', compact('team'));
     }
 }
