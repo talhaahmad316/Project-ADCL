@@ -38,10 +38,16 @@
                    <h3 style="font-family:oswald;">Player Pool</h3>
                    <ul class="footer-menu">
                      <li>
-                        <a href="{{ route('adclReds.players') }}" style="font-family: Roboto; white-space: nowrap; display: block;">
+                        <a href="
+                        {{-- {{ route('adclReds.players') }} --}}
+                        " style="font-family: Roboto; white-space: nowrap; display: block;">
                           ABU DHABI CRICKET LADS</a></li>
-                      <li><a href="{{ route('adclBlues.players') }}" style="font-family:Roboto;">AL AIN CRICKET LADS </a></li>
-                      <li><a href="{{ route('adclGreens.players') }}" style="font-family:Roboto;">DUBAI CRICKET LADS</a></li>
+                      <li><a href="
+                        {{-- {{ route('adclBlues.players') }} --}}
+                        " style="font-family:Roboto;">AL AIN CRICKET LADS </a></li>
+                      <li><a href="
+                        {{-- {{ route('adclGreens.players') }} --}}
+                        " style="font-family:Roboto;">DUBAI CRICKET LADS</a></li>
                       {{-- <li><a href="{{ route('adclYellows.players') }}" style="font-family:Roboto;">ADCL Yellows</a></li>
                       <li><a href="{{ route('adclGreys.players') }}" style="font-family:Roboto;">ADCL Greys</a></li>
                       <li><a href="{{ route('adclBlacks.players') }}" style="font-family:Roboto;">ADCL Blacks</a></li> --}}

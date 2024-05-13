@@ -29,20 +29,7 @@
                                         @endif
                                     </div>
                                 </div>
-                                <div class="col-md-4">
-                                    <div class="form-group">
-                                        <label for="team">Teams</label>
-                                        <select name="team_id" class="form-control">
-                                            <option selected disabled>Select Team</option>
-                                            @foreach ($allTeams as $team)
-                                                <option value="{{ $team->id }}">{{ $team->name }}</option>
-                                            @endforeach
-                                        </select>
-                                        @if ($errors->has('team_id'))
-                                            <p class="text-danger">{{ $errors->first('team_id') }}</p>
-                                        @endif
-                                    </div>
-                                </div>
+                               
                                 <div class="col-md-4">
                                     <div class="form-group">
                                         <label for="matchNo">Match No</label>
@@ -112,6 +99,59 @@
                                 </div>
                             </div>
 
+                            <div class="form-row">
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label for="home_team">Home Team</label>
+                                        <select name="home_team" id="home_team" class="form-control">
+                                            <option selected disabled>Select Home Team</option>
+                                            @foreach ($allTeams as $team)
+                                                <option value="{{ $team->id }}">{{ $team->name }}</option>
+                                            @endforeach
+                                            <option value="other">Other</option>
+                                        </select>
+                                        @if ($errors->has('home_team'))
+                                            <p class="text-danger">{{ $errors->first('home_team') }}</p>
+                                        @endif
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label for="away_team">Away Team</label>
+                                        <select name="away_team" id="away_team" class="form-control">
+                                            <option selected disabled>Select Away Team</option>
+                                            @foreach ($allTeams as $team)
+                                                <option value="{{ $team->id }}">{{ $team->name }}</option>
+                                            @endforeach
+                                            <option value="other">Other</option>
+                                        </select>
+                                        @if ($errors->has('away_team'))
+                                            <p class="text-danger">{{ $errors->first('away_team') }}</p>
+                                        @endif
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div id="otherHomeTeamContainer" style="display: none;">
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label for="other_home_team">Other Home Team</label>
+                                        <input type="text" name="other_home_team" id="other_home_team" class="form-control">
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div id="otherAwayTeamContainer" style="display: none;">
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label for="other_away_team">Other Away Team</label>
+                                        <input type="text" name="other_away_team" id="other_away_team" class="form-control">
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            
+
                             <div class="col-md-6">
                                 <div class="form-group">
                                     <label for="image">Image</label>
@@ -157,4 +197,28 @@
             reader.readAsDataURL(file);
         }
     });
+</script>
+<script>
+ document.addEventListener('DOMContentLoaded', function() {
+    var homeTeamSelect = document.getElementById('home_team');
+    var awayTeamSelect = document.getElementById('away_team');
+    var otherHomeTeamContainer = document.getElementById('otherHomeTeamContainer');
+    var otherAwayTeamContainer = document.getElementById('otherAwayTeamContainer');
+
+    homeTeamSelect.addEventListener('change', function() {
+        if (this.value === 'other') {
+            otherHomeTeamContainer.style.display = 'block';
+        } else {
+            otherHomeTeamContainer.style.display = 'none';
+        }
+    });
+
+    awayTeamSelect.addEventListener('change', function() {
+        if (this.value === 'other') {
+            otherAwayTeamContainer.style.display = 'block';
+        } else {
+            otherAwayTeamContainer.style.display = 'none';
+        }
+    });
+});
 </script>

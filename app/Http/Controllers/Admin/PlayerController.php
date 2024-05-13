@@ -17,7 +17,6 @@ class PlayerController extends Controller
         $clubs = Club::all();
         return view('admin.players.create', get_defined_vars());
     }
-    // Method to store the player data in the database
     public function store(Request $request)
     {
         $request->validate([
@@ -30,9 +29,7 @@ class PlayerController extends Controller
         $data = $request->except('_token', 'Picture');
         if ($request->hasFile('Picture')) {
             $imageName = time() . '.' . $request->file('Picture')->getClientOriginalExtension();
-            // Move the uploaded image to the main public directory
             $request->file('Picture')->move(public_path(), $imageName);
-            // Save the image path to the database
             $data['picture'] = $imageName;
         }
         if ($request->has('club_name')) {
@@ -40,7 +37,6 @@ class PlayerController extends Controller
             $data['club_name'] = $clubName;
         }
         Player::create($data);
-        // Redirect back to the add player form with a success message
         return redirect()->route('players.search')->with('success', 'Player added successfully!');
     }
     // Method to show the search page for players
@@ -54,7 +50,6 @@ class PlayerController extends Controller
     {
         return view('admin.players.view', compact('player'));
     }
-
     // Method to show the edit page for a player
     public function edit($id)
     {
@@ -63,58 +58,39 @@ class PlayerController extends Controller
         $countries = Player::distinct()->pluck('nationality')->toArray();
         return view('admin.players.edit', compact('clubs', 'player', 'countries'));
     }
-
-
     // Method to update the player data in the database
     public function update(Request $request, $id)
     {
-        // Retrieve the player record to update
         $player = Player::findOrFail($id);
-        // Extract the data from the request, excluding CSRF token and Picture
         $data = $request->except('_token', '_method', 'Picture');
-        // Check if a new Picture is uploaded
         if ($request->hasFile('Picture')) {
-            // Get the old image path
             $oldImagePath = public_path($player->picture);
-            // Move the new uploaded image to the main public directory
             $imageName = time() . '.' . $request->file('Picture')->getClientOriginalExtension();
-            // Move the uploaded image to the main public directory
             $request->file('Picture')->move(public_path(), $imageName);
-            // Update the picture path in the data array
             $data['picture'] = $imageName;
-            // Delete old picture
             if (file_exists($oldImagePath)) {
                 unlink($oldImagePath);
             }
         }
-        // Update the player record with the new data
         $player->update($data);
-        // Redirect back to the page with a success message
         return redirect()->route('players.search', ['player' => $id])->with('success', 'Player details updated successfully!');
     }
     public function showAllPlayers()
     {
-        $players = Player::orderBy('name')->paginate(16); // Adjust the number per page as needed
+        $players = Player::orderBy('name')->paginate(10);
         return view('ADCL.adclAll', compact('players'));
     }
     public function destroy($id)
     {
-        // Find the Players by ID
         $player = Player::find($id);
-        // Check if the player exists
         if ($player) {
-            // Get the old image path
             $oldImagePath = public_path($player->picture);
-            // Delete the player
             $player->delete();
-            // Delete the player's image from the public folder if it exists
             if (file_exists($oldImagePath)) {
                 unlink($oldImagePath);
             }
-            // Redirect back with success message
             return redirect()->route('players.search')->with('success', 'player deleted successfully');
         } else {
-            // If the player doesn't exist, redirect back with an error message
             return redirect()->route('players.search')->with('error', 'player not found');
         }
     }

@@ -21,7 +21,6 @@ class TeamController extends Controller
     }
     public function store(Request $request)
     {
-        // Validate the form data
         $request->validate([
             'name' => 'required|string',
             'logo' => 'required|image|mimes:jpeg,png,jpg,gif',
@@ -29,7 +28,6 @@ class TeamController extends Controller
             'status' => 'required|in:active,inactive',
             'description' => 'required|string',
         ]);
-        // Upload the logo and store team data
         $data = $request->except('_token');
         if ($request->hasFile('logo')) {
             $imageName = time() . '.' . $request->file('logo')->getClientOriginalExtension();
@@ -62,7 +60,6 @@ class TeamController extends Controller
     }
     public function update(Request $request, $id)
     {
-        // Validate the form data
         $request->validate([
             'name' => 'required|string',
             'logo' => 'image|mimes:jpeg,png,jpg,gif',
@@ -70,26 +67,20 @@ class TeamController extends Controller
             'status' => 'required|in:active,inactive',
             'description' => 'required|string',
         ]);
-        // Find the team by ID
         $team = Team::findOrFail($id);
-        // Update the team data
         $team->name = $request->input('name');
         $team->club = $request->input('club');
         $team->status = $request->input('status');
         $team->description = $request->input('description');
-        // Handle logo update if provided
         if ($request->hasFile('logo')) {
-            // Get the old image path
             $oldImagePath = public_path($team->logo);
             $imageName = time() . '.' . $request->file('logo')->getClientOriginalExtension();
             $request->file('logo')->move(public_path(), $imageName);
             $team->logo = $imageName;
-            // Delete old picture
             if (file_exists($oldImagePath)) {
                 unlink($oldImagePath);
             }
         }
-        // Save the updated team data
         $team->save();
         return redirect()->route('admin.teams.search')->with('success', 'Team updated successfully!');
     }
@@ -98,10 +89,8 @@ class TeamController extends Controller
     {
         try {
             $team = Team::findOrFail($id);
-            // Get the image path before deleting the team
             $imagePath = public_path($team->logo);
             $team->delete();
-            // this if loop is not working yet
             if (File::exists($imagePath)) {
                 File::delete($imagePath);
             }
@@ -112,12 +101,10 @@ class TeamController extends Controller
     }
     public function addPlayers(Request $request, Team $team)
     {
-        // Validate the request data
         $request->validate([
             'selected_players' => 'required|array',
-            'selected_players.*' => 'exists:players,id', // Make sure the selected players exist in the 'players' table
+            'selected_players.*' => 'exists:players,id',
         ]);
-        // Attach selected players to the team
         $team->players()->attach($request->input('selected_players'));
 
         return redirect()->back()->with('success', 'Players added to the team successfully');
@@ -132,6 +119,6 @@ class TeamController extends Controller
     public function playerdetail($id)
     {
         $team = Team::with('players')->findOrFail($id);
-        return view('ADCL.adcl2', compact('team'));
+        return view('ADCL.adclPlayersInTeam', compact('team'));
     }
 }

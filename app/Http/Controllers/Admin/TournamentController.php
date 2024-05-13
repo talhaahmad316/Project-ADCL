@@ -42,5 +42,4 @@ class TournamentController extends Controller
         ]);
         return redirect()->route('admin.tournaments.search')->with('success', 'Tournament added successfully.');
     }
-    
 }

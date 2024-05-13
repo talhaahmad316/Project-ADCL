@@ -19,7 +19,7 @@ class CreateTournamentMatchesTable extends Migration
             $table->time('startTime');
             $table->time('finishTime');
             $table->time('reportingTime');
-            $table->string('image');
+            $table->string('image')->nullable();
             $table->timestamps();
         });
     }

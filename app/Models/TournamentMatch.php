@@ -11,7 +11,6 @@ use Illuminate\Database\Eloquent\Model;
 class TournamentMatch extends Model
 {
     use HasFactory;
-
     protected $fillable = [
         'matchName',
         'team_id',
@@ -24,8 +23,6 @@ class TournamentMatch extends Model
         'reportingTime',
         'image',
     ];
-
-    // Define the relationship to the Team model
     public function team()
     {
         return $this->belongsTo(Team::class);

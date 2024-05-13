@@ -60,9 +60,7 @@ class ClubController extends Controller
         $club->description = $request->description;
         if ($request->hasFile('club_logo')) {
             $imageName = time() . '.' . $request->file('club_logo')->getClientOriginalExtension();
-            // Move the uploaded image to the main public directory
             $request->file('club_logo')->move(public_path(), $imageName);
-            // Save the image path to the database
             $club->club_logo = $imageName;
         }
         $club->save();
@@ -100,18 +98,14 @@ class ClubController extends Controller
         ]);
         $club = Club::find($request->id);
         if ($request->hasFile('club_logo')) {
-            // Delete the existing image if it exists in the public directory
             if ($club->club_logo) {
                 $existingImagePath = public_path($club->club_logo);
                 if (File::exists($existingImagePath)) {
                     File::delete($existingImagePath);
                 }
             }
-            // Generate a new filename for the uploaded image
             $imageName = time() . '.' . $request->file('club_logo')->getClientOriginalExtension();
-            // Move the uploaded image to the main public directory
             $request->file('club_logo')->move(public_path(), $imageName);
-            // Update the image path in the database to reflect the new file location
             $club->club_logo = $imageName;
         }
         $club->club_name = $request->club_name;
@@ -126,16 +120,11 @@ class ClubController extends Controller
      */
     public function destroy($id)
     {
-        // Find the club by ID
         $club = Club::find($id);
-        // Check if the club exists
         if ($club) {
-            // Delete the club
             $club->delete();
-            // Redirect back with success message
             return redirect()->route('club-search')->with('success', 'Club deleted successfully');
         } else {
-            // If the club doesn't exist, redirect back with an error message
             return redirect()->route('club-search')->with('error', 'Club not found');
         }
     }

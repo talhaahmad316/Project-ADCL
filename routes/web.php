@@ -64,7 +64,6 @@ Route::get('/adclBlues', [TeamController::class, 'adclBluesPlayers'])->name('adc
 Route::get('/adclGreys', [TeamController::class, 'adclGreysPlayers'])->name('adclGreys.players');
 Route::get('/adclBlacks', [TeamController::class, 'adclBlacksPlayers'])->name('adclBlacks.players');
 
-
 // club crud
 Route::get('/admin/club-create', [ClubController::class, 'create'])->name('club-create');
 Route::post('/admin/club', [ClubController::class, 'store'])->name('club-store');

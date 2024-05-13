@@ -21,7 +21,7 @@ class CreatePlayersTable extends Migration
             $table->string('club_name');
             $table->string('nationality');
             $table->enum('gender', ['male', 'female', 'others']);
-            $table->integer('height');
+            $table->string('height');
             $table->enum('playing_role', ['batsman', 'bowler', 'all_rounder', 'wicketkeeper_batsman', 'coach', 'umpire', 'manager', 'administrator']);
             $table->enum('batting_style', ['right_hand', 'left_hand']);
             $table->enum('bowling_style', ['right_arm_off_break', 'right_arm_leg_break', 'left_arm_chinaman', 'slow_right_arm_orthodox', 'slow_left_arm_orthodox', 'right_arm_medium_fast', 'right_arm_fast', 'left_arm_medium_fast', 'left_arm_fast', 'left_arm_wrist_spin']);

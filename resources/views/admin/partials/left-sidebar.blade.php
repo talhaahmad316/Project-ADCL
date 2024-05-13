@@ -48,6 +48,33 @@
 
 
                   <!-- Main Nav Item -->
+                   <!-- Tournaments -->
+                   <li class="nav-item">
+                    <a href="#" class="nav-link" id="tournamentInfoBtn">
+                        <i class="nav-icon fas fa-trophy"></i>
+                        <p style="font-family: oswald; font-size:18px;">
+                            Tournaments
+                        </p>
+                        <i class="fas fa-arrow-circle-down" style="margin-left: 42px;"></i>
+                    </a>
+                </li>
+                <!-- Links to Search and Add Tournaments Pages (Initially Hidden) -->
+                <li class="nav-item" id="searchTournamentBtnContainer" style="display: none;">
+                    <a href="{{ route('admin.tournaments.search') }}" class="nav-link">
+                        <i class="nav-icon fas fa-search"></i>
+                        <p style="font-family: oswald; font-size:16px;">
+                            Search Tournament
+                        </p>
+                    </a>
+                </li>
+                <li class="nav-item" id="addTournamentBtnContainer" style="display: none;">
+                    <a href="{{ route('admin.tournaments.create') }}" class="nav-link">
+                        <i class="nav-icon fas fa-plus"></i>
+                        <p style="font-family: oswald; font-size:16px;">
+                            Add Tournament
+                        </p>
+                    </a>
+                </li>
                   {{-- Team Info --}}
                   <li class="nav-item">
                       <a href="#" class="nav-link" id="teamInfoBtn">
@@ -76,33 +103,7 @@
                       </a>
                   </li>
 
-                  <!-- Tournaments -->
-                  <li class="nav-item">
-                      <a href="#" class="nav-link" id="tournamentInfoBtn">
-                          <i class="nav-icon fas fa-trophy"></i>
-                          <p style="font-family: oswald; font-size:18px;">
-                              Tournaments
-                          </p>
-                          <i class="fas fa-arrow-circle-down" style="margin-left: 42px;"></i>
-                      </a>
-                  </li>
-                  <!-- Links to Search and Add Tournaments Pages (Initially Hidden) -->
-                  <li class="nav-item" id="searchTournamentBtnContainer" style="display: none;">
-                      <a href="{{ route('admin.tournaments.search') }}" class="nav-link">
-                          <i class="nav-icon fas fa-search"></i>
-                          <p style="font-family: oswald; font-size:16px;">
-                              Search Tournament
-                          </p>
-                      </a>
-                  </li>
-                  <li class="nav-item" id="addTournamentBtnContainer" style="display: none;">
-                      <a href="{{ route('admin.tournaments.create') }}" class="nav-link">
-                          <i class="nav-icon fas fa-plus"></i>
-                          <p style="font-family: oswald; font-size:16px;">
-                              Add Tournament
-                          </p>
-                      </a>
-                  </li>
+                 
 
                   {{-- Playes Info --}}
                   <ul class="nav">

@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Apr 24, 2024 at 04:41 AM
+-- Generation Time: Apr 26, 2024 at 08:49 PM
 -- Server version: 10.4.28-MariaDB
 -- PHP Version: 8.2.4
 
@@ -151,7 +151,7 @@ CREATE TABLE `players` (
   `club_name` varchar(255) NOT NULL,
   `nationality` varchar(255) NOT NULL,
   `gender` enum('male','female','others') NOT NULL,
-  `height` int(11) NOT NULL,
+  `height` varchar(255) NOT NULL,
   `playing_role` enum('batsman','bowler','all_rounder','wicketkeeper_batsman','coach','umpire','manager','administrator') NOT NULL,
   `batting_style` enum('right_hand','left_hand') NOT NULL,
   `bowling_style` enum('right_arm_off_break','right_arm_leg_break','left_arm_chinaman','slow_right_arm_orthodox','slow_left_arm_orthodox','right_arm_medium_fast','right_arm_fast','left_arm_medium_fast','left_arm_fast','left_arm_wrist_spin') NOT NULL,
@@ -166,8 +166,8 @@ CREATE TABLE `players` (
 --
 
 INSERT INTO `players` (`id`, `picture`, `name`, `email`, `club_name`, `nationality`, `gender`, `height`, `playing_role`, `batting_style`, `bowling_style`, `status`, `description`, `created_at`, `updated_at`) VALUES
-(7, '1713417581.jpeg', 'Ali Rathore', 'alirathore@gmial.com', 'United Cricket Lads', 'United Arab Emirates', 'male', 58, 'batsman', 'right_hand', 'right_arm_fast', 'active', 'none', '2024-04-18 00:19:42', '2024-04-18 00:19:42'),
-(8, '1713417665.png', 'Talha Ahmad', 'talhaahmad316@gmail.com', 'United Cricket Lads', 'United Arab Emirates', 'male', 58, 'batsman', 'left_hand', 'right_arm_fast', 'active', 'none', '2024-04-18 00:21:06', '2024-04-18 00:21:06');
+(7, '1713417581.jpeg', 'Ali Rathore', 'alirathore@gmial.com', 'United Cricket Lads', 'United Arab Emirates', 'male', '58', 'batsman', 'right_hand', 'right_arm_fast', 'active', 'none', '2024-04-18 00:19:42', '2024-04-18 00:19:42'),
+(8, '1713417665.png', 'Talha Ahmad', 'talhaahmad316@gmail.com', 'United Cricket Lads', 'United Arab Emirates', 'male', '58', 'batsman', 'left_hand', 'right_arm_fast', 'active', 'none', '2024-04-18 00:21:06', '2024-04-18 00:21:06');
 
 -- --------------------------------------------------------
 
@@ -192,9 +192,7 @@ INSERT INTO `player_team` (`id`, `player_id`, `team_id`, `created_at`, `updated_
 (2, 4, 1, NULL, NULL),
 (3, 3, 1, NULL, NULL),
 (4, 7, 10, NULL, NULL),
-(5, 8, 10, NULL, NULL),
-(6, 7, 11, NULL, NULL),
-(7, 8, 11, NULL, NULL);
+(8, 8, 10, NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -242,8 +240,8 @@ CREATE TABLE `team_tournament` (
 INSERT INTO `team_tournament` (`id`, `team_id`, `tournament_id`, `created_at`, `updated_at`) VALUES
 (1, 1, 23, NULL, NULL),
 (2, 2, 23, NULL, NULL),
-(3, 10, 28, NULL, NULL),
-(4, 11, 28, NULL, NULL);
+(7, 10, 28, NULL, NULL),
+(8, 11, 28, NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -449,7 +447,7 @@ ALTER TABLE `players`
 -- AUTO_INCREMENT for table `player_team`
 --
 ALTER TABLE `player_team`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- AUTO_INCREMENT for table `teams`
@@ -461,7 +459,7 @@ ALTER TABLE `teams`
 -- AUTO_INCREMENT for table `team_tournament`
 --
 ALTER TABLE `team_tournament`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- AUTO_INCREMENT for table `tournaments`
