@@ -39,6 +39,20 @@
                                         @endif
                                     </div>
                                 </div>
+                                <div class="col-md-4">
+                                    <div class="form-group">
+                                        <label for="tournament_id">Tournament</label>
+                                        <select name="tournament_id" id="tournament_id" class="form-control">
+                                            <option selected disabled>Select Tournament</option>
+                                            @foreach ($tournaments as $id => $tournamentname)
+                                                <option value="{{ $id }}">{{ $tournamentname }}</option>
+                                            @endforeach
+                                        </select>
+                                        @if ($errors->has('tournament'))
+                                            <p class="text-danger">{{ $errors->first('tournament') }}</p>
+                                        @endif
+                                    </div>
+                            </div>
                             </div>
                             <div class="form-row">
                                 <div class="col-md-4">
@@ -106,7 +120,7 @@
                                         <select name="home_team" id="home_team" class="form-control">
                                             <option selected disabled>Select Home Team</option>
                                             @foreach ($allTeams as $team)
-                                                <option value="{{ $team->id }}">{{ $team->name }}</option>
+                                                <option value="{{ $team->name }}">{{ $team->name }}</option>
                                             @endforeach
                                             <option value="other">Other</option>
                                         </select>
@@ -121,7 +135,7 @@
                                         <select name="away_team" id="away_team" class="form-control">
                                             <option selected disabled>Select Away Team</option>
                                             @foreach ($allTeams as $team)
-                                                <option value="{{ $team->id }}">{{ $team->name }}</option>
+                                                <option value="{{ $team->name }}">{{ $team->name }}</option>
                                             @endforeach
                                             <option value="other">Other</option>
                                         </select>
