@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Apr 26, 2024 at 08:49 PM
+-- Generation Time: May 15, 2024 at 06:34 PM
 -- Server version: 10.4.28-MariaDB
 -- PHP Version: 8.2.4
 
@@ -67,6 +67,38 @@ CREATE TABLE `failed_jobs` (
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `matches`
+--
+
+CREATE TABLE `matches` (
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `matchName` varchar(255) NOT NULL,
+  `home_team` varchar(255) NOT NULL,
+  `away_team` varchar(255) NOT NULL,
+  `tournament_id` int(11) NOT NULL,
+  `matchNo` int(11) NOT NULL,
+  `matchDate` date NOT NULL,
+  `format` varchar(255) NOT NULL,
+  `week` int(11) NOT NULL,
+  `startTime` time NOT NULL,
+  `finishTime` time NOT NULL,
+  `reportingTime` time NOT NULL,
+  `image` varchar(255) NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `matches`
+--
+
+INSERT INTO `matches` (`id`, `matchName`, `home_team`, `away_team`, `tournament_id`, `matchNo`, `matchDate`, `format`, `week`, `startTime`, `finishTime`, `reportingTime`, `image`, `created_at`, `updated_at`) VALUES
+(2, 'Match 2', 'ADCL Reds', 'ADCL Blues', 28, 2, '2024-05-16', 'T20', 1, '21:31:00', '23:33:00', '12:01:00', 'images/T5msWL9Y8XpHycSxCbSggKv7pBXDdi3V5OnchmSK.jpg', '2024-05-14 13:30:12', '2024-05-15 11:10:11'),
+(3, 'Match 1', 'ADCL Reds', 'Lahore Qalandar', 28, 1, '2024-05-16', 'T20', 1, '07:02:00', '21:02:00', '21:32:00', 'matches/UDrwPlgqOLqxRybrC4HvHvrs3BHFSa1cBILE67A2.jpg', '2024-05-15 11:04:42', '2024-05-15 11:04:42');
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `migrations`
 --
 
@@ -92,7 +124,8 @@ INSERT INTO `migrations` (`id`, `migration`, `batch`) VALUES
 (40, '2023_09_01_053613_create_teams_table', 1),
 (41, '2023_09_02_083206_create_player_team_table', 1),
 (42, '2024_01_31_174034_create_clubs_table', 1),
-(43, '2024_02_20_162450_create_my_clubs_table', 1);
+(43, '2024_02_20_162450_create_my_clubs_table', 1),
+(44, '2024_05_14_052655_create_matches_table', 2);
 
 -- --------------------------------------------------------
 
@@ -167,7 +200,8 @@ CREATE TABLE `players` (
 
 INSERT INTO `players` (`id`, `picture`, `name`, `email`, `club_name`, `nationality`, `gender`, `height`, `playing_role`, `batting_style`, `bowling_style`, `status`, `description`, `created_at`, `updated_at`) VALUES
 (7, '1713417581.jpeg', 'Ali Rathore', 'alirathore@gmial.com', 'United Cricket Lads', 'United Arab Emirates', 'male', '58', 'batsman', 'right_hand', 'right_arm_fast', 'active', 'none', '2024-04-18 00:19:42', '2024-04-18 00:19:42'),
-(8, '1713417665.png', 'Talha Ahmad', 'talhaahmad316@gmail.com', 'United Cricket Lads', 'United Arab Emirates', 'male', '58', 'batsman', 'left_hand', 'right_arm_fast', 'active', 'none', '2024-04-18 00:21:06', '2024-04-18 00:21:06');
+(8, '1713417665.png', 'Talha Ahmad', 'talhaahmad316@gmail.com', 'United Cricket Lads', 'United Arab Emirates', 'male', '58', 'batsman', 'left_hand', 'right_arm_fast', 'active', 'none', '2024-04-18 00:21:06', '2024-04-18 00:21:06'),
+(9, '1714557387.jpg', 'Babar Azam', 'babarazam56@gmail.com', 'United Cricket Lads', 'Pakistan', 'male', '5ft 8 inches', 'batsman', 'right_hand', 'right_arm_off_break', 'active', 'C', '2024-04-30 13:27:47', '2024-05-01 04:56:49');
 
 -- --------------------------------------------------------
 
@@ -240,8 +274,7 @@ CREATE TABLE `team_tournament` (
 INSERT INTO `team_tournament` (`id`, `team_id`, `tournament_id`, `created_at`, `updated_at`) VALUES
 (1, 1, 23, NULL, NULL),
 (2, 2, 23, NULL, NULL),
-(7, 10, 28, NULL, NULL),
-(8, 11, 28, NULL, NULL);
+(7, 10, 28, NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -278,7 +311,7 @@ INSERT INTO `tournaments` (`id`, `tournamentname`, `tournamentLocation`, `tourna
 CREATE TABLE `tournament_matches` (
   `id` bigint(20) UNSIGNED NOT NULL,
   `matchName` varchar(255) NOT NULL,
-  `team_id` int(11) NOT NULL,
+  `team_id` varchar(255) NOT NULL,
   `matchNo` int(11) NOT NULL,
   `matchDate` date NOT NULL,
   `format` varchar(255) NOT NULL,
@@ -286,10 +319,18 @@ CREATE TABLE `tournament_matches` (
   `startTime` time NOT NULL,
   `finishTime` time NOT NULL,
   `reportingTime` time NOT NULL,
-  `image` varchar(255) NOT NULL,
+  `image` varchar(255) DEFAULT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `tournament_matches`
+--
+
+INSERT INTO `tournament_matches` (`id`, `matchName`, `team_id`, `matchNo`, `matchDate`, `format`, `week`, `startTime`, `finishTime`, `reportingTime`, `image`, `created_at`, `updated_at`) VALUES
+(1, 'Russell Franks', '10', 58, '2013-02-06', 'Occaecat quos quasi', 34, '15:56:00', '03:45:00', '04:38:00', 'images/n4ZqyvAzQbnxXe4Lzi56pAxESTocSBBbvCt8qU7W.jpg', '2024-05-05 02:02:35', '2024-05-05 02:02:35'),
+(2, 'Phelan Farmer', '10', 94, '2016-02-26', 'Assumenda reiciendis', 100, '20:58:00', '03:14:00', '15:22:00', NULL, '2024-05-05 02:08:27', '2024-05-05 02:08:27');
 
 -- --------------------------------------------------------
 
@@ -333,6 +374,12 @@ ALTER TABLE `clubs`
 ALTER TABLE `failed_jobs`
   ADD PRIMARY KEY (`id`),
   ADD UNIQUE KEY `failed_jobs_uuid_unique` (`uuid`);
+
+--
+-- Indexes for table `matches`
+--
+ALTER TABLE `matches`
+  ADD PRIMARY KEY (`id`);
 
 --
 -- Indexes for table `migrations`
@@ -420,10 +467,16 @@ ALTER TABLE `failed_jobs`
   MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
 
 --
+-- AUTO_INCREMENT for table `matches`
+--
+ALTER TABLE `matches`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+
+--
 -- AUTO_INCREMENT for table `migrations`
 --
 ALTER TABLE `migrations`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=44;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=45;
 
 --
 -- AUTO_INCREMENT for table `my_clubs`
@@ -441,7 +494,7 @@ ALTER TABLE `personal_access_tokens`
 -- AUTO_INCREMENT for table `players`
 --
 ALTER TABLE `players`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
 -- AUTO_INCREMENT for table `player_team`
@@ -471,7 +524,7 @@ ALTER TABLE `tournaments`
 -- AUTO_INCREMENT for table `tournament_matches`
 --
 ALTER TABLE `tournament_matches`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `users`

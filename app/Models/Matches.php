@@ -26,8 +26,8 @@ class Matches extends Model
     {
         return $this->belongsTo(Team::class);
     }
-    public function touranment()
+    public function tournament()
     {
-        return $this->belongsTo(Tournament::class);
+        return $this->belongsTo(Tournament::class, 'tournament_id');
     }
 }

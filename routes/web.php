@@ -133,9 +133,14 @@ Route::post('/admin/tournaments/{tournament}/add-teams', [AdminTournamentControl
 //matches
 Route::get('/admin/matches/add', [TournamentMatchController::class, 'create'])->name('admin.matches.create');
 Route::post('/admin/matches/store', [TournamentMatchController::class, 'store'])->name('admin.matches.store');
+Route::get('/admin/matches/search', [TournamentMatchController::class, 'index'])->name('admin.matches.search');
+Route::delete('/admin/matches/destroy/{id}', [TournamentMatchController::class, 'destroy'])->name('admin.matches.destroy');
+Route::get('/admin/matches/edit/{id}', [TournamentMatchController::class, 'edit'])->name('admin.matches.edit');
+Route::get('/admin/matches/update/{id}', [TournamentMatchController::class, 'update'])->name('admin.matches.update');
+Route::get('/admin/matches/view/{id}', [TournamentMatchController::class, 'view'])->name('admin.matches.view');
 
-Route::get('/admin/matches/{match}/edit', [TournamentMatchController::class, 'edit'])->name('admin.matches.edit');
-Route::put('/admin/matches/{match}', [TournamentMatchController::class, 'update'])->name('admin.matches.update');
-Route::delete('/admin/matches/{id}', [TournamentMatchController::class, 'store'])->name('admin.matches.destroy');
+// Route::get('/admin/matches/{match}/edit', [TournamentMatchController::class, 'edit'])->name('admin.matches.edit');
+// Route::put('/admin/matches/{match}', [TournamentMatchController::class, 'update'])->name('admin.matches.update');
+// Route::delete('/admin/matches/{id}', [TournamentMatchController::class, 'store'])->name('admin.matches.destroy');
 Route::delete('/admin/teams/{id}', 'TeamController@destroy')->name('admin.teams.destroy');
 Route::delete('/admin/tournaments/{id}', 'TournamentController@destroy')->name('admin.tournaments.destroy');

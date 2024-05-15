@@ -3,15 +3,16 @@
 @section('body')
     <div class="container-fluid"
         style="margin-left: -20px; width:102.6%; font-family: oswald; font-size:18px; background-color:white;">
-        
+
         <div class="row justify-content-center">
             <div class="col-md-12">
                 <div class="card">
                     <div class="card-header" style="font-size: 28px; font-weight:bold;">
-                        ADD Match
+                        Edit Match
                     </div>
                     <div class="col-md-6 " style="font-family: oswald; margin-left: 93%; font-size:18px;">
-                        <a href="{{ route('admin.matches.search') }}" style="margin-top:;margin-left: -189%" class="btn btn-success">Search Match</a>
+                        <a href="{{ route('admin.matches.search') }}" style="margin-top:;margin-left: -189%"
+                            class="btn btn-primary">Back</a>
                     </div>
                     <div class="card-body">
                         @if (session('success'))
@@ -19,24 +20,27 @@
                                 {{ session('success') }}
                             </div>
                         @endif
-                        <form action="{{ route('admin.matches.store') }}" method="POST" enctype="multipart/form-data">
+                        <form action="{{ route('admin.matches.update', $match->id) }}" method="POST"
+                            enctype="multipart/form-data">
                             @csrf
-
+                            @method('PUT')
                             <div class="form-row">
                                 <div class="col-md-4">
                                     <div class="form-group">
                                         <label for="matchName">Match Name</label>
-                                        <input type="text" name="matchName" class="form-control">
+                                        <input type="text" name="matchName" class="form-control"
+                                            value="{{ $match->matchName }}">
                                         @if ($errors->has('matchName'))
                                             <p class="text-danger">{{ $errors->first('matchName') }}</p>
                                         @endif
                                     </div>
                                 </div>
-                               
+
                                 <div class="col-md-4">
                                     <div class="form-group">
                                         <label for="matchNo">Match No</label>
-                                        <input type="number" name="matchNo" class="form-control">
+                                        <input type="number" name="matchNo" class="form-control"
+                                            value="{{ $match->matchNo }}">
                                         @if ($errors->has('matchNo'))
                                             <p class="text-danger">{{ $errors->first('matchNo') }}</p>
                                         @endif
@@ -48,20 +52,22 @@
                                         <select name="tournament_id" id="tournament_id" class="form-control">
                                             <option selected disabled>Select Tournament</option>
                                             @foreach ($tournaments as $id => $tournamentname)
-                                                <option value="{{ $id }}">{{ $tournamentname }}</option>
+                                                <option value="{{ $id }}"
+                                                    {{ $id == $selectedTournamentId ? 'selected' : '' }}>
+                                                    {{ $tournamentname }}</option>
                                             @endforeach
                                         </select>
                                         @if ($errors->has('tournament'))
                                             <p class="text-danger">{{ $errors->first('tournament') }}</p>
                                         @endif
                                     </div>
-                            </div>
+                                </div>
                             </div>
                             <div class="form-row">
                                 <div class="col-md-4">
                                     <div class="form-group">
                                         <label for="matchDate">Date</label>
-                                        <input type="date" name="matchDate" class="form-control">
+                                        <input type="date" name="matchDate" class="form-control" value="{{ $match->matchDate }}">
                                         @if ($errors->has('matchDate'))
                                             <p class="text-danger">{{ $errors->first('matchDate') }}</p>
                                         @endif
@@ -70,7 +76,8 @@
                                 <div class="col-md-4">
                                     <div class="form-group">
                                         <label for="format">Format</label>
-                                        <input type="text" name="format" class="form-control">
+                                        <input type="text" name="format" class="form-control"
+                                            value="{{ $match->format }}">
                                         @if ($errors->has('format'))
                                             <p class="text-danger">{{ $errors->first('format') }}</p>
                                         @endif
@@ -79,7 +86,8 @@
                                 <div class="col-md-4">
                                     <div class="form-group">
                                         <label for="week">Week</label>
-                                        <input type="number" name="week" class="form-control">
+                                        <input type="number" name="week" class="form-control"
+                                            value="{{ $match->week }}">
                                         @if ($errors->has('week'))
                                             <p class="text-danger">{{ $errors->first('week') }}</p>
                                         @endif
@@ -90,7 +98,7 @@
                                 <div class="col-md-4">
                                     <div class="form-group">
                                         <label for="startTime">Start Time</label>
-                                        <input type="time" name="startTime" class="form-control">
+                                        <input type="time" name="startTime" class="form-control" value="{{ old('startTime', $match->startTime) }}">
                                         @if ($errors->has('startTime'))
                                             <p class="text-danger">{{ $errors->first('startTime') }}</p>
                                         @endif
@@ -99,7 +107,7 @@
                                 <div class="col-md-4">
                                     <div class="form-group">
                                         <label for="finishTime">Finish Time</label>
-                                        <input type="time" name="finishTime" class="form-control">
+                                        <input type="time" name="finishTime" class="form-control" value="{{ old('finishTime', $match->finishTime) }}">
                                         @if ($errors->has('finishTime'))
                                             <p class="text-danger">{{ $errors->first('finishTime') }}</p>
                                         @endif
@@ -108,7 +116,7 @@
                                 <div class="col-md-4">
                                     <div class="form-group">
                                         <label for="reportingTime">Reporting Time</label>
-                                        <input type="time" name="reportingTime" class="form-control">
+                                        <input type="time" name="reportingTime" class="form-control" value="{{ old('reportingTime', $match->reportingTime) }}">
                                         @if ($errors->has('reportingTime'))
                                             <p class="text-danger">{{ $errors->first('reportingTime') }}</p>
                                         @endif
@@ -148,27 +156,26 @@
                                     </div>
                                 </div>
                             </div>
-                            
+
                             <div id="otherHomeTeamContainer" style="display: none;">
                                 <div class="col-md-6">
                                     <div class="form-group">
                                         <label for="other_home_team">Other Home Team</label>
-                                        <input type="text" name="other_home_team" id="other_home_team" class="form-control">
+                                        <input type="text" name="other_home_team" id="other_home_team"
+                                            class="form-control">
                                     </div>
                                 </div>
                             </div>
-                            
+
                             <div id="otherAwayTeamContainer" style="display: none;">
                                 <div class="col-md-6">
                                     <div class="form-group">
                                         <label for="other_away_team">Other Away Team</label>
-                                        <input type="text" name="other_away_team" id="other_away_team" class="form-control">
+                                        <input type="text" name="other_away_team" id="other_away_team"
+                                            class="form-control">
                                     </div>
                                 </div>
                             </div>
-                            
-                            
-
                             <div class="col-md-6">
                                 <div class="form-group">
                                     <label for="image">Image</label>
@@ -216,26 +223,26 @@
     });
 </script>
 <script>
- document.addEventListener('DOMContentLoaded', function() {
-    var homeTeamSelect = document.getElementById('home_team');
-    var awayTeamSelect = document.getElementById('away_team');
-    var otherHomeTeamContainer = document.getElementById('otherHomeTeamContainer');
-    var otherAwayTeamContainer = document.getElementById('otherAwayTeamContainer');
+    document.addEventListener('DOMContentLoaded', function() {
+        var homeTeamSelect = document.getElementById('home_team');
+        var awayTeamSelect = document.getElementById('away_team');
+        var otherHomeTeamContainer = document.getElementById('otherHomeTeamContainer');
+        var otherAwayTeamContainer = document.getElementById('otherAwayTeamContainer');
 
-    homeTeamSelect.addEventListener('change', function() {
-        if (this.value === 'other') {
-            otherHomeTeamContainer.style.display = 'block';
-        } else {
-            otherHomeTeamContainer.style.display = 'none';
-        }
-    });
+        homeTeamSelect.addEventListener('change', function() {
+            if (this.value === 'other') {
+                otherHomeTeamContainer.style.display = 'block';
+            } else {
+                otherHomeTeamContainer.style.display = 'none';
+            }
+        });
 
-    awayTeamSelect.addEventListener('change', function() {
-        if (this.value === 'other') {
-            otherAwayTeamContainer.style.display = 'block';
-        } else {
-            otherAwayTeamContainer.style.display = 'none';
-        }
+        awayTeamSelect.addEventListener('change', function() {
+            if (this.value === 'other') {
+                otherAwayTeamContainer.style.display = 'block';
+            } else {
+                otherAwayTeamContainer.style.display = 'none';
+            }
+        });
     });
-});
 </script>
