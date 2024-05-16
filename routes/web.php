@@ -136,7 +136,7 @@ Route::post('/admin/matches/store', [TournamentMatchController::class, 'store'])
 Route::get('/admin/matches/search', [TournamentMatchController::class, 'index'])->name('admin.matches.search');
 Route::delete('/admin/matches/destroy/{id}', [TournamentMatchController::class, 'destroy'])->name('admin.matches.destroy');
 Route::get('/admin/matches/edit/{id}', [TournamentMatchController::class, 'edit'])->name('admin.matches.edit');
-Route::get('/admin/matches/update/{id}', [TournamentMatchController::class, 'update'])->name('admin.matches.update');
+Route::put('/admin/matches/update/{id}', [TournamentMatchController::class, 'update'])->name('admin.matches.update');
 Route::get('/admin/matches/view/{id}', [TournamentMatchController::class, 'view'])->name('admin.matches.view');
 
 // Route::get('/admin/matches/{match}/edit', [TournamentMatchController::class, 'edit'])->name('admin.matches.edit');

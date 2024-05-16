@@ -44,6 +44,7 @@ class PlayerController extends Controller
     {
         $players = Player::all();
         return view('admin.players.search', compact('players'));
+        // return json_encode($players);
     }
     // Method to show the view page for a player
     public function view(Player $player)
@@ -80,6 +81,7 @@ class PlayerController extends Controller
         $players = Player::orderBy('name')->paginate(10);
         return view('ADCL.adclAll', compact('players'));
     }
+
     public function destroy($id)
     {
         $player = Player::find($id);

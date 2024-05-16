@@ -3,7 +3,7 @@
 @section('body')
     <div class="container-fluid"
         style="margin-left: -20px; width:102.6%; font-family: oswald; font-size:18px; background-color:white;">
-        
+
         <div class="row justify-content-center">
             <div class="col-md-12">
                 <div class="card">
@@ -11,7 +11,8 @@
                         ADD Match
                     </div>
                     <div class="col-md-6 " style="font-family: oswald; margin-left: 93%; font-size:18px;">
-                        <a href="{{ route('admin.matches.search') }}" style="margin-top:;margin-left: -189%" class="btn btn-success">Search Match</a>
+                        <a href="{{ route('admin.matches.search') }}" style="margin-top:;margin-left: -189%"
+                            class="btn btn-success">Search Match</a>
                     </div>
                     <div class="card-body">
                         @if (session('success'))
@@ -25,20 +26,19 @@
                             <div class="form-row">
                                 <div class="col-md-4">
                                     <div class="form-group">
-                                        <label for="matchName">Match Name</label>
-                                        <input type="text" name="matchName" class="form-control">
-                                        @if ($errors->has('matchName'))
-                                            <p class="text-danger">{{ $errors->first('matchName') }}</p>
-                                        @endif
-                                    </div>
-                                </div>
-                               
-                                <div class="col-md-4">
-                                    <div class="form-group">
                                         <label for="matchNo">Match No</label>
                                         <input type="number" name="matchNo" class="form-control">
                                         @if ($errors->has('matchNo'))
                                             <p class="text-danger">{{ $errors->first('matchNo') }}</p>
+                                        @endif
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="form-group">
+                                        <label for="matchName">Match Name</label>
+                                        <input type="text" name="matchName" class="form-control">
+                                        @if ($errors->has('matchName'))
+                                            <p class="text-danger">{{ $errors->first('matchName') }}</p>
                                         @endif
                                     </div>
                                 </div>
@@ -55,7 +55,7 @@
                                             <p class="text-danger">{{ $errors->first('tournament') }}</p>
                                         @endif
                                     </div>
-                            </div>
+                                </div>
                             </div>
                             <div class="form-row">
                                 <div class="col-md-4">
@@ -148,26 +148,28 @@
                                     </div>
                                 </div>
                             </div>
-                            
+
                             <div id="otherHomeTeamContainer" style="display: none;">
                                 <div class="col-md-6">
                                     <div class="form-group">
                                         <label for="other_home_team">Other Home Team</label>
-                                        <input type="text" name="other_home_team" id="other_home_team" class="form-control">
+                                        <input type="text" name="other_home_team" id="other_home_team"
+                                            class="form-control">
                                     </div>
                                 </div>
                             </div>
-                            
+
                             <div id="otherAwayTeamContainer" style="display: none;">
                                 <div class="col-md-6">
                                     <div class="form-group">
                                         <label for="other_away_team">Other Away Team</label>
-                                        <input type="text" name="other_away_team" id="other_away_team" class="form-control">
+                                        <input type="text" name="other_away_team" id="other_away_team"
+                                            class="form-control">
                                     </div>
                                 </div>
                             </div>
-                            
-                            
+
+
 
                             <div class="col-md-6">
                                 <div class="form-group">
@@ -216,26 +218,26 @@
     });
 </script>
 <script>
- document.addEventListener('DOMContentLoaded', function() {
-    var homeTeamSelect = document.getElementById('home_team');
-    var awayTeamSelect = document.getElementById('away_team');
-    var otherHomeTeamContainer = document.getElementById('otherHomeTeamContainer');
-    var otherAwayTeamContainer = document.getElementById('otherAwayTeamContainer');
+    document.addEventListener('DOMContentLoaded', function() {
+        var homeTeamSelect = document.getElementById('home_team');
+        var awayTeamSelect = document.getElementById('away_team');
+        var otherHomeTeamContainer = document.getElementById('otherHomeTeamContainer');
+        var otherAwayTeamContainer = document.getElementById('otherAwayTeamContainer');
 
-    homeTeamSelect.addEventListener('change', function() {
-        if (this.value === 'other') {
-            otherHomeTeamContainer.style.display = 'block';
-        } else {
-            otherHomeTeamContainer.style.display = 'none';
-        }
-    });
+        homeTeamSelect.addEventListener('change', function() {
+            if (this.value === 'other') {
+                otherHomeTeamContainer.style.display = 'block';
+            } else {
+                otherHomeTeamContainer.style.display = 'none';
+            }
+        });
 
-    awayTeamSelect.addEventListener('change', function() {
-        if (this.value === 'other') {
-            otherAwayTeamContainer.style.display = 'block';
-        } else {
-            otherAwayTeamContainer.style.display = 'none';
-        }
+        awayTeamSelect.addEventListener('change', function() {
+            if (this.value === 'other') {
+                otherAwayTeamContainer.style.display = 'block';
+            } else {
+                otherAwayTeamContainer.style.display = 'none';
+            }
+        });
     });
-});
 </script>

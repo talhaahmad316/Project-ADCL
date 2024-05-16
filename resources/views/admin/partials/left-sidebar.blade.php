@@ -48,33 +48,66 @@
 
 
                   <!-- Main Nav Item -->
-                   <!-- Tournaments -->
-                   <li class="nav-item">
-                    <a href="#" class="nav-link" id="tournamentInfoBtn">
-                        <i class="nav-icon fas fa-trophy"></i>
+                  <!-- Add Match and Search Match -->
+
+                  
+                  {{-- <li class="nav-item">
+                    <a href="#" class="nav-link" id="matchInfoBtn">
+                        <i class="nav-icon fas fa-futbol"></i>
                         <p style="font-family: oswald; font-size:18px;">
-                            Tournaments
+                            Match Info
                         </p>
-                        <i class="fas fa-arrow-circle-down" style="margin-left: 42px;"></i>
+                        <i class="fas fa-arrow-circle-down"></i>
                     </a>
-                </li>
-                <!-- Links to Search and Add Tournaments Pages (Initially Hidden) -->
-                <li class="nav-item" id="searchTournamentBtnContainer" style="display: none;">
-                    <a href="{{ route('admin.tournaments.search') }}" class="nav-link">
-                        <i class="nav-icon fas fa-search"></i>
-                        <p style="font-family: oswald; font-size:16px;">
-                            Search Tournament
-                        </p>
-                    </a>
-                </li>
-                <li class="nav-item" id="addTournamentBtnContainer" style="display: none;">
-                    <a href="{{ route('admin.tournaments.create') }}" class="nav-link">
-                        <i class="nav-icon fas fa-plus"></i>
-                        <p style="font-family: oswald; font-size:16px;">
-                            Add Tournament
-                        </p>
-                    </a>
-                </li>
+                    <!-- Dropdown Content -->
+                    <ul id="matchDropdown" style="display: none;">
+                        <li class="nav-item" id="addMatchBtnContainer">
+                            <a href="{{ route('admin.matches.create') }}" class="nav-link">
+                                <i class="nav-icon fas fa-plus"></i>
+                                <p style="font-family: oswald; font-size:16px;">
+                                    Add Match
+                                </p>
+                            </a>
+                        </li>
+                        <li class="nav-item" id="searchMatchBtnContainer">
+                            <a href="{{ route('admin.matches.search') }}" class="nav-link">
+                                <i class="nav-icon fas fa-search"></i>
+                                <p style="font-family: oswald; font-size:16px;">
+                                    Search Match
+                                </p>
+                            </a>
+                        </li>
+                    </ul>
+                </li> --}}
+
+
+                  <!-- Tournaments -->
+                  <li class="nav-item">
+                      <a href="#" class="nav-link" id="tournamentInfoBtn">
+                          <i class="nav-icon fas fa-trophy"></i>
+                          <p style="font-family: oswald; font-size:18px;">
+                              Tournaments
+                          </p>
+                          <i class="fas fa-arrow-circle-down"></i>
+                      </a>
+                  </li>
+                  <!-- Links to Search and Add Tournaments Pages (Initially Hidden) -->
+                  <li class="nav-item" id="searchTournamentBtnContainer" style="display: none;">
+                      <a href="{{ route('admin.tournaments.search') }}" class="nav-link">
+                          <i class="nav-icon fas fa-search"></i>
+                          <p style="font-family: oswald; font-size:16px;">
+                              Search Tournament
+                          </p>
+                      </a>
+                  </li>
+                  <li class="nav-item" id="addTournamentBtnContainer" style="display: none;">
+                      <a href="{{ route('admin.tournaments.create') }}" class="nav-link">
+                          <i class="nav-icon fas fa-plus"></i>
+                          <p style="font-family: oswald; font-size:16px;">
+                              Add Tournament
+                          </p>
+                      </a>
+                  </li>
                   {{-- Team Info --}}
                   <li class="nav-item">
                       <a href="#" class="nav-link" id="teamInfoBtn">
@@ -103,7 +136,7 @@
                       </a>
                   </li>
 
-                 
+
 
                   {{-- Playes Info --}}
                   <ul class="nav">
@@ -164,7 +197,7 @@
                           </p>
                       </a>
                   </li>
-                  
+
                   {{-- users --}}
                   @if (auth()->check() && auth()->user()->role == 1)
                       <li class="nav-item">
@@ -251,6 +284,32 @@
           }
       }
   </script>
+  <script>
+      // JavaScript to toggle the visibility of the dropdown content and switch active state
+
+      document.getElementById("matchInfoBtn").addEventListener("click", function(e) {
+          e.preventDefault(); // Prevent default anchor behavior
+          toggleDropdownVisibility("match");
+      });
+
+      function toggleDropdownVisibility(type) {
+          var matchDropdown = document.getElementById("matchDropdown");
+          var matchInfoBtn = document.getElementById("matchInfoBtn");
+
+          // Toggle dropdown visibility
+          if (matchDropdown.style.display === "none" || matchDropdown.style.display === "") {
+              matchDropdown.style.display = "block";
+          } else {
+              matchDropdown.style.display = "none";
+          }
+
+          // Toggle active state
+          if (type === "match") {
+              matchInfoBtn.classList.toggle("active");
+          }
+      }
+  </script>
+
   <style>
       /* Add styles for the active button (optional) */
       .nav-item.active .nav-link {

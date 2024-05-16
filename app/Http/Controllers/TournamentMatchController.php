@@ -8,11 +8,12 @@ use App\Models\Tournament;
 use App\Models\Team;
 
 class TournamentMatchController extends Controller
-{public function index()
+{
+    public function index()
     {
-        $matches=Matches::all();
+        $matches = Matches::all();
         $tournaments = Tournament::pluck('tournamentname', 'id');
-        return view('admin.matches.searchMatch',compact('matches'));
+        return view('admin.matches.searchMatch', compact('matches'));
     }
     public function create()
     {
@@ -31,7 +32,7 @@ class TournamentMatchController extends Controller
             'matchName' => 'required|string',
             'home_team' => 'required',
             'away_team' => 'required',
-            'other_home_team' => 'nullable|string', // Add validation for custom team names
+            'other_home_team' => 'nullable|string',
             'other_away_team' => 'nullable|string',
             'tournament_id' => 'required',
             'matchNo' => 'required|integer',
@@ -44,13 +45,13 @@ class TournamentMatchController extends Controller
             'image' => 'image|mimes:jpeg,png,jpg,gif|max:2048|nullable',
         ]);
         if ($request->hasFile('image')) {
-            $imagePath = $request->file('image')->store('matches', 'public');
-            $validatedData['image'] = $imagePath;
+            $imageName = time() . '.' . $request->file('image')->getClientOriginalExtension();
+            $request->file('image')->move(public_path('matches'), $imageName); // Move the file to the public directory
+            $validatedData['image'] = $imageName;
         }
         if ($validatedData['home_team'] === 'other') {
             $validatedData['home_team'] = $validatedData['other_home_team'];
         }
-    
         if ($validatedData['away_team'] === 'other') {
             $validatedData['away_team'] = $validatedData['other_away_team'];
         }
@@ -62,7 +63,7 @@ class TournamentMatchController extends Controller
     {
         $match = Matches::findOrFail($id);
         $tournaments = Tournament::pluck('tournamentname', 'id');
-        return view('admin.matches.view',compact('match'));
+        return view('admin.matches.view', compact('match'));
     }
     public function edit($id)
     {
@@ -72,10 +73,10 @@ class TournamentMatchController extends Controller
         $remainingTeams = $allTeams->reject(function ($team) use ($selectedTeamIds) {
             return in_array($team->id, $selectedTeamIds);
         });
-        $match=Matches::find($id);
+        $match = Matches::find($id);
         $tournaments = Tournament::pluck('tournamentname', 'id');
         $selectedTournamentId = $match->tournament_id;
-        return view('admin.matches.edit', compact('allTeams', 'selectedTeamIds', 'remainingTeams','match', 'tournaments','selectedTournamentId'));
+        return view('admin.matches.edit', compact('allTeams', 'selectedTeamIds', 'remainingTeams', 'match', 'tournaments', 'selectedTournamentId'));
     }
     public function update(Request $request, $id)
     {
@@ -97,13 +98,17 @@ class TournamentMatchController extends Controller
         ]);
         $match = Matches::find($id);
         if ($request->hasFile('image')) {
-            $imagePath = $request->file('image')->store('images', 'public');
-            $validatedData['image'] = $imagePath;
+            $oldImagePath = public_path($match->image);
+            $imageName = time() . '.' . $request->file('image')->getClientOriginalExtension();
+            $request->file('image')->move(public_path('matches'), $imageName);
+            $validatedData['image'] = $imageName;
+            if (file_exists($oldImagePath)) {
+                unlink($oldImagePath);
+            }
         }
         if ($validatedData['home_team'] === 'other') {
             $validatedData['home_team'] = $validatedData['other_home_team'];
         }
-    
         if ($validatedData['away_team'] === 'other') {
             $validatedData['away_team'] = $validatedData['other_away_team'];
         }

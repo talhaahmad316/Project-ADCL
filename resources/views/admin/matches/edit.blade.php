@@ -27,22 +27,21 @@
                             <div class="form-row">
                                 <div class="col-md-4">
                                     <div class="form-group">
-                                        <label for="matchName">Match Name</label>
-                                        <input type="text" name="matchName" class="form-control"
-                                            value="{{ $match->matchName }}">
-                                        @if ($errors->has('matchName'))
-                                            <p class="text-danger">{{ $errors->first('matchName') }}</p>
-                                        @endif
-                                    </div>
-                                </div>
-
-                                <div class="col-md-4">
-                                    <div class="form-group">
                                         <label for="matchNo">Match No</label>
                                         <input type="number" name="matchNo" class="form-control"
                                             value="{{ $match->matchNo }}">
                                         @if ($errors->has('matchNo'))
                                             <p class="text-danger">{{ $errors->first('matchNo') }}</p>
+                                        @endif
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="form-group">
+                                        <label for="matchName">Match Name</label>
+                                        <input type="text" name="matchName" class="form-control"
+                                            value="{{ $match->matchName }}">
+                                        @if ($errors->has('matchName'))
+                                            <p class="text-danger">{{ $errors->first('matchName') }}</p>
                                         @endif
                                     </div>
                                 </div>
@@ -67,7 +66,8 @@
                                 <div class="col-md-4">
                                     <div class="form-group">
                                         <label for="matchDate">Date</label>
-                                        <input type="date" name="matchDate" class="form-control" value="{{ $match->matchDate }}">
+                                        <input type="date" name="matchDate" class="form-control"
+                                            value="{{ $match->matchDate }}">
                                         @if ($errors->has('matchDate'))
                                             <p class="text-danger">{{ $errors->first('matchDate') }}</p>
                                         @endif
@@ -98,7 +98,8 @@
                                 <div class="col-md-4">
                                     <div class="form-group">
                                         <label for="startTime">Start Time</label>
-                                        <input type="time" name="startTime" class="form-control" value="{{ old('startTime', $match->startTime) }}">
+                                        <input type="time" name="startTime" class="form-control"
+                                            value="{{ old('startTime', $match->startTime) }}">
                                         @if ($errors->has('startTime'))
                                             <p class="text-danger">{{ $errors->first('startTime') }}</p>
                                         @endif
@@ -107,7 +108,8 @@
                                 <div class="col-md-4">
                                     <div class="form-group">
                                         <label for="finishTime">Finish Time</label>
-                                        <input type="time" name="finishTime" class="form-control" value="{{ old('finishTime', $match->finishTime) }}">
+                                        <input type="time" name="finishTime" class="form-control"
+                                            value="{{ old('finishTime', $match->finishTime) }}">
                                         @if ($errors->has('finishTime'))
                                             <p class="text-danger">{{ $errors->first('finishTime') }}</p>
                                         @endif
@@ -116,7 +118,8 @@
                                 <div class="col-md-4">
                                     <div class="form-group">
                                         <label for="reportingTime">Reporting Time</label>
-                                        <input type="time" name="reportingTime" class="form-control" value="{{ old('reportingTime', $match->reportingTime) }}">
+                                        <input type="time" name="reportingTime" class="form-control"
+                                            value="{{ old('reportingTime', $match->reportingTime) }}">
                                         @if ($errors->has('reportingTime'))
                                             <p class="text-danger">{{ $errors->first('reportingTime') }}</p>
                                         @endif
@@ -183,8 +186,8 @@
                                     @if ($errors->has('image'))
                                         <p class="text-danger">{{ $errors->first('image') }}</p>
                                     @endif
-                                    <img id="imagePreview" src="#" alt="Image Preview"
-                                        style="max-width: 100%; max-height: 200px; margin-top: 10px; display: none;">
+                                    <img src="{{ asset('matches/' . $match->image) }}" alt="{{ $match->image }}"
+                                        style="max-height: 100px; border-radius: 50%;">
                                 </div>
                             </div>
                             <div style="margin-left: 90%;">
