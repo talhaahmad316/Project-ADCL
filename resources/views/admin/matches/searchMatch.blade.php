@@ -46,12 +46,24 @@
                     <td>{{ $match->matchDate }}</td>
                     <td>{{ $match->tournament->tournamentname }}</td>
                     <td>
+                        {{-- Add acore --}}
+                        <a href="" class="btn btn-success">
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none"
+                                xmlns="http://www.w3.org/2000/svg">
+                                <path
+                                    d="M21 2.984L18.672 5.313 14.687 1.328 17.016 0 21 2.984zM12.305 3.094L3 12.391V15h2.609l9.297-9.305L12.305 3.094zM3.375 19.406L4.5 20.53 2.828 22.203c-.156.156-.375.188-.578.078-.234-.047-.375-.266-.328-.5l.891-2.031zM14.016 11.672L5.718 19.969h-2.63v-2.625L11.391 9.047l2.625 2.625z"
+                                    fill="currentColor" />
+                            </svg>
+                        </a>
+                        {{-- To view --}}
                         <a href="{{ route('admin.matches.view', $match->id) }}" class="btn btn-primary">
                             <i class="fas fa-eye"></i>
                         </a>
+                        {{-- To edit --}}
                         <a href="{{ route('admin.matches.edit', $match->id) }}" class="btn btn-info">
                             <i class="fas fa-edit"></i>
                         </a>
+                        {{-- To delete --}}
                         <a>
                             <form action="{{ route('admin.matches.destroy', $match->id) }}" method="POST"
                                 style="display: inline-block;">

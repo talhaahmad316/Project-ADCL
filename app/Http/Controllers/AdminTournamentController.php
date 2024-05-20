@@ -24,6 +24,7 @@ class AdminTournamentController extends Controller
             'tournamentStartTime' => 'required|date',
             'tournamentEndTime' => 'required|date|after_or_equal:tournamentStartTime',
             'tournamentStatus' => 'required',
+            'format' => 'required',
             'banner_image' => 'required|image|mimes:jpeg,png,jpg,gif',
         ]);
         // Handle image upload and store
@@ -58,6 +59,7 @@ class AdminTournamentController extends Controller
             'tournamentStartTime' => 'required|date',
             'tournamentEndTime' => 'required|date|after_or_equal:tournamentStartTime',
             'tournamentStatus' => 'required',
+            'format' => 'required',
             'banner_image' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
         ]);
         // Handle image upload and store (if a new image is provided)

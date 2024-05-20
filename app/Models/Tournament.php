@@ -17,6 +17,7 @@ class Tournament extends Model
         'tournamentStartTime',
         'tournamentEndTime',
         'tournamentStatus',
+        'format',
         'banner_image',
     ];
     public function teams()

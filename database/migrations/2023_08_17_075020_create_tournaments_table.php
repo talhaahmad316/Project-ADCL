@@ -21,6 +21,7 @@ class CreateTournamentsTable extends Migration
             $table->date('tournamentStartTime');
             $table->date('tournamentEndTime');
             $table->enum('tournamentStatus', ['active', 'inactive']);
+            $table->string('format');
             $table->string('banner_image');
             $table->timestamps();
         });

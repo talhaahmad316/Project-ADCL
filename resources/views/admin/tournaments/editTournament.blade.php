@@ -64,6 +64,7 @@
                         @endif
                     </div>
                 </div>
+
                 <div class="col-md-4">
                     <!-- Column 3 -->
                     <div class="form-group">
@@ -82,19 +83,16 @@
                     </div>
                 </div>
             </div>
-            <div class="col-md-4">
-                <!-- Inside your Blade template -->
-                <div class="form-group">
-                    <label for="teams">Select Teams:</label>
-                    <select class="form-control" name="teams[]" multiple
-                        style="width: 100%; border-radius: 5px; border: 1px solid #ccc; padding: 5px;">
-                        @foreach ($allTeams as $team)
-                            <option value="{{ $team->id }}"
-                                {{ in_array($team->id, $selectedTeamIds) ? 'selected' : '' }}>
-                                {{ $team->name }}
-                            </option>
-                        @endforeach
-                    </select>
+
+            <div class="row">
+                <div class="col-md-4">
+                    <div class="form-group">
+                        <label for="format">Format</label>
+                        <input type="text" name="format" class="form-control" value="{{ $tournament->format }}">
+                        @if ($errors->has('format'))
+                            <p class="text-danger">{{ $errors->first('format') }}</p>
+                        @endif
+                    </div>
                 </div>
             </div>
             <h2><b>Edit Match</b></h2><br>

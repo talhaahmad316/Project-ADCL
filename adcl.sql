@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: May 15, 2024 at 06:34 PM
+-- Generation Time: May 20, 2024 at 07:46 PM
 -- Server version: 10.4.28-MariaDB
 -- PHP Version: 8.2.4
 
@@ -94,7 +94,8 @@ CREATE TABLE `matches` (
 
 INSERT INTO `matches` (`id`, `matchName`, `home_team`, `away_team`, `tournament_id`, `matchNo`, `matchDate`, `format`, `week`, `startTime`, `finishTime`, `reportingTime`, `image`, `created_at`, `updated_at`) VALUES
 (2, 'Match 2', 'ADCL Reds', 'ADCL Blues', 28, 2, '2024-05-16', 'T20', 1, '21:31:00', '23:33:00', '12:01:00', 'images/T5msWL9Y8XpHycSxCbSggKv7pBXDdi3V5OnchmSK.jpg', '2024-05-14 13:30:12', '2024-05-15 11:10:11'),
-(3, 'Match 1', 'ADCL Reds', 'Lahore Qalandar', 28, 1, '2024-05-16', 'T20', 1, '07:02:00', '21:02:00', '21:32:00', 'matches/UDrwPlgqOLqxRybrC4HvHvrs3BHFSa1cBILE67A2.jpg', '2024-05-15 11:04:42', '2024-05-15 11:04:42');
+(3, 'Match 1', 'ADCL Reds', 'Lahore Qalandar', 28, 1, '2024-05-16', 'T20', 1, '07:02:00', '21:02:00', '21:32:00', 'matches/UDrwPlgqOLqxRybrC4HvHvrs3BHFSa1cBILE67A2.jpg', '2024-05-15 11:04:42', '2024-05-15 11:04:42'),
+(5, 'Match 3', 'ADCL Reds', 'Peshawar Zalmi', 28, 3, '2024-05-18', 'T20', 1, '12:50:00', '23:50:00', '12:50:00', '1715877853.png', '2024-05-15 11:51:34', '2024-05-16 11:44:13');
 
 -- --------------------------------------------------------
 
@@ -290,6 +291,7 @@ CREATE TABLE `tournaments` (
   `tournamentStartTime` date NOT NULL,
   `tournamentEndTime` date NOT NULL,
   `tournamentStatus` enum('active','inactive') NOT NULL,
+  `format` varchar(255) DEFAULT NULL,
   `banner_image` varchar(255) NOT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
@@ -299,8 +301,8 @@ CREATE TABLE `tournaments` (
 -- Dumping data for table `tournaments`
 --
 
-INSERT INTO `tournaments` (`id`, `tournamentname`, `tournamentLocation`, `tournamentCountry`, `tournamentStartTime`, `tournamentEndTime`, `tournamentStatus`, `banner_image`, `created_at`, `updated_at`) VALUES
-(28, 'UCL Season 2024', 'Dubai', 'United Arab Emirates', '2024-01-01', '2024-11-01', 'active', 'tournament_images/UC1NCPRYpswxjja74DlbMlvOJiu33elWI19o3mzh.jpg', '2024-04-16 12:11:35', '2024-04-16 12:11:35');
+INSERT INTO `tournaments` (`id`, `tournamentname`, `tournamentLocation`, `tournamentCountry`, `tournamentStartTime`, `tournamentEndTime`, `tournamentStatus`, `format`, `banner_image`, `created_at`, `updated_at`) VALUES
+(28, 'UCL Season 2024', 'Dubai', 'United Arab Emirates', '2024-01-01', '2024-11-01', 'active', 'T20', 'tournament_images/UC1NCPRYpswxjja74DlbMlvOJiu33elWI19o3mzh.jpg', '2024-04-16 12:11:35', '2024-05-20 12:39:22');
 
 -- --------------------------------------------------------
 
@@ -470,7 +472,7 @@ ALTER TABLE `failed_jobs`
 -- AUTO_INCREMENT for table `matches`
 --
 ALTER TABLE `matches`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT for table `migrations`
@@ -518,7 +520,7 @@ ALTER TABLE `team_tournament`
 -- AUTO_INCREMENT for table `tournaments`
 --
 ALTER TABLE `tournaments`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=29;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=30;
 
 --
 -- AUTO_INCREMENT for table `tournament_matches`

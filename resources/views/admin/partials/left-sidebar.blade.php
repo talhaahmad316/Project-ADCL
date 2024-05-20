@@ -45,42 +45,36 @@
                       </a>
                   </li>
                   <br>
-
-
                   <!-- Main Nav Item -->
                   <!-- Add Match and Search Match -->
-
-                  
-                  {{-- <li class="nav-item">
-                    <a href="#" class="nav-link" id="matchInfoBtn">
-                        <i class="nav-icon fas fa-futbol"></i>
-                        <p style="font-family: oswald; font-size:18px;">
-                            Match Info
-                        </p>
-                        <i class="fas fa-arrow-circle-down"></i>
-                    </a>
-                    <!-- Dropdown Content -->
-                    <ul id="matchDropdown" style="display: none;">
-                        <li class="nav-item" id="addMatchBtnContainer">
-                            <a href="{{ route('admin.matches.create') }}" class="nav-link">
-                                <i class="nav-icon fas fa-plus"></i>
-                                <p style="font-family: oswald; font-size:16px;">
-                                    Add Match
-                                </p>
-                            </a>
-                        </li>
-                        <li class="nav-item" id="searchMatchBtnContainer">
-                            <a href="{{ route('admin.matches.search') }}" class="nav-link">
-                                <i class="nav-icon fas fa-search"></i>
-                                <p style="font-family: oswald; font-size:16px;">
-                                    Search Match
-                                </p>
-                            </a>
-                        </li>
-                    </ul>
-                </li> --}}
-
-
+                  <li class="nav-item">
+                      <a href="#" class="nav-link" id="matchInfoBtn">
+                          <i class="nav-icon fas fa-futbol"></i>
+                          <p style="font-family: oswald; font-size:18px;">
+                              Match Info
+                          </p>
+                          <i class="fas fa-arrow-circle-down"></i>
+                      </a>
+                      <!-- Dropdown Content -->
+                      <ul id="matchDropdown" style="display: none;">
+                          <li class="nav-item" id="addMatchBtnContainer">
+                              <a href="{{ route('admin.matches.create') }}" class="nav-link">
+                                  <i class="nav-icon fas fa-plus"></i>
+                                  <p style="font-family: oswald; font-size:16px;">
+                                      Add Match
+                                  </p>
+                              </a>
+                          </li>
+                          <li class="nav-item" id="searchMatchBtnContainer">
+                              <a href="{{ route('admin.matches.search') }}" class="nav-link">
+                                  <i class="nav-icon fas fa-search"></i>
+                                  <p style="font-family: oswald; font-size:16px;">
+                                      Search Match
+                                  </p>
+                              </a>
+                          </li>
+                      </ul>
+                  </li>
                   <!-- Tournaments -->
                   <li class="nav-item">
                       <a href="#" class="nav-link" id="tournamentInfoBtn">
