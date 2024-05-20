@@ -13,11 +13,10 @@ use Illuminate\Support\Facades\File;
 class ClubController extends Controller
 {
     /**
-     * Display a listing of the resource.
+     * Display a listing of the Club.
      */
     public function index()
     {
-        // $clubs = Club::all();
         $clubs = Club::with('parentClub')->get();
         $myclub = MyClub::all();
         return view('admin.club.search', get_defined_vars());
@@ -33,7 +32,7 @@ class ClubController extends Controller
         }
     }
     /**
-     * Show the form for creating a new resource.
+     * Show the form for creating a new Club.
      */
     public function create()
     {
@@ -42,7 +41,7 @@ class ClubController extends Controller
         return view('admin.club.create', compact('clubs'));
     }
     /**
-     * Store a newly created resource in storage.
+     * Store a newly created Club in storage.
      */
     public function store(Request $request)
     {
@@ -67,25 +66,16 @@ class ClubController extends Controller
         return redirect()->route('club-search')->with('success', 'Club created successfully');
     }
     /**
-     * Display the specified resource.
-     */
-    public function show(Club $club)
-    {
-        //
-    }
-    /**
-     * Show the form for editing the specified resource.
+     * Show the form for editing the specified Club.
      */
     public function edit($id)
     {
-        // $club = Club::all();
-        // $myclubs = MyClub::all();
         $club = Club::find($id);
         $clubs = Club::pluck('club_name', 'id');
         return view('admin.club.edit', get_defined_vars());
     }
     /**
-     * Update the specified resource in storage.
+     * Update the specified Club in storage.
      */
     public function update(Request $request, Club $club)
     {
@@ -116,7 +106,7 @@ class ClubController extends Controller
         return redirect()->route('club-search')->with('success', 'Club updated successfully');
     }
     /**
-     * Remove the specified resource from storage.
+     * Remove the specified Club from storage.
      */
     public function destroy($id)
     {

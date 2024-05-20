@@ -10,12 +10,10 @@ class AdclTeamsController extends Controller
     {
         return view('welcome');
     }
-
     public function rulesRegulations()
     {
         return view('ADCL/RulesAndRegulations');
     }
-
     public function contact()
     {
         return view('ADCL/Contact');
@@ -24,7 +22,6 @@ class AdclTeamsController extends Controller
     {
         return view('ADCL/About');
     }
-
     public function ranking()
     {
         return view('ADCL/ranking');

@@ -37,13 +37,12 @@ class TeamController extends Controller
         Team::create($data);
         return redirect()->route('admin.teams.search')->with('success', 'Team added successfully!');
     }
-
     public function search(Request $request)
     {
         $search = $request->get('search');
         $teams = Team::where('name', 'like', "%$search%")
-            ->orWhere('club', 'like', "%$search%")
-            ->paginate(8);
+                    ->orWhere('club', 'like', "%$search%")
+                    ->paginate(8);
         $players = Player::all();
         return view('admin.teams.search', compact('teams', 'players'));
     }
