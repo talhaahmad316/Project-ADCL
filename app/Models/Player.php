@@ -17,4 +17,5 @@ class Player extends Model
         return $this->belongsToMany(Team::class, 'player_team', 'player_id', 'team_id');
     }
     
+    
 }

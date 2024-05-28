@@ -13,6 +13,7 @@ use App\Http\Controllers\Auth\RegisteredUserController;
 use App\Http\Controllers\ClubController;
 use App\Http\Controllers\MyClubController;
 use App\Http\Controllers\MyclubsController;
+use App\Http\Controllers\Admin\ScoreController;
 
 /*
 |--------------------------------------------------------------------------
@@ -144,3 +145,7 @@ Route::get('/admin/matches/view/{id}', [TournamentMatchController::class, 'view'
 // Route::delete('/admin/matches/{id}', [TournamentMatchController::class, 'store'])->name('admin.matches.destroy');
 Route::delete('/admin/teams/{id}', 'TeamController@destroy')->name('admin.teams.destroy');
 Route::delete('/admin/tournaments/{id}', 'TournamentController@destroy')->name('admin.tournaments.destroy');
+
+Route::get('admin/matchScorecard/create/{id}',[ScoreController::class,'create'])->name('matchScorecard.create');
+Route::post('admin/matchScorecard/store/{id}',[ScoreController::class,'store'])->name('matchScorecard.store');
+Route::get('admin/matchScorecard/display/{id}',[ScoreController::class,'display'])->name('matchScorecard.display');

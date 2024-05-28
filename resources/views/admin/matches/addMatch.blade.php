@@ -123,7 +123,7 @@
                                         <select name="home_team" id="home_team" class="form-control">
                                             <option selected disabled>Select Home Team</option>
                                             @foreach ($allTeams as $team)
-                                                <option value="{{ $team->name }}">{{ $team->name }}</option>
+                                                <option value="{{ $team->id }}">{{ $team->name }}</option>
                                             @endforeach
                                             <option value="other">Other</option>
                                         </select>
@@ -138,7 +138,7 @@
                                         <select name="away_team" id="away_team" class="form-control">
                                             <option selected disabled>Select Away Team</option>
                                             @foreach ($allTeams as $team)
-                                                <option value="{{ $team->name }}">{{ $team->name }}</option>
+                                                <option value="{{ $team->id }}">{{ $team->name }}</option>
                                             @endforeach
                                             <option value="other">Other</option>
                                         </select>

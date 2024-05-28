@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: May 20, 2024 at 07:46 PM
+-- Generation Time: May 28, 2024 at 07:54 PM
 -- Server version: 10.4.28-MariaDB
 -- PHP Version: 8.2.4
 
@@ -126,7 +126,8 @@ INSERT INTO `migrations` (`id`, `migration`, `batch`) VALUES
 (41, '2023_09_02_083206_create_player_team_table', 1),
 (42, '2024_01_31_174034_create_clubs_table', 1),
 (43, '2024_02_20_162450_create_my_clubs_table', 1),
-(44, '2024_05_14_052655_create_matches_table', 2);
+(44, '2024_05_14_052655_create_matches_table', 2),
+(45, '2024_05_24_165231_create_scores_table', 3);
 
 -- --------------------------------------------------------
 
@@ -227,7 +228,36 @@ INSERT INTO `player_team` (`id`, `player_id`, `team_id`, `created_at`, `updated_
 (2, 4, 1, NULL, NULL),
 (3, 3, 1, NULL, NULL),
 (4, 7, 10, NULL, NULL),
-(8, 8, 10, NULL, NULL);
+(8, 8, 10, NULL, NULL),
+(9, 9, 11, NULL, NULL);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `scores`
+--
+
+CREATE TABLE `scores` (
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `player_id` bigint(20) UNSIGNED NOT NULL,
+  `match_id` bigint(20) UNSIGNED NOT NULL,
+  `runs` int(11) NOT NULL,
+  `balls_faced` int(11) NOT NULL,
+  `fours` int(11) NOT NULL,
+  `sixes` int(11) NOT NULL,
+  `how_they_got_out` varchar(255) NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `scores`
+--
+
+INSERT INTO `scores` (`id`, `player_id`, `match_id`, `runs`, `balls_faced`, `fours`, `sixes`, `how_they_got_out`, `created_at`, `updated_at`) VALUES
+(1, 7, 2, 54, 34, 6, 2, 'C And  B Haris Rouf', '2024-05-28 12:52:14', '2024-05-28 12:52:14'),
+(2, 8, 2, 67, 44, 7, 3, 'C Shadab B Shaheen', '2024-05-28 12:52:14', '2024-05-28 12:52:14'),
+(3, 9, 2, 156, 132, 12, 4, 'Not Out', '2024-05-28 12:52:14', '2024-05-28 12:52:14');
 
 -- --------------------------------------------------------
 
@@ -422,6 +452,14 @@ ALTER TABLE `player_team`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indexes for table `scores`
+--
+ALTER TABLE `scores`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `scores_player_id_foreign` (`player_id`),
+  ADD KEY `scores_match_id_foreign` (`match_id`);
+
+--
 -- Indexes for table `teams`
 --
 ALTER TABLE `teams`
@@ -460,7 +498,7 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for table `clubs`
 --
 ALTER TABLE `clubs`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
 -- AUTO_INCREMENT for table `failed_jobs`
@@ -472,13 +510,13 @@ ALTER TABLE `failed_jobs`
 -- AUTO_INCREMENT for table `matches`
 --
 ALTER TABLE `matches`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
 -- AUTO_INCREMENT for table `migrations`
 --
 ALTER TABLE `migrations`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=45;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=46;
 
 --
 -- AUTO_INCREMENT for table `my_clubs`
@@ -502,7 +540,13 @@ ALTER TABLE `players`
 -- AUTO_INCREMENT for table `player_team`
 --
 ALTER TABLE `player_team`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+
+--
+-- AUTO_INCREMENT for table `scores`
+--
+ALTER TABLE `scores`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `teams`
@@ -533,6 +577,17 @@ ALTER TABLE `tournament_matches`
 --
 ALTER TABLE `users`
   MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+--
+-- Constraints for dumped tables
+--
+
+--
+-- Constraints for table `scores`
+--
+ALTER TABLE `scores`
+  ADD CONSTRAINT `scores_match_id_foreign` FOREIGN KEY (`match_id`) REFERENCES `matches` (`id`) ON DELETE CASCADE,
+  ADD CONSTRAINT `scores_player_id_foreign` FOREIGN KEY (`player_id`) REFERENCES `players` (`id`) ON DELETE CASCADE;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
