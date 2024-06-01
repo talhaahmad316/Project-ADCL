@@ -20,19 +20,17 @@
                                 {{ session('success') }}
                             </div>
                         @endif
-                        <form action="{{ route('matchScorecard.store', $match->id) }}" method="POST">
+                        <form action="" method="POST">
                             @csrf
                             <input type="hidden" name="match_id" value="{{ $match->id }}">
                             <h3 class="text-info bg-dark text-center">{{ $match->home_team }}</h3>
                             <br>
                             @foreach ($homeTeamPlayers as $player)
-                            <input type="hidden" name="scores[home_{{ $player->id }}][player_id]" value="{{ $player->id }}">
+                            <input type="hidden" name="ball[home_{{ $player->id }}][player_id]" value="{{ $player->id }}">
                             <label for="player_{{ $player->id }}" class="text-secandry bg-dark p-1">{{ $player->name }}</label>
-                            <input type="number" name="scores[home_{{ $player->id }}][runs]" placeholder="Runs">
-                            <input type="number" name="scores[home_{{ $player->id }}][balls_faced]" placeholder="Balls Faced">
-                            <input type="number" name="scores[home_{{ $player->id }}][fours]" placeholder="Fours">
-                            <input type="number" name="scores[home_{{ $player->id }}][sixes]" placeholder="Sixes">
-                            <input type="text" name="scores[home_{{ $player->id }}][how_they_got_out]" placeholder="How Out">
+                            <input type="number" name="ball[home_{{ $player->id }}][overs]" placeholder="Overs">
+                            <input type="number" name="ball[home_{{ $player->id }}][runs]" placeholder="Runs">
+                            <input type="number" name="ball[home_{{ $player->id }}][wickets]" placeholder="Wickets">
                             <br>
                             @endforeach
                             <br>
@@ -41,18 +39,16 @@
                             <h3 class="text-info bg-dark text-center">{{ $match->away_team }}</h3>
                             <br>
                             @foreach ($awayTeamPlayers as $player)
-                            <input type="hidden" name="scores[away_{{ $player->id }}][player_id]" value="{{ $player->id }}">
+                            <input type="hidden" name="ball[away_{{ $player->id }}][player_id]" value="{{ $player->id }}">
                             <label for="player_{{ $player->id }}" class="text-secandry bg-dark p-1">{{ $player->name }}</label>
-                            <input type="number" name="scores[away_{{ $player->id }}][runs]" placeholder="Runs">
-                            <input type="number" name="scores[away_{{ $player->id }}][balls_faced]" placeholder="Balls Faced">
-                            <input type="number" name="scores[away_{{ $player->id }}][fours]" placeholder="Fours">
-                            <input type="number" name="scores[away_{{ $player->id }}][sixes]" placeholder="Sixes">
-                            <input type="text" name="scores[away_{{ $player->id }}][how_they_got_out]" placeholder="How Out">
+                            <input type="number" name="ball[away_{{ $player->id }}][overs]" placeholder="Overs">
+                            <input type="number" name="ball[away_{{ $player->id }}][runs]" placeholder="Runs">
+                            <input type="number" name="ball[away_{{ $player->id }}][wickets]" placeholder="Wickets">
                             <br>
                             @endforeach
                         
                             <div>
-                                <button type="submit" class="btn btn-primary">Save Scorecard</button>
+                                <button type="submit" class="btn btn-primary">Save</button>
                             </div>
                         </form>
                         

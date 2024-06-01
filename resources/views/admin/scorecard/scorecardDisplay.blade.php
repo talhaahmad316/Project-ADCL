@@ -26,7 +26,7 @@
                                             Display Scores for Match {{ $match->id }}
                                         </div>
                                         <div class="card-body">
-                                            <h3>{{ $match->home_team }}</h3>
+                                            <h3 class="text-info">{{ $match->home_team }}</h3>
                                             <table class="table">
                                                 <thead>
                                                     <tr>
@@ -36,6 +36,7 @@
                                                         <th>Fours</th>
                                                         <th>Sixes</th>
                                                         <th>How Out</th>
+                                                        <th>Strike Rate</th>
                                                     </tr>
                                                 </thead>
                                                 <tbody>
@@ -52,6 +53,12 @@
                                                             <td>{{ $score->fours }}</td>
                                                             <td>{{ $score->sixes }}</td>
                                                             <td>{{ $score->how_they_got_out }}</td>
+                                                            <td>
+                                                                @php
+                                                                    $strike_rate=number_format(($score->runs / $score->balls_faced)*100, 2);
+                                                                @endphp
+                                                                {{ $strike_rate }}
+                                                            </td>
                                                         </tr>
                                                         @php
                                                             $totalRunsHome += $score->runs;
@@ -67,7 +74,7 @@
                                                 {{ $totalFoursHome }}</p>
                                             <p style="display: inline-block; margin-right: 10px;">Total Sixes:
                                                 {{ $totalSixesHome }}</p>
-                                            <h3>{{ $match->away_team }}</h3>
+                                            <h3 class="text-info">{{ $match->away_team }}</h3>
                                             <table class="table">
                                                 <thead>
                                                     <tr>
@@ -77,6 +84,7 @@
                                                         <th>Fours</th>
                                                         <th>Sixes</th>
                                                         <th>How Out</th>
+                                                        <th>Strike Rate</th>
                                                     </tr>
                                                 </thead>
                                                 <tbody>
@@ -93,6 +101,12 @@
                                                             <td>{{ $score->fours }}</td>
                                                             <td>{{ $score->sixes }}</td>
                                                             <td>{{ $score->how_they_got_out }}</td>
+                                                            <td>
+                                                                @php
+                                                                    $strike_rate=number_format(($score->runs / $score->balls_faced)*100, 2);
+                                                                @endphp
+                                                                {{ $strike_rate }}
+                                                            </td>
                                                         </tr>
                                                         @php
                                                             $totalRunsAway += $score->runs;

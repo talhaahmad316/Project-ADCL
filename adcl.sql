@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: May 28, 2024 at 07:54 PM
+-- Generation Time: May 30, 2024 at 08:38 PM
 -- Server version: 10.4.28-MariaDB
 -- PHP Version: 8.2.4
 
@@ -257,7 +257,7 @@ CREATE TABLE `scores` (
 INSERT INTO `scores` (`id`, `player_id`, `match_id`, `runs`, `balls_faced`, `fours`, `sixes`, `how_they_got_out`, `created_at`, `updated_at`) VALUES
 (1, 7, 2, 54, 34, 6, 2, 'C And  B Haris Rouf', '2024-05-28 12:52:14', '2024-05-28 12:52:14'),
 (2, 8, 2, 67, 44, 7, 3, 'C Shadab B Shaheen', '2024-05-28 12:52:14', '2024-05-28 12:52:14'),
-(3, 9, 2, 156, 132, 12, 4, 'Not Out', '2024-05-28 12:52:14', '2024-05-28 12:52:14');
+(3, 9, 2, 122, 76, 12, 7, 'Not Out', '2024-05-28 12:52:14', '2024-05-28 12:52:14');
 
 -- --------------------------------------------------------
 

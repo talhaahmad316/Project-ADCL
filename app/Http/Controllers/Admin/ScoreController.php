@@ -47,16 +47,32 @@ class ScoreController extends Controller
     public function display($id)
     {
         $match = Matches::findOrFail($id);
-    
+
         $homeTeamScores = Score::whereHas('player.teams', function ($query) use ($match) {
             $query->where('name', $match->home_team);
         })->where('match_id', $id)->get();
-    
+
         $awayTeamScores = Score::whereHas('player.teams', function ($query) use ($match) {
             $query->where('name', $match->away_team);
         })->where('match_id', $id)->get();
-    // dd($homeTeamScores);
+        // dd($homeTeamScores);
         return view('admin.scorecard.scorecardDisplay', compact('match', 'homeTeamScores', 'awayTeamScores'));
     }
-    
+    public function ballCreate($id)
+    {
+        $match = Matches::findOrFail($id);
+
+        // Fetch players for the home team
+        $homeTeamPlayers = Player::whereHas('teams', function ($query) use ($match) {
+            $query->where('name', $match->home_team);
+        })->get();
+
+        // Fetch players for the away team
+        $awayTeamPlayers = Player::whereHas('teams', function ($query) use ($match) {
+            $query->where('name', $match->away_team);
+        })->get();
+        return view('admin.scorecard.bowllingScorecard', compact('match', 'homeTeamPlayers', 'awayTeamPlayers'));
+    }
+
 }
+

@@ -149,3 +149,4 @@ Route::delete('/admin/tournaments/{id}', 'TournamentController@destroy')->name('
 Route::get('admin/matchScorecard/create/{id}',[ScoreController::class,'create'])->name('matchScorecard.create');
 Route::post('admin/matchScorecard/store/{id}',[ScoreController::class,'store'])->name('matchScorecard.store');
 Route::get('admin/matchScorecard/display/{id}',[ScoreController::class,'display'])->name('matchScorecard.display');
+Route::get('admin/matchBowllingScorecard/create/{id}',[ScoreController::class,'ballCreate'])->name('matchBowllingScorecard.create');
