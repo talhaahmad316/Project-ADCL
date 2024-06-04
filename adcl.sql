@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: May 30, 2024 at 08:38 PM
+-- Generation Time: Jun 04, 2024 at 08:00 PM
 -- Server version: 10.4.28-MariaDB
 -- PHP Version: 8.2.4
 
@@ -20,6 +20,34 @@ SET time_zone = "+00:00";
 --
 -- Database: `adcl`
 --
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `bowlling_scorecards`
+--
+
+CREATE TABLE `bowlling_scorecards` (
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `player_id` bigint(20) UNSIGNED NOT NULL,
+  `match_id` bigint(20) UNSIGNED NOT NULL,
+  `overs` int(11) DEFAULT NULL,
+  `runs` int(11) DEFAULT NULL,
+  `wickets` int(11) DEFAULT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `bowlling_scorecards`
+--
+
+INSERT INTO `bowlling_scorecards` (`id`, `player_id`, `match_id`, `overs`, `runs`, `wickets`, `created_at`, `updated_at`) VALUES
+(1, 7, 2, 4, 49, 3, '2024-06-04 12:41:01', '2024-06-04 12:41:01'),
+(2, 8, 2, 4, 55, 2, '2024-06-04 12:41:01', '2024-06-04 12:41:01'),
+(3, 9, 2, 4, 52, 2, '2024-06-04 12:41:02', '2024-06-04 12:41:02'),
+(4, 7, 3, NULL, NULL, NULL, '2024-06-04 12:55:56', '2024-06-04 12:55:56'),
+(5, 8, 3, 4, 43, 5, '2024-06-04 12:55:56', '2024-06-04 12:55:56');
 
 -- --------------------------------------------------------
 
@@ -127,7 +155,8 @@ INSERT INTO `migrations` (`id`, `migration`, `batch`) VALUES
 (42, '2024_01_31_174034_create_clubs_table', 1),
 (43, '2024_02_20_162450_create_my_clubs_table', 1),
 (44, '2024_05_14_052655_create_matches_table', 2),
-(45, '2024_05_24_165231_create_scores_table', 3);
+(45, '2024_05_24_165231_create_scores_table', 3),
+(46, '2024_06_04_170917_create_bowlling_scorecards_table', 4);
 
 -- --------------------------------------------------------
 
@@ -241,11 +270,11 @@ CREATE TABLE `scores` (
   `id` bigint(20) UNSIGNED NOT NULL,
   `player_id` bigint(20) UNSIGNED NOT NULL,
   `match_id` bigint(20) UNSIGNED NOT NULL,
-  `runs` int(11) NOT NULL,
-  `balls_faced` int(11) NOT NULL,
-  `fours` int(11) NOT NULL,
-  `sixes` int(11) NOT NULL,
-  `how_they_got_out` varchar(255) NOT NULL,
+  `runs` int(11) DEFAULT NULL,
+  `balls_faced` int(11) DEFAULT NULL,
+  `fours` int(11) DEFAULT NULL,
+  `sixes` int(11) DEFAULT NULL,
+  `how_they_got_out` varchar(255) DEFAULT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
@@ -257,7 +286,9 @@ CREATE TABLE `scores` (
 INSERT INTO `scores` (`id`, `player_id`, `match_id`, `runs`, `balls_faced`, `fours`, `sixes`, `how_they_got_out`, `created_at`, `updated_at`) VALUES
 (1, 7, 2, 54, 34, 6, 2, 'C And  B Haris Rouf', '2024-05-28 12:52:14', '2024-05-28 12:52:14'),
 (2, 8, 2, 67, 44, 7, 3, 'C Shadab B Shaheen', '2024-05-28 12:52:14', '2024-05-28 12:52:14'),
-(3, 9, 2, 122, 76, 12, 7, 'Not Out', '2024-05-28 12:52:14', '2024-05-28 12:52:14');
+(3, 9, 2, 122, 76, 12, 7, 'Not Out', '2024-05-28 12:52:14', '2024-05-28 12:52:14'),
+(4, 7, 3, 74, 34, 10, 5, 'not out', '2024-06-04 12:45:24', '2024-06-04 12:45:24'),
+(6, 8, 3, NULL, NULL, NULL, NULL, NULL, '2024-06-04 12:47:13', '2024-06-04 12:47:13');
 
 -- --------------------------------------------------------
 
@@ -395,6 +426,14 @@ INSERT INTO `users` (`id`, `name`, `email`, `role`, `email_verified_at`, `passwo
 --
 
 --
+-- Indexes for table `bowlling_scorecards`
+--
+ALTER TABLE `bowlling_scorecards`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `bowlling_scorecards_player_id_foreign` (`player_id`),
+  ADD KEY `bowlling_scorecards_match_id_foreign` (`match_id`);
+
+--
 -- Indexes for table `clubs`
 --
 ALTER TABLE `clubs`
@@ -495,6 +534,12 @@ ALTER TABLE `users`
 --
 
 --
+-- AUTO_INCREMENT for table `bowlling_scorecards`
+--
+ALTER TABLE `bowlling_scorecards`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+
+--
 -- AUTO_INCREMENT for table `clubs`
 --
 ALTER TABLE `clubs`
@@ -516,7 +561,7 @@ ALTER TABLE `matches`
 -- AUTO_INCREMENT for table `migrations`
 --
 ALTER TABLE `migrations`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=46;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=47;
 
 --
 -- AUTO_INCREMENT for table `my_clubs`
@@ -546,7 +591,7 @@ ALTER TABLE `player_team`
 -- AUTO_INCREMENT for table `scores`
 --
 ALTER TABLE `scores`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT for table `teams`
@@ -581,6 +626,13 @@ ALTER TABLE `users`
 --
 -- Constraints for dumped tables
 --
+
+--
+-- Constraints for table `bowlling_scorecards`
+--
+ALTER TABLE `bowlling_scorecards`
+  ADD CONSTRAINT `bowlling_scorecards_match_id_foreign` FOREIGN KEY (`match_id`) REFERENCES `matches` (`id`) ON DELETE CASCADE,
+  ADD CONSTRAINT `bowlling_scorecards_player_id_foreign` FOREIGN KEY (`player_id`) REFERENCES `players` (`id`) ON DELETE CASCADE;
 
 --
 -- Constraints for table `scores`
