@@ -26,7 +26,7 @@
                                             Display Scores for Match {{ $match->id }}
                                         </div>
                                         <div class="card-body">
-                                            <h3 class="text-info">{{ $match->home_team }}</h3>
+                                            <h3 class="text-info"> Batting : {{ $match->home_team }}</h3>
                                             <table class="table">
                                                 <thead>
                                                     <tr>
@@ -55,7 +55,14 @@
                                                             <td>{{ $score->how_they_got_out }}</td>
                                                             <td>
                                                                 @php
-                                                                    $strike_rate=number_format(($score->runs / $score->balls_faced)*100, 2);
+                                                                    if ($score->runs > 0 && $score->balls_faced > 0) {
+                                                                        $strike_rate = number_format(
+                                                                            ($score->runs / $score->balls_faced) * 100,
+                                                                            2,
+                                                                        );
+                                                                    } else {
+                                                                        $strike_rate = ''; 
+                                                                    }
                                                                 @endphp
                                                                 {{ $strike_rate }}
                                                             </td>
@@ -74,7 +81,9 @@
                                                 {{ $totalFoursHome }}</p>
                                             <p style="display: inline-block; margin-right: 10px;">Total Sixes:
                                                 {{ $totalSixesHome }}</p>
-                                            <h3 class="text-info">{{ $match->away_team }}</h3>
+                                                    
+                                                    {{-- away Team Batting --}}
+                                                <h3 class="text-info">Batting : {{ $match->away_team }}</h3>
                                             <table class="table">
                                                 <thead>
                                                     <tr>
@@ -121,6 +130,60 @@
                                             <p style="display: inline-block; margin-right: 10px;">Total Fours:
                                                 {{ $totalFoursAway }}</p>
                                             <p style="display: inline-block;">Total Sixes: {{ $totalSixesAway }}</p>
+                                             {{-- away Team bowlling --}}
+                                             <div class="row">
+                                                <div class="col-md-6">
+                                                    <div class="card p-3">
+                                             <h3 class="text-info">Bowlling : {{ $match->home_team }}</h3>
+                                             <table class="table">
+                                                 <thead>
+                                                     <tr>
+                                                         <th>Player</th>
+                                                         <th>Overs</th>
+                                                         <th>Runs Conceded</th>
+                                                         <th>Wickets</th>
+                                                     </tr>
+                                                 </thead>
+                                                 <tbody>
+                                                     @foreach ($homeTeamBowlling as $bowlling)
+                                                         <tr>
+                                                             <td>{{ $bowlling->player->name }}</td>
+                                                             <td>{{ $bowlling->overs }}</td>
+                                                             <td>{{ $bowlling->runs }}</td>
+                                                             <td>{{ $bowlling->wickets }}</td>
+                                                         </tr>
+                                                     @endforeach
+                                                 </tbody>
+                                             </table>
+                                            </div>
+                                        </div>
+                                            <div class="col-md-6">
+                                                <div class="card p-3">
+                                                {{-- away Team bowlling --}}
+                                                <h3 class="text-info">Bowlling : {{ $match->away_team }}</h3>
+                                                <table class="table">
+                                                    <thead>
+                                                        <tr>
+                                                            <th>Player</th>
+                                                            <th>Overs</th>
+                                                            <th>Runs Conceded</th>
+                                                            <th>Wickets</th>
+                                                        </tr>
+                                                    </thead>
+                                                    <tbody>
+                                                        @foreach ($awayTeamBowlling as $bowlling)
+                                                            <tr>
+                                                                <td>{{ $bowlling->player->name }}</td>
+                                                                <td>{{ $bowlling->overs }}</td>
+                                                                <td>{{ $bowlling->runs }}</td>
+                                                                <td>{{ $bowlling->wickets }}</td>
+                                                            </tr>
+                                                        @endforeach
+                                                    </tbody>
+                                                </table>
+                                            </div>
+                                            </div>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>

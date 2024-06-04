@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\Models\Matches;
 use App\Models\Player;
 use App\Models\Score;
+use App\Models\BowllingScorecard;
 
 class ScoreController extends Controller
 {
@@ -51,12 +52,19 @@ class ScoreController extends Controller
         $homeTeamScores = Score::whereHas('player.teams', function ($query) use ($match) {
             $query->where('name', $match->home_team);
         })->where('match_id', $id)->get();
-
         $awayTeamScores = Score::whereHas('player.teams', function ($query) use ($match) {
             $query->where('name', $match->away_team);
         })->where('match_id', $id)->get();
+        
+
+        $homeTeamBowlling = BowllingScorecard::whereHas('player.teams', function ($query) use ($match) {
+            $query->where('name', $match->home_team);
+        })->where('match_id', $id)->get();
+        $awayTeamBowlling = BowllingScorecard::whereHas('player.teams', function ($query) use ($match) {
+            $query->where('name', $match->away_team);
+        })->where('match_id', $id)->get();
         // dd($homeTeamScores);
-        return view('admin.scorecard.scorecardDisplay', compact('match', 'homeTeamScores', 'awayTeamScores'));
+        return view('admin.scorecard.scorecardDisplay', compact('match', 'homeTeamScores', 'awayTeamScores','homeTeamBowlling','awayTeamBowlling'));
     }
     public function ballCreate($id)
     {
@@ -72,6 +80,22 @@ class ScoreController extends Controller
             $query->where('name', $match->away_team);
         })->get();
         return view('admin.scorecard.bowllingScorecard', compact('match', 'homeTeamPlayers', 'awayTeamPlayers'));
+    }
+    public function ballStore(Request $request, $matchId)
+    {
+        $ballScores = $request->input('ball', []);
+
+        foreach ($ballScores as $scoreData) {
+    
+            BowllingScorecard::create([
+                'player_id' => $scoreData['player_id'],
+                'match_id' => $request->input('match_id'),
+                'overs' => $scoreData['overs'],
+                'runs' => $scoreData['runs'],
+                'wickets' => $scoreData['wickets']
+            ]);
+        }
+        return redirect()->back()->with('success', 'Scorecard saved successfully');
     }
 
 }

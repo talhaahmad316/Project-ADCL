@@ -20,15 +20,15 @@
                                 {{ session('success') }}
                             </div>
                         @endif
-                        <form action="" method="POST">
+                        <form action="{{route('matchBowllingScorecard.ballStore',$match->id)}}" method="POST">
                             @csrf
                             <input type="hidden" name="match_id" value="{{ $match->id }}">
                             <h3 class="text-info bg-dark text-center">{{ $match->home_team }}</h3>
                             <br>
                             @foreach ($homeTeamPlayers as $player)
                             <input type="hidden" name="ball[home_{{ $player->id }}][player_id]" value="{{ $player->id }}">
-                            <label for="player_{{ $player->id }}" class="text-secandry bg-dark p-1">{{ $player->name }}</label>
-                            <input type="number" name="ball[home_{{ $player->id }}][overs]" placeholder="Overs">
+                            <label for="player_{{ $player->id }}" class="text-secandry bg-dark p-1">{{ $player->name }} </label>
+                            <input type="number" name="ball[home_{{ $player->id }}][overs]" placeholder="Overs" step="0.1">
                             <input type="number" name="ball[home_{{ $player->id }}][runs]" placeholder="Runs">
                             <input type="number" name="ball[home_{{ $player->id }}][wickets]" placeholder="Wickets">
                             <br>
@@ -41,7 +41,7 @@
                             @foreach ($awayTeamPlayers as $player)
                             <input type="hidden" name="ball[away_{{ $player->id }}][player_id]" value="{{ $player->id }}">
                             <label for="player_{{ $player->id }}" class="text-secandry bg-dark p-1">{{ $player->name }}</label>
-                            <input type="number" name="ball[away_{{ $player->id }}][overs]" placeholder="Overs">
+                            <input type="number" name="ball[away_{{ $player->id }}][overs]" placeholder="Overs" step="0.1">
                             <input type="number" name="ball[away_{{ $player->id }}][runs]" placeholder="Runs">
                             <input type="number" name="ball[away_{{ $player->id }}][wickets]" placeholder="Wickets">
                             <br>
