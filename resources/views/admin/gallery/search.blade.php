@@ -4,8 +4,7 @@
             <div class="container-fluid">
                 <div class="mb-2 row" style="height: 45px; width: 102%; margin-left: -18px;">
                     <div class="col-sm-12" style="background-color: white; padding: 6px;">
-                        <h1 class="m-0">Search Players</h1>
-                        <p>Search players like never before, from iconic athletes to rising gaming stars.</p>
+                        <h1 class="m-0">Gallery</h1>
                     </div>
                 </div>
             </div>
@@ -18,27 +17,25 @@
     @endif
         <div class="mb-4 row">
             <div class="col-md-6 " style="font-family: oswald; margin-left: 93%; font-size:18px;">
-                <a href="{{ route('players.create') }}" style="margin-top: 4%;margin-left: -189%" class="btn btn-success">Add Player</a>
+                <a href="{{ route('admin.gallery.create') }}" style="margin-top: 4%;margin-left: -189%" class="btn btn-success">Search In Gallery</a>
             </div>
         </div>
-        <table id="playersTable" class="table table-bordered" style="font-family: oswald; font-size:18px;">
+        <table id="galleryTable" class="table table-bordered" style="font-family: oswald; font-size:18px;">
             <thead>
                 <tr>
                     <th>Picture</th>
-                    <th>Full Name</th>
-                    <th>Email</th>
-                    <th>Club Name</th>
-                    <th>Nationality</th>
-                    <th>Player Status</th>
+                    <th>Caption</th>
+                    <th>Alternate Text</th>
+                    <th>Description</th>
                     <th>Action</th>
                 </tr>
             </thead>
             <tbody>
-                @foreach ($players as $player)
+                @foreach ($galleries as $gallery)
                     <tr>
                         <td>
-                            @if ($player->picture)
-                                <img src="{{ asset($player->picture) }}" alt="{{ $player->name }}"
+                            @if ($gallery->image)
+                                <img src="{{ asset('gallery/'.$gallery->image) }}" alt="{{ $gallery->name }}"
                                     class="border rounded-circle border-light img-centered"
                                     style="width: 100px; height: 100px; object-fit: cover; object-position: center;">
                             @else
@@ -46,27 +43,22 @@
                             @endif
                         </td>
 
-                        <td>{{ $player->name }}</td>
-                        <td>{{ $player->email }}</td>
-                        <td>{{ $player->club_name }}</td>
-                        <td>{{ $player->nationality }}</td>
-
-                        <td><span class="badge {{ $player->status === 'Active' ? 'badge-success' : 'badge-danger' }}">
-                                {{ $player->status === 'Active' ? 'Active' : 'Inactive' }}
-                            </span></td>
+                        <td>{{ $gallery->caption }}</td>
+                        <td>{{ $gallery->alternateText }}</td>
+                        <td>{{ $gallery->description }}</td>
 
                         <td>
 
-                            <a href="{{ route('players.view', ['player' => $player->id]) }}" class="btn btn-primary">
+                            <a href="{{ route('admin.gallery.show',  $gallery->id) }}" class="btn btn-primary">
                                 <i class="fas fa-eye"></i>
                             </a>
 
-                            <a href="{{ route('players.edit', ['player' => $player->id]) }}" class="btn btn-info">
+                            <a href="{{ route('admin.gallery.edit',$gallery->id) }}" class="btn btn-info">
                                 <i class="fas fa-edit"></i>
                             </a>
                            
                             <a>
-                                <form action="{{ route('players.delete', ['player' => $player->id]) }}" method="POST" style="display: inline-block;">
+                                <form action="{{ route('admin.gallery.destroy', $gallery->id) }}" method="POST" style="display: inline-block;">
                                     @csrf
                                     @method('DELETE')
                                     <button type="submit" class="btn btn-danger" onclick="return confirm('Are you sure you want to delete this player?')">
@@ -84,7 +76,7 @@
     </div>
     <script>
         $(document).ready(function () {
-            $('#playersTable').DataTable();
+            $('#galleryTable').DataTable();
         });
     </script>
 @endsection

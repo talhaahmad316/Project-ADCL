@@ -14,6 +14,7 @@ use App\Http\Controllers\ClubController;
 use App\Http\Controllers\MyClubController;
 use App\Http\Controllers\MyclubsController;
 use App\Http\Controllers\Admin\ScoreController;
+use App\Http\Controllers\Admin\GalleryController;
 
 /*
 |--------------------------------------------------------------------------
@@ -153,3 +154,12 @@ Route::get('admin/matchScorecard/display/{id}',[ScoreController::class,'display'
 
 Route::get('admin/matchBowllingScorecard/create/{id}',[ScoreController::class,'ballCreate'])->name('matchBowllingScorecard.create');
 Route::post('admin/matchBowllingScorecard/ballStore/{id}',[ScoreController::class,'ballStore'])->name('matchBowllingScorecard.ballStore');
+
+// Gallery Route
+Route::get('admin/gallery/create', [GalleryController::class, 'create'])->name('admin.gallery.create');
+Route::post('admin/gallery/store', [GalleryController::class, 'store'])->name('admin.gallery.store');
+Route::get('admin/gallery/index', [GalleryController::class, 'index'])->name('admin.gallery.index');
+Route::get('admin/gallery/show/{id}', [GalleryController::class, 'show'])->name('admin.gallery.show');
+Route::get('admin/gallery/edit/{id}', [GalleryController::class, 'edit'])->name('admin.gallery.edit');
+Route::put('admin/gallery/update/{id}', [GalleryController::class, 'update'])->name('admin.gallery.update');
+Route::delete('admin/gallery/destroy/{id}', [GalleryController::class, 'destroy'])->name('admin.gallery.destroy');

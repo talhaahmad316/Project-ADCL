@@ -25,7 +25,7 @@
                 </div>
                 <div class="col-md-4">
                     <label for="email">Email:</label>
-                    <input type="email" name="email" class="form-control" value="{{ $player->email ?? '' }}" disabled>
+                    <input type="email" name="email" class="form-control" value="{{ $player->email ?? '' }}">
                     @if ($errors->has('email'))
                         <p class="text-danger">{{ $errors->first('email') }}</p>
                     @endif
@@ -315,9 +315,9 @@
                         <label for="gender">Gender:</label>
                         <select name="gender" class="form-control">
                             <option selected disabled>Select gender</option>
-                            <option value="male" {{ $player->gender == 'male' ? 'selected' : '' }}>Male</option>
-                            <option value="female" {{ $player->gender == 'female' ? 'selected' : '' }}>Female</option>
-                            <option value="others" {{ $player->gender == 'others' ? 'selected' : '' }}>Others</option>
+                            <option value="Male" {{ $player->gender == 'Male' ? 'selected' : '' }}>Male</option>
+                            <option value="Female" {{ $player->gender == 'Female' ? 'selected' : '' }}>Female</option>
+                            <option value="Others" {{ $player->gender == 'Others' ? 'selected' : '' }}>Others</option>
                         </select>
                         @if ($errors->has('gender'))
                             <p class="text-danger">{{ $errors->first('gender') }}</p>
@@ -340,9 +340,9 @@
                         <label for="batting_style">Batting Style:</label>
                         <select name="batting_style" class="form-control">
                             <option selected disabled>Select batting style</option>
-                            <option value="right_hand" {{ $player->batting_style == 'right hand' ? 'selected' : '' }}>
+                            <option value="Right Hand" {{ $player->batting_style == 'Right Hand' ? 'selected' : '' }}>
                                 Right Hand Bat</option>
-                            <option value="left_hand" {{ $player->batting_style == 'left hand' ? 'selected' : '' }}>Left
+                            <option value="Left Hand" {{ $player->batting_style == 'Left Hand' ? 'selected' : '' }}>Left
                                 Hand Bat</option>
                         </select>
                         @if ($errors->has('batting_style'))
@@ -373,19 +373,19 @@
                     <label for="playing_role">Playing Role:</label>
                     <select name="playing_role" class="form-control">
                         <option selected disabled>Select player role</option>
-                        <option value="batsman" {{ $player->playing_role == 'batsman' ? 'selected' : '' }}>Batsman
+                        <option value="Batsman" {{ $player->playing_role == 'Batsman' ? 'selected' : '' }}>Batsman
                         </option>
-                        <option value="bowler" {{ $player->playing_role == 'bowler' ? 'selected' : '' }}>Bowler</option>
-                        <option value="all_rounder" {{ $player->playing_role == 'all_rounder' ? 'selected' : '' }}>All
+                        <option value="Bowler" {{ $player->playing_role == 'Bowler' ? 'selected' : '' }}>Bowler</option>
+                        <option value="All Rounder" {{ $player->playing_role == 'All Rounder' ? 'selected' : '' }}>All
                             Rounder</option>
-                        <option value="wicketkeeper_batsman"
-                            {{ $player->playing_role == 'wicketkeeper_batsman' ? 'selected' : '' }}>Wicketkeeper Batsman
+                        <option value="Wicketkeeper Batsman"
+                            {{ $player->playing_role == 'Wicketkeeper Batsman' ? 'selected' : '' }}>Wicketkeeper Batsman
                         </option>
-                        <option value="coach" {{ $player->playing_role == 'coach' ? 'selected' : '' }}>Coach</option>
-                        <option value="umpire" {{ $player->playing_role == 'umpire' ? 'selected' : '' }}>Umpire</option>
-                        <option value="manager" {{ $player->playing_role == 'manager' ? 'selected' : '' }}>Manager
+                        <option value="Coach" {{ $player->playing_role == 'Coach' ? 'selected' : '' }}>Coach</option>
+                        <option value="Umpire" {{ $player->playing_role == 'Umpire' ? 'selected' : '' }}>Umpire</option>
+                        <option value="Manager" {{ $player->playing_role == 'Manager' ? 'selected' : '' }}>Manager
                         </option>
-                        <option value="administrator" {{ $player->playing_role == 'administrator' ? 'selected' : '' }}>
+                        <option value="Administrator" {{ $player->playing_role == 'Administrator' ? 'selected' : '' }}>
                             Administrator</option>
                     </select>
                     @if ($errors->has('playing_role'))
@@ -396,33 +396,33 @@
                     <label for="bowling_style">Bowling Style:</label>
                     <select name="bowling_style" class="form-control">
                         <option selected disabled>Select bowling style</option>
-                        <option value="right_arm_off_break"
-                            {{ $player->bowling_style == 'right_arm_off_break' ? 'selected' : '' }}>Right Arm Off Break
+                        <option value="Right Arm Off Break"
+                            {{ $player->bowling_style == 'Right Arm Off Break' ? 'selected' : '' }}>Right Arm Off Break
                         </option>
-                        <option value="right_arm_leg_break"
-                            {{ $player->bowling_style == 'right_arm_leg_break' ? 'selected' : '' }}>Right Arm Leg Break
+                        <option value="Right Arm Leg Break"
+                            {{ $player->bowling_style == 'Right Arm Leg Break' ? 'selected' : '' }}>Right Arm Leg Break
                         </option>
-                        <option value="left_arm_chinaman"
-                            {{ $player->bowling_style == 'left_arm_chinaman' ? 'selected' : '' }}>Left Arm Chinaman
+                        <option value="Left Arm Chinaman"
+                            {{ $player->bowling_style == 'Left Arm Chinaman' ? 'selected' : '' }}>Left Arm Chinaman
                         </option>
-                        <option value="slow_right_arm_orthodox"
-                            {{ $player->bowling_style == 'slow_right_arm_orthodox' ? 'selected' : '' }}>Slow Right Arm
+                        <option value="Slow Right Arm Orthodox"
+                            {{ $player->bowling_style == 'Slow Right Arm Orthodox' ? 'selected' : '' }}>Slow Right Arm
                             Orthodox</option>
-                        <option value="slow_left_arm_orthodox"
-                            {{ $player->bowling_style == 'slow_left_arm_orthodox' ? 'selected' : '' }}>Slow Left Arm
+                        <option value="Slow Left Arm Orthodox"
+                            {{ $player->bowling_style == 'Slow Left Arm Orthodox' ? 'selected' : '' }}>Slow Left Arm
                             Orthodox</option>
-                        <option value="right_arm_medium_fast"
-                            {{ $player->bowling_style == 'right_arm_medium_fast' ? 'selected' : '' }}>Right Arm Medium Fast
+                        <option value="Right Arm Medium Fast"
+                            {{ $player->bowling_style == 'Right Arm Medium Fast' ? 'selected' : '' }}>Right Arm Medium Fast
                         </option>
-                        <option value="right_arm_fast" {{ $player->bowling_style == 'right_arm_fast' ? 'selected' : '' }}>
+                        <option value="Right Arm Fast" {{ $player->bowling_style == 'Right Arm Fast' ? 'selected' : '' }}>
                             Right Arm Fast</option>
-                        <option value="left_arm_medium_fast"
-                            {{ $player->bowling_style == 'left_arm_medium_fast' ? 'selected' : '' }}>Left Arm Medium Fast
+                        <option value="Left Arm Medium Fast"
+                            {{ $player->bowling_style == 'Left Arm Medium Fast' ? 'selected' : '' }}>Left Arm Medium Fast
                         </option>
-                        <option value="left_arm_fast" {{ $player->bowling_style == 'left_arm_fast' ? 'selected' : '' }}>
+                        <option value="Left Arm Fast" {{ $player->bowling_style == 'Left Arm Fast' ? 'selected' : '' }}>
                             Left Arm Fast</option>
-                        <option value="left_arm_wrist_spin"
-                            {{ $player->bowling_style == 'left_arm_wrist_spin' ? 'selected' : '' }}>Left Arm Wrist Spin
+                        <option value="left Arm Wrist Spin"
+                            {{ $player->bowling_style == 'Left Arm Wrist Spin' ? 'selected' : '' }}>Left Arm Wrist Spin
                         </option>
                     </select>
                     @if ($errors->has('bowling_style'))
@@ -449,8 +449,8 @@
                     <label for="status">Player Status:</label>
                     <select name="status" class="form-control">
                         <option selected disabled>Select status</option>
-                        <option value="active" {{ $player->status === 'active' ? 'selected' : '' }}>Active</option>
-                        <option value="inactive" {{ $player->status === 'inactive' ? 'selected' : '' }}>Inactive</option>
+                        <option value="Active" {{ $player->status === 'Active' ? 'selected' : '' }}>Active</option>
+                        <option value="Inactive" {{ $player->status === 'Inactive' ? 'selected' : '' }}>Inactive</option>
                     </select>
                     @if ($errors->has('status'))
                         <p class="text-danger">{{ $errors->first('status') }}</p>

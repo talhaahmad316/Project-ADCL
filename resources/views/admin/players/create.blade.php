@@ -312,9 +312,9 @@
                         <label for="gender">Gender:</label>
                         <select name="gender" class="form-control">
                             <option selected disabled>Select gender</option>
-                            <option value="male">Male</option>
-                            <option value="female">Female</option>
-                            <option value="others">Others</option>
+                            <option value="Male">Male</option>
+                            <option value="Female">Female</option>
+                            <option value="Others">Others</option>
                         </select>
                         @if ($errors->has('gender'))
                             <p class="text-danger">{{ $errors->first('gender') }}</p>
@@ -337,14 +337,14 @@
                         <select name="playing_role" class="form-control">
                             <!-- Options for playing role -->
                             <option selected disabled>Select player role</option>
-                            <option value="batsman">Batsman</option>
-                            <option value="bowler">Bowler</option>
-                            <option value="all rounder">All Rounder</option>
-                            <option value="wicketkeeper batsman">Wicketkeeper Batsman</option>
-                            <option value="coach">Coach</option>
-                            <option value="umpire">Umpire</option>
-                            <option value="manager">Manager</option>
-                            <option value="administrator">Administrator</option>
+                            <option value="Batsman">Batsman</option>
+                            <option value="Bowler">Bowler</option>
+                            <option value="All Rounder">All Rounder</option>
+                            <option value="Wicketkeeper Batsman">Wicketkeeper Batsman</option>
+                            <option value="Coach">Coach</option>
+                            <option value="Umpire">Umpire</option>
+                            <option value="Manager">Manager</option>
+                            <option value="Administrator">Administrator</option>
                         </select>
                         @if ($errors->has('playing_role'))
                             <p class="text-danger">{{ $errors->first('playing_role') }}</p>
@@ -359,8 +359,8 @@
                         <select name="batting_style" class="form-control">
                             <!-- Options for batting style -->
                             <option selected disabled>Select batting style</option>
-                            <option value="right_hand">Right Hand Bat</option>
-                            <option value="left_hand">Left Hand Bat</option>
+                            <option value="Right Hand">Right Hand Bat</option>
+                            <option value="LeftHand">Left Hand Bat</option>
                         </select>
                         @if ($errors->has('batting_style'))
                             <p class="text-danger">{{ $errors->first('batting_style') }}</p>
@@ -374,16 +374,16 @@
                         <select name="bowling_style" class="form-control">
                             <!-- Options for bowling style -->
                             <option selected disabled>Select bowling style</option>
-                            <option value="right_arm_off_break">Right Arm Off Break</option>
-                            <option value="right_arm_leg_break">Right Arm Leg Break</option>
-                            <option value="left_arm_chinaman">Left Arm Chinaman</option>
-                            <option value="slow_right_arm_orthodox">Slow Right Arm Orthodox</option>
-                            <option value="slow_left_arm_orthodox">Slow Left Arm Orthodox</option>
-                            <option value="right_arm_medium_fast">Right Arm Medium Fast</option>
-                            <option value="right_arm_fast">Right Arm Fast</option>
-                            <option value="left_arm_medium_fast">Left Arm Medium Fast</option>
-                            <option value="left_arm_fast">Left Arm Fast</option>
-                            <option value="left_arm_wrist_spin">Left Arm Wrist Spin</option>
+                            <option value="Right Arm Off Break">Right Arm Off Break</option>
+                            <option value="Right Arm Leg Break">Right Arm Leg Break</option>
+                            <option value="Left Arm Chinaman">Left Arm Chinaman</option>
+                            <option value="Slow Right Arm Orthodox">Slow Right Arm Orthodox</option>
+                            <option value="Slow Left Arm Orthodox">Slow Left Arm Orthodox</option>
+                            <option value="Right Arm Medium Fast">Right Arm Medium Fast</option>
+                            <option value="Right Arm Fast">Right Arm Fast</option>
+                            <option value="Left Arm Medium Fast">Left Arm Medium Fast</option>
+                            <option value="left Arm Fast">Left Arm Fast</option>
+                            <option value="left Arm wrist spin">Left Arm Wrist Spin</option>
                         </select>
                         @if ($errors->has('bowling_style'))
                             <p class="text-danger">{{ $errors->first('bowling_style') }}</p>
@@ -396,8 +396,8 @@
                         <select name="status" class="form-control">
                             <!-- Options for bowling style -->
                             <option selected disabled>Select status</option>
-                            <option value="active">Active</option>
-                            <option value="inactive">Inactive</option>
+                            <option value="Active">Active</option>
+                            <option value="Inactive">Inactive</option>
                         </select>
                         @if ($errors->has('status'))
                             <p class="text-danger">{{ $errors->first('status') }}</p>

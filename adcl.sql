@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jun 04, 2024 at 08:00 PM
+-- Generation Time: Jun 12, 2024 at 08:09 PM
 -- Server version: 10.4.28-MariaDB
 -- PHP Version: 8.2.4
 
@@ -95,6 +95,29 @@ CREATE TABLE `failed_jobs` (
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `galleries`
+--
+
+CREATE TABLE `galleries` (
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `caption` varchar(255) NOT NULL,
+  `alternateText` varchar(255) NOT NULL,
+  `description` text NOT NULL,
+  `image` varchar(255) NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `galleries`
+--
+
+INSERT INTO `galleries` (`id`, `caption`, `alternateText`, `description`, `image`, `created_at`, `updated_at`) VALUES
+(1, 'Demo Caption', 'Tournament Poster', 'None', '1718214714.jpg', '2024-06-12 12:51:54', '2024-06-12 12:51:54');
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `matches`
 --
 
@@ -156,7 +179,8 @@ INSERT INTO `migrations` (`id`, `migration`, `batch`) VALUES
 (43, '2024_02_20_162450_create_my_clubs_table', 1),
 (44, '2024_05_14_052655_create_matches_table', 2),
 (45, '2024_05_24_165231_create_scores_table', 3),
-(46, '2024_06_04_170917_create_bowlling_scorecards_table', 4);
+(46, '2024_06_04_170917_create_bowlling_scorecards_table', 4),
+(47, '2024_06_12_163532_create_galleries_table', 5);
 
 -- --------------------------------------------------------
 
@@ -214,12 +238,12 @@ CREATE TABLE `players` (
   `email` varchar(255) NOT NULL,
   `club_name` varchar(255) NOT NULL,
   `nationality` varchar(255) NOT NULL,
-  `gender` enum('male','female','others') NOT NULL,
+  `gender` varchar(50) NOT NULL,
   `height` varchar(255) NOT NULL,
-  `playing_role` enum('batsman','bowler','all_rounder','wicketkeeper_batsman','coach','umpire','manager','administrator') NOT NULL,
-  `batting_style` enum('right_hand','left_hand') NOT NULL,
-  `bowling_style` enum('right_arm_off_break','right_arm_leg_break','left_arm_chinaman','slow_right_arm_orthodox','slow_left_arm_orthodox','right_arm_medium_fast','right_arm_fast','left_arm_medium_fast','left_arm_fast','left_arm_wrist_spin') NOT NULL,
-  `status` enum('active','inactive') NOT NULL,
+  `playing_role` varchar(100) NOT NULL,
+  `batting_style` varchar(100) NOT NULL,
+  `bowling_style` varchar(100) NOT NULL,
+  `status` varchar(100) NOT NULL,
   `description` varchar(255) NOT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
@@ -230,9 +254,9 @@ CREATE TABLE `players` (
 --
 
 INSERT INTO `players` (`id`, `picture`, `name`, `email`, `club_name`, `nationality`, `gender`, `height`, `playing_role`, `batting_style`, `bowling_style`, `status`, `description`, `created_at`, `updated_at`) VALUES
-(7, '1713417581.jpeg', 'Ali Rathore', 'alirathore@gmial.com', 'United Cricket Lads', 'United Arab Emirates', 'male', '58', 'batsman', 'right_hand', 'right_arm_fast', 'active', 'none', '2024-04-18 00:19:42', '2024-04-18 00:19:42'),
-(8, '1713417665.png', 'Talha Ahmad', 'talhaahmad316@gmail.com', 'United Cricket Lads', 'United Arab Emirates', 'male', '58', 'batsman', 'left_hand', 'right_arm_fast', 'active', 'none', '2024-04-18 00:21:06', '2024-04-18 00:21:06'),
-(9, '1714557387.jpg', 'Babar Azam', 'babarazam56@gmail.com', 'United Cricket Lads', 'Pakistan', 'male', '5ft 8 inches', 'batsman', 'right_hand', 'right_arm_off_break', 'active', 'C', '2024-04-30 13:27:47', '2024-05-01 04:56:49');
+(7, '1713417581.jpeg', 'Ali Rathore', 'alirathore@gmail.com', 'United Cricket Lads', 'United Arab Emirates', 'Male', '5 ft 8 inches', 'Batsman', 'Right Hand', 'Right Arm Off Break', 'Active', 'none', '2024-04-18 00:19:42', '2024-06-11 13:15:43'),
+(8, '1713417665.png', 'Talha Ahmad', 'talhaahmad316@gmail.com', 'United Cricket Lads', 'United Arab Emirates', 'Male', '5ft 8inches', 'Batsman', 'Right Hand', 'Right Arm Off Break', 'Active', 'none', '2024-04-18 00:21:06', '2024-06-11 13:14:50'),
+(9, '1714557387.jpg', 'Babar Azam', 'babarazam56@gmail.com', 'United Cricket Lads', 'Pakistan', 'Male', '5ft 8 inches', 'Batsman', 'Right Hand', 'Right Arm Off Break', 'Active', 'C', '2024-04-30 13:27:47', '2024-06-11 13:16:27');
 
 -- --------------------------------------------------------
 
@@ -447,6 +471,12 @@ ALTER TABLE `failed_jobs`
   ADD UNIQUE KEY `failed_jobs_uuid_unique` (`uuid`);
 
 --
+-- Indexes for table `galleries`
+--
+ALTER TABLE `galleries`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indexes for table `matches`
 --
 ALTER TABLE `matches`
@@ -552,6 +582,12 @@ ALTER TABLE `failed_jobs`
   MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
 
 --
+-- AUTO_INCREMENT for table `galleries`
+--
+ALTER TABLE `galleries`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+--
 -- AUTO_INCREMENT for table `matches`
 --
 ALTER TABLE `matches`
@@ -561,7 +597,7 @@ ALTER TABLE `matches`
 -- AUTO_INCREMENT for table `migrations`
 --
 ALTER TABLE `migrations`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=47;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=48;
 
 --
 -- AUTO_INCREMENT for table `my_clubs`
