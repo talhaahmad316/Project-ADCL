@@ -10,7 +10,7 @@
         @endif
         <div class="mb-4 row">
             <div class="col-md-6 " style="font-family: oswald; margin-left: 93%; font-size:18px;">
-                <a href="{{ route('admin.gallery.index') }}" style="margin-top: 4%;margin-left: -189%" class="btn btn-success">Add In Gallery</a>
+                <a href="{{ route('admin.gallery.index') }}" style="margin-top: 4%;margin-left: -189%" class="btn btn-success">Search In Gallery</a>
             </div>
         </div>
         <form action="{{ route('admin.gallery.store') }}" method="POST" enctype="multipart/form-data">

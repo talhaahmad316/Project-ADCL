@@ -359,8 +359,8 @@
                         <select name="batting_style" class="form-control">
                             <!-- Options for batting style -->
                             <option selected disabled>Select batting style</option>
-                            <option value="Right Hand">Right Hand Bat</option>
-                            <option value="LeftHand">Left Hand Bat</option>
+                            <option value="Right Hand Bat">Right Hand Bat</option>
+                            <option value="Left Hand Bat">Left Hand Bat</option>
                         </select>
                         @if ($errors->has('batting_style'))
                             <p class="text-danger">{{ $errors->first('batting_style') }}</p>

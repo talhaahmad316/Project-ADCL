@@ -17,7 +17,7 @@
     @endif
         <div class="mb-4 row">
             <div class="col-md-6 " style="font-family: oswald; margin-left: 93%; font-size:18px;">
-                <a href="{{ route('admin.gallery.create') }}" style="margin-top: 4%;margin-left: -189%" class="btn btn-success">Search In Gallery</a>
+                <a href="{{ route('admin.gallery.create') }}" style="margin-top: 4%;margin-left: -189%" class="btn btn-success">Add In Gallery</a>
             </div>
         </div>
         <table id="galleryTable" class="table table-bordered" style="font-family: oswald; font-size:18px;">

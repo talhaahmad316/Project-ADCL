@@ -11,24 +11,7 @@
 
       <!-- Sidebar -->
       <div class="sidebar">
-          <!-- Sidebar user panel (optional) -->
-          {{-- <div class="pb-3 mt-3 mb-3 user-panel d-flex">
-      </div> --}}
-
-          <!-- SidebarSearch Form -->
-          {{-- <div class="form-inline">
-        <div class="input-group" data-widget="sidebar-search">
-          <input class="form-control form-control-sidebar" type="search" placeholder="Search" aria-label="Search">
-          <div class="input-group-append">
-            <button class="btn btn-sidebar">
-              <i class="fas fa-search fa-fw"></i>
-            </button>
-          </div>
-        </div>
-      </div> --}}
-
           <!-- Sidebar Menu -->
-
           <nav class="mt-2">
               <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu"
                   data-accordion="false">
@@ -57,24 +40,25 @@
                       </a>
                       <!-- Dropdown Content -->
                       <ul id="matchDropdown" style="display: none;">
-                          <li class="nav-item" id="addMatchBtnContainer">
-                              <a href="{{ route('admin.matches.create') }}" class="nav-link">
-                                  <i class="nav-icon fas fa-plus"></i>
-                                  <p style="font-family: oswald; font-size:16px;">
-                                      Add Match
-                                  </p>
-                              </a>
-                          </li>
                           <li class="nav-item" id="searchMatchBtnContainer">
                               <a href="{{ route('admin.matches.search') }}" class="nav-link">
-                                  <i class="nav-icon fas fa-search"></i>
+                                  <i class="nav-icon fas fa-search" style="margin-left:-40px; "></i>
                                   <p style="font-family: oswald; font-size:16px;">
                                       Search Match
                                   </p>
                               </a>
                           </li>
+                          <li class="nav-item" id="addMatchBtnContainer">
+                              <a href="{{ route('admin.matches.create') }}" class="nav-link">
+                                  <i class="nav-icon fas fa-plus" style="margin-left:-40px; "></i>
+                                  <p style="font-family: oswald; font-size:16px;">
+                                      Add Match
+                                  </p>
+                              </a>
+                          </li>
                       </ul>
                   </li>
+
                   <!-- Tournaments -->
                   <li class="nav-item">
                       <a href="#" class="nav-link" id="tournamentInfoBtn">
@@ -129,9 +113,6 @@
                           </p>
                       </a>
                   </li>
-
-
-
                   {{-- Playes Info --}}
                   <ul class="nav">
                       <li class="nav-item">
@@ -161,7 +142,6 @@
                           </p>
                       </a>
                   </li>
-
                   <!--Club Info-->
                   <ul class="nav">
                       <li class="nav-item">
@@ -170,7 +150,7 @@
                               <p style="font-family: oswald; font-size:18px;">
                                   &nbsp; Club Info
                               </p>
-                              &nbsp; <i class="fas fa-arrow-circle-down" style="margin-left: 59px"></i>
+                              &nbsp; <i class="fas fa-arrow-circle-down"></i>
                           </a>
                       </li>
                   </ul>
@@ -191,7 +171,34 @@
                           </p>
                       </a>
                   </li>
-
+                  <ul class="nav">
+                      <li class="nav-item">
+                          <a href="#" class="nav-link" id="galleryInfoBtn">
+                              &nbsp; <i class="nav-icon fas fa-user"></i>
+                              <p style="font-family: oswald; font-size:18px;">
+                                  &nbsp; UCL
+                              </p>
+                              &nbsp; <i class="fas fa-arrow-circle-down"></i>
+                          </a>
+                      </li>
+                  </ul>
+                  <!-- Links to Search and Add Gallery Pages (Initially Hidden) -->
+                  <li class="nav-item" id="searchGalleryBtnContainer" style="display: none;">
+                      <a href="" class="nav-link">
+                          <i class="nav-icon fas fa-users"></i>
+                          <p style="font-family: oswald; font-size:16px;">
+                              CC Members
+                          </p>
+                      </a>
+                  </li>
+                  <li class="nav-item" id="addGalleryBtnContainer" style="display: none;">
+                      <a href="{{ route('admin.gallery.index') }}" class="nav-link">
+                          <i class="nav-icon fas fa-image"></i>
+                          <p style="font-family: oswald; font-size:16px;">
+                              Gallery
+                          </p>
+                      </a>
+                  </li>
                   {{-- users --}}
                   @if (auth()->check() && auth()->user()->role == 1)
                       <li class="nav-item">
@@ -210,11 +217,8 @@
       </div>
       <!-- /.sidebar -->
   </aside>
-
-
   <script>
       // JavaScript to toggle the visibility of the buttons and switch active state
-
       document.getElementById("playerInfoBtn").addEventListener("click", function() {
           toggleButtonVisibility("player");
       });
@@ -231,19 +235,26 @@
           toggleButtonVisibility("club");
       });
 
+      document.getElementById("galleryInfoBtn").addEventListener("click", function() {
+          toggleButtonVisibility("gallery");
+      });
+
       function toggleButtonVisibility(type) {
           var playerInfoBtn = document.getElementById("playerInfoBtn");
           var teamInfoBtn = document.getElementById("teamInfoBtn");
           var tournamentInfoBtn = document.getElementById("tournamentInfoBtn");
           var clubInfoBtn = document.getElementById("clubInfoBtn");
+          var galleryInfoBtn = document.getElementById("galleryInfoBtn");
           var searchBtnContainer = type === "player" ? document.getElementById("searchBtnContainer") :
               type === "team" ? document.getElementById("searchTeamBtnContainer") :
               type === "tournament" ? document.getElementById("searchTournamentBtnContainer") :
-              type === "club" ? document.getElementById("searchClubBtnContainer") : null;
+              type === "club" ? document.getElementById("searchClubBtnContainer") :
+              type === "gallery" ? document.getElementById("searchGalleryBtnContainer") : null;
           var addBtnContainer = type === "player" ? document.getElementById("addBtnContainer") :
               type === "team" ? document.getElementById("addTeamBtnContainer") :
               type === "tournament" ? document.getElementById("addTournamentBtnContainer") :
-              type === "club" ? document.getElementById("addClubBtnContainer") : null;
+              type === "club" ? document.getElementById("addClubBtnContainer") :
+              type === "gallery" ? document.getElementById("addGalleryBtnContainer") : null;
 
           // Toggle search and add buttons
           if (searchBtnContainer.style.display === "none") {
@@ -260,21 +271,31 @@
               teamInfoBtn.classList.remove("active");
               tournamentInfoBtn.classList.remove("active");
               clubInfoBtn.classList.remove("active");
+              galleryInfoBtn.classList.remove("active");
           } else if (type === "team") {
               teamInfoBtn.classList.add("active");
               playerInfoBtn.classList.remove("active");
               tournamentInfoBtn.classList.remove("active");
               clubInfoBtn.classList.remove("active");
+              galleryInfoBtn.classList.remove("active");
           } else if (type === "tournament") {
               tournamentInfoBtn.classList.add("active");
               playerInfoBtn.classList.remove("active");
               teamInfoBtn.classList.remove("active");
               clubInfoBtn.classList.remove("active");
+              galleryInfoBtn.classList.remove("active");
           } else if (type === "club") {
               clubInfoBtn.classList.add("active");
               playerInfoBtn.classList.remove("active");
               teamInfoBtn.classList.remove("active");
               tournamentInfoBtn.classList.remove("active");
+              galleryInfoBtn.classList.remove("active");
+          } else if (type === "gallery") {
+              galleryInfoBtn.classList.add("active");
+              playerInfoBtn.classList.remove("active");
+              teamInfoBtn.classList.remove("active");
+              tournamentInfoBtn.classList.remove("active");
+              clubInfoBtn.classList.remove("active");
           }
       }
   </script>

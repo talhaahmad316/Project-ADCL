@@ -9,7 +9,7 @@
             <!-- Banner Image -->
             <div class="col-md-12">
                 @if ($gallery->image)
-                    <img src="{{ asset('gallery/' . $gallery->image) }}" alt="Tournament Banner" style="max-height: 200px;">
+                    <img src="{{ asset('gallery/' . $gallery->image) }}" alt="Gallery Image" style="max-height: 200px;">
                 @else
                     No Banner Image
                 @endif
