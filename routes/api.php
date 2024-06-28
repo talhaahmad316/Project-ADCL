@@ -3,6 +3,7 @@
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Api\PlayerController;
+use App\Http\Controllers\Api\ClubController;
 
 /*
 |--------------------------------------------------------------------------
@@ -22,4 +23,8 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 Route::get('players', [PlayerController::class, 'search']);
 Route::post('players', [PlayerController::class, 'store']);
 Route::put('players/{id}', [PlayerController::class, 'update']);
+
+Route::get('clubs', [ClubController::class, 'index']);
+Route::post('clubs', [ClubController::class, 'store']);
+Route::put('clubs/{id}', [ClubController::class, 'update']);
 
